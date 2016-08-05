@@ -2,7 +2,11 @@ package org.khmeracademy.smg_btb.utils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
+/**
+ * for response message back to client when request to server
+ * @author Tang
+ *
+ */
 public class Response {
 
 	@JsonProperty("CODE")

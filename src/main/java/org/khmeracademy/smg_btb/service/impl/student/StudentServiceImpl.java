@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.student;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.repository.student.StudentRepository;
 import org.khmeracademy.smg_btb.service.student.StudentService;
@@ -21,18 +22,23 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public void save(Student student) {
+	public boolean save(Student student) {
 		
-		 studentRepository.save(student);
+		 return studentRepository.save(student);
 	}
 
 	@Override
-	public void updateStatus(int id) {
-		studentRepository.updateStatus(id);
+	public boolean updateStatus(int id) {
+		return studentRepository.updateStatus(id);
 	}
 
 	@Override
-	public void updateById(Student student) {
-		studentRepository.updateById(student);
+	public boolean updateById(Student student) {
+		return studentRepository.updateById(student);
+	}
+
+	@Override
+	public CheckUser checkUser(String user_name, String phone) {	
+		return studentRepository.checkUser(user_name, phone);
 	}
 }

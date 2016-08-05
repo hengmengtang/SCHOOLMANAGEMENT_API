@@ -7,13 +7,14 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.jboss.logging.Property;
+import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StudentRepository {
-
+	
+	interface SQL{
 	final String C_INSERT_STUDENT="INSERT INTO smg_student("
 			+ "stu_id,"
 			+ "khmer_full_name,"
@@ -123,7 +124,10 @@ public interface StudentRepository {
 			+ "date,"
 			+ "status FROM smg_student ORDER BY stu_id";
 	
-	@Select( R_SELECT_STUDENT)
+	final String R_MODIFY_USER="SELECT eng_full_name,phone FROM smg_student "
+			+ "WHERE eng_full_name=#{user_name} AND phone=#{phone}";
+	};
+	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
 		@Result(property="stu_id" ,column="stu_id"),
 		@Result(property="khmer_full_name" ,column="khmer_full_name"),
@@ -152,10 +156,17 @@ public interface StudentRepository {
 		@Result(property="date" ,column="date")
 	})
 	public ArrayList<Student> findAll();
-	@Insert(C_INSERT_STUDENT)
-	public void save(Student student);
-	@Update(U_STUDENT_STATUS)
-	public void updateStatus(int id);
-	@Update(U_STUDENT_BYID)
-	public void updateById(Student student);
+	@Insert(SQL.C_INSERT_STUDENT)
+	public boolean save(Student student);
+	@Update(SQL.U_STUDENT_STATUS)
+	public boolean updateStatus(int id);
+	@Update(SQL.U_STUDENT_BYID)
+	public boolean updateById(Student student);
+	
+	@Select(SQL.R_MODIFY_USER)
+	@Results({
+		@Result(property="user_name" ,column="eng_full_name"),
+		@Result(property="phone",column="phone")
+	})
+	public CheckUser checkUser(String user_name,String phone);
 }

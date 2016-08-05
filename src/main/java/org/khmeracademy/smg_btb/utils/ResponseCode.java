@@ -1,5 +1,10 @@
 package org.khmeracademy.smg_btb.utils;
 
+/**
+ * for response code to client
+ * @author Tang
+ *
+ */
 public interface ResponseCode {
 
 	String FAIL = "401";
