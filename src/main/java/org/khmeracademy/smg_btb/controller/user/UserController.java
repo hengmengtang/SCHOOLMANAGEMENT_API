@@ -2,7 +2,7 @@ package org.khmeracademy.smg_btb.controller.user;
 
 import java.util.ArrayList;
 
-import org.apache.catalina.User;
+import org.khmeracademy.smg_btb.entity.user.User;
 import org.khmeracademy.smg_btb.service.user.UserService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/smg_btb/api/user")
 public class UserController {
 
 	@Autowired
@@ -47,7 +48,7 @@ public class UserController {
 	@RequestMapping(value="/save-user",method=RequestMethod.POST)
 	public Response save(@RequestBody User user){
 		Response response=new Response();
-		if(userService.insert(user))
+		if(userService.save(user)==false)
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);
@@ -78,11 +79,11 @@ public class UserController {
 	 * @param student
 	 * @return
 	 */
-	@RequestMapping(value="/update-user/{username}/{password}",method=RequestMethod.PUT)
-	public Response update(@PathVariable("username") String username,
-			@PathVariable("password") String password){
+	@RequestMapping(value="/update-user/{old_password}/{new_password}",method=RequestMethod.PUT)
+	public Response changePassword(@PathVariable("old_password") String old_password,
+			@PathVariable("new_password") String new_password){
 		Response response=new Response();
-		if(userService.update(username, password))
+		if(userService.changePassword(old_password, new_password))
 			response.setCode(ResponseCode.UPDATE_SUCCESS);
 		else
 			response.setCode(ResponseCode.UPDATE_FAIL);

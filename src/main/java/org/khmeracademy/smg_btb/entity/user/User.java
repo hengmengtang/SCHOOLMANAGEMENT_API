@@ -24,6 +24,15 @@ public class User {
 	@JsonProperty("STATUS")
 	private boolean status;
 	
+	@JsonProperty("PHONE")
+	private String phone;
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public Date getDate() {
 		return date;
 	}
