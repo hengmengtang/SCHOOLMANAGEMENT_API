@@ -85,6 +85,43 @@ public class Student{
 	@JsonProperty("DATE")
 	private Date date;
 	
+	public Student(){};
+	
+	public Student(int stu_id, String khmer_full_name, String eng_full_name, char gender, Date dob, String pob,
+			String email, String permanent_address, String phone, String education_level, String graduate,
+			String university, String khmer_id, String photo, String father_eng_name, String father_khmer_name,
+			String father_occupation, String father_address, String father_phone, String mother_khmer_name,
+			String mother_eng_name, String mother_occupation, String mother_address, String mother_phone,
+			boolean status, Date date) {
+		super();
+		this.stu_id = stu_id;
+		this.khmer_full_name = khmer_full_name;
+		this.eng_full_name = eng_full_name;
+		this.gender = gender;
+		this.dob = dob;
+		this.pob = pob;
+		this.email = email;
+		this.permanent_address = permanent_address;
+		this.phone = phone;
+		this.education_level = education_level;
+		this.graduate = graduate;
+		this.university = university;
+		this.khmer_id = khmer_id;
+		this.photo = photo;
+		this.father_eng_name = father_eng_name;
+		this.father_khmer_name = father_khmer_name;
+		this.father_occupation = father_occupation;
+		this.father_address = father_address;
+		this.father_phone = father_phone;
+		this.mother_khmer_name = mother_khmer_name;
+		this.mother_eng_name = mother_eng_name;
+		this.mother_occupation = mother_occupation;
+		this.mother_address = mother_address;
+		this.mother_phone = mother_phone;
+		this.status = status;
+		this.date = date;
+	}
+
 	public int getStu_id() {
 		return stu_id;
 	}

@@ -27,6 +27,20 @@ public class User {
 	@JsonProperty("PHONE")
 	private String phone;
 	
+	public User(){};
+	
+	public User(int user_id, String username, String password, String possition, Date date, boolean status,
+			String phone) {
+		super();
+		this.user_id = user_id;
+		this.username = username;
+		this.password = password;
+		this.possition = possition;
+		this.date = date;
+		this.status = status;
+		this.phone = phone;
+	}
+
 	public String getPhone() {
 		return phone;
 	}

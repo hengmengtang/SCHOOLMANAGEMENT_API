@@ -63,7 +63,38 @@ public class Staff {
 	
 	@JsonProperty("STATUS")
 	private boolean status;
+
+	public Staff(){};
 	
+	public Staff(int staff_id, String khmer_full_name, String eng_full_name, String dob, String pob, String gender,
+			String phone, String email, String father_khmer_full_name, String father_eng_full_name,
+			String father_occupation, String permanent_address, String father_phone, String mother_khmer_full_name,
+			String mother_eng_full_name, String mother_occupation, String mother_permanent_address, String mother_phone,
+			String photo, boolean status) {
+		super();
+		this.staff_id = staff_id;
+		this.khmer_full_name = khmer_full_name;
+		this.eng_full_name = eng_full_name;
+		this.dob = dob;
+		this.pob = pob;
+		this.gender = gender;
+		this.phone = phone;
+		this.email = email;
+		this.father_khmer_full_name = father_khmer_full_name;
+		this.father_eng_full_name = father_eng_full_name;
+		this.father_occupation = father_occupation;
+		this.permanent_address = permanent_address;
+		this.father_phone = father_phone;
+		this.mother_khmer_full_name = mother_khmer_full_name;
+		this.mother_eng_full_name = mother_eng_full_name;
+		this.mother_occupation = mother_occupation;
+		this.mother_permanent_address = mother_permanent_address;
+		this.mother_phone = mother_phone;
+		this.photo = photo;
+		this.status = status;
+	}
+
+
 	public int getStaff_id() {
 		return staff_id;
 	}
@@ -185,4 +216,15 @@ public class Staff {
 		this.status = status;
 	}
 	
+	@Override
+	public String toString() {
+		return "Staff [staff_id=" + staff_id + ", khmer_full_name=" + khmer_full_name + ", eng_full_name="
+				+ eng_full_name + ", dob=" + dob + ", pob=" + pob + ", gender=" + gender + ", phone=" + phone
+				+ ", email=" + email + ", father_khmer_full_name=" + father_khmer_full_name + ", father_eng_full_name="
+				+ father_eng_full_name + ", father_occupation=" + father_occupation + ", permanent_address="
+				+ permanent_address + ", father_phone=" + father_phone + ", mother_khmer_full_name="
+				+ mother_khmer_full_name + ", mother_eng_full_name=" + mother_eng_full_name + ", mother_occupation="
+				+ mother_occupation + ", mother_permanent_address=" + mother_permanent_address + ", mother_phone="
+				+ mother_phone + ", photo=" + photo + ", status=" + status + "]";
+	}
 }
