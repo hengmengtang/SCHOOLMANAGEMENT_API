@@ -20,4 +20,9 @@ public class ClassServiceImpl implements ClassService{
 		return classRepository.findAll();
 	}
 
+	@Override
+	public boolean insert(ClassRoom classRoom) {
+		return classRepository.insert(classRoom);
+	}
+
 }

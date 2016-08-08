@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
 import org.khmeracademy.smg_btb.service.classroom.ClassService;
+import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +31,17 @@ public class ClassRoomController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(classRoomList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/register-class",method=RequestMethod.POST)
+	public Response insert(@RequestBody ClassRoom classRoom){
+		Response response=new Response();
+		if(!classService.insert(classRoom))
+			response.setCode(ResponseCode.INSERT_SUCCESS);
+		else
+			response.setCode(ResponseCode.INSERT_FAIL);
 		
 		return response;
 	}

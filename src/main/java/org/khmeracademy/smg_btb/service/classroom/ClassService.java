@@ -7,4 +7,5 @@ import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
 public interface ClassService {
 
 	public ArrayList<ClassRoom> findAll();
+	public boolean insert(ClassRoom classRoom);
 }

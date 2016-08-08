@@ -22,7 +22,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean save(User user) {
-		user.setDate("2010-09-10");
 		return userRepository.save(user);
 	}
 

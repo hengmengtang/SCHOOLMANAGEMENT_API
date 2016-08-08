@@ -10,6 +10,12 @@ public class ClassRoom {
 	@JsonProperty("CLASS_NAME")
 	private String class_name;
 	
+	@JsonProperty("CLASS_START_DATE")
+	private String start_date;
+	
+	@JsonProperty("CLASS_END_DATE")
+	private String end_date;
+	
 	/**
 	 * if active =true
 	 * mean class is available
@@ -20,13 +26,15 @@ public class ClassRoom {
 
 	public ClassRoom(){};
 	
-	public ClassRoom(int class_id,String class_name,boolean active){
+	public ClassRoom(int class_id, String class_name, String start_date, String end_date, boolean active) {
 		super();
-		this.class_id=class_id;
-		this.class_name=class_name;
-		this.active=active;
+		this.class_id = class_id;
+		this.class_name = class_name;
+		this.start_date = start_date;
+		this.end_date = end_date;
+		this.active = active;
 	}
-	
+
 	public int getClass_id() {
 		return class_id;
 	}
@@ -49,6 +57,22 @@ public class ClassRoom {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public String getStart_date() {
+		return start_date;
+	}
+
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
+	}
+
+	public String getEnd_date() {
+		return end_date;
+	}
+
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
 	
 }

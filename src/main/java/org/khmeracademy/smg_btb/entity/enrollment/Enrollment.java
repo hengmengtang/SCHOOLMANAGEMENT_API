@@ -3,7 +3,6 @@ package org.khmeracademy.smg_btb.entity.enrollment;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -24,7 +23,6 @@ public class Enrollment {
 	 * start_date can be start generation or course or class
 	 */
 	@JsonProperty("START_DATE")
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private String start_date;
 	
 	@JsonProperty(value="END_DATE")
@@ -35,7 +33,7 @@ public class Enrollment {
 	 * else closed 
 	 */
 	@JsonProperty("IS_FINIST")
-	private boolean isFinish;
+	private boolean is_finish;
 	
 	public Enrollment(){};
 	
@@ -68,13 +66,13 @@ public class Enrollment {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	
-	public boolean isFinish() {
-		return isFinish;
+
+	public boolean isIs_finish() {
+		return is_finish;
 	}
-	
-	public void setFinish(boolean isFinish) {
-		this.isFinish = isFinish;
+
+	public void setIs_finish(boolean is_finish) {
+		this.is_finish = is_finish;
 	}
 	
 }
