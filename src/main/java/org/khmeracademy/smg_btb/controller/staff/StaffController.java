@@ -3,7 +3,6 @@ package org.khmeracademy.smg_btb.controller.staff;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.staff.Staff;
-import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.staff.StaffService;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("smg_btb_api/staff")
+@RequestMapping("/staff")
 public class StaffController {
 
 	@Autowired

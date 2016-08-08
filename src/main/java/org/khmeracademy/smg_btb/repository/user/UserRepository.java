@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
+import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
 import org.khmeracademy.smg_btb.entity.user.User;
 import org.springframework.stereotype.Repository;
 
@@ -26,10 +27,11 @@ public interface UserRepository {
 				+ "#{date,jdbcType=DATE,mode=IN},"
 				+ "#{status,jdbcType=BOOLEAN,mode=IN})}";
 		
-		final String U_CHANGE_PASSWORD="{CALL change_password(#{old_password,jdbcType=VARCHAR,mode=IN},"
+		final String U_CHANGE_PASSWORD="{CALL change_password(#{username,jdbcType=VARCHAR,mode=IN},#{old_password,jdbcType=VARCHAR,mode=IN},"
 				+ "#{new_password,jdbcType=VARCHAR,mode=IN})}";
 		final String U_CHANGE_USER_STATUAS="UPDATE smg_user SET status='f' "
 				+ "WHERE user_id=#{user_id} AND username=#{username}";
+		final String R_USER_LOGIN="SELECT username,password,email FROM smg_user WHERE email=#{email} AND password=#{password}";
 	}
 	@Select(SQL.R_USER)
 	@Results({
@@ -55,9 +57,16 @@ public interface UserRepository {
 	
 	@Update(SQL.U_CHANGE_PASSWORD)
 	@Options(statementType=StatementType.CALLABLE)
-	public boolean changePassword(String old_password,String new_password);
+	public boolean changePassword(UserLogin.changePassword changePasswrod);
 	
 	@Update(SQL.U_CHANGE_USER_STATUAS)
 	public boolean changeStatus(int user_id,String username);
 	
+	@Select(SQL.R_USER_LOGIN)
+	@Results({
+		@Result(property="username",column="username"),
+		@Result(property="password",column="password"),
+		@Result(property="email",column="email")
+	})
+	public UserLogin confirmUserLogin(UserLogin userLogin);
 }

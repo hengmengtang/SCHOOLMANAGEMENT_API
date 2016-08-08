@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.user;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
 import org.khmeracademy.smg_btb.entity.user.User;
 import org.khmeracademy.smg_btb.repository.user.UserRepository;
 import org.khmeracademy.smg_btb.service.user.UserService;
@@ -25,12 +26,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean changePassword(String old_password, String new_password) {
-		return userRepository.changePassword(old_password, new_password);
+	public boolean changePassword(UserLogin.changePassword changePassword) {
+		return userRepository.changePassword(changePassword);
 	}
 
 	@Override
 	public boolean changeStatus(int user_id, String username) {
 		return userRepository.changeStatus(user_id, username);
+	}
+
+	@Override
+	public UserLogin confirmUserLogin(UserLogin userLogin) {
+		return userRepository.confirmUserLogin(userLogin);
 	}
 }
