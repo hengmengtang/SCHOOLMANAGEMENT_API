@@ -1,11 +1,17 @@
 package org.khmeracademy.smg_btb.entity.user;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
 
+	Date today=new Date();
+	
+	SimpleDateFormat time=new SimpleDateFormat("yyyy-MM-dd");
+	
 	@JsonProperty("USER_ID")
 	private int user_id;
 	
@@ -18,8 +24,9 @@ public class User {
 	@JsonProperty("POSSITION")
 	private String possition;
 	
-	@JsonProperty("DATE")
-	private Date date;
+	@JsonProperty(value="DATE")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private String date =time.toString();
 	
 	@JsonProperty("STATUS")
 	private boolean status;
@@ -29,7 +36,7 @@ public class User {
 	
 	public User(){};
 	
-	public User(int user_id, String username, String password, String possition, Date date, boolean status,
+	public User(int user_id, String username, String password, String possition, String date, boolean status,
 			String phone) {
 		super();
 		this.user_id = user_id;
@@ -47,10 +54,10 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public boolean isStatus() {

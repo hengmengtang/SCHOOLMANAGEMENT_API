@@ -1,7 +1,9 @@
 package org.khmeracademy.smg_btb.entity.enrollment;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -12,7 +14,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  */
 public class Enrollment {
-
+	Date today=new Date();
+	SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+	
 	@JsonProperty("ENROLLMENT_ID")
 	private int enrollment_id;
 	
@@ -20,10 +24,11 @@ public class Enrollment {
 	 * start_date can be start generation or course or class
 	 */
 	@JsonProperty("START_DATE")
-	private Date start_date;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private String start_date;
 	
-	@JsonProperty("END_DATE")
-	private Date end_date;
+	@JsonProperty(value="END_DATE")
+	private String end_date;
 	
 	/**
 	 * if isFinish=true mean generation or course or class is active
@@ -34,7 +39,7 @@ public class Enrollment {
 	
 	public Enrollment(){};
 	
-	public Enrollment(int enrollment_id,Date start_date,Date end_date,boolean isFinish){
+	public Enrollment(int enrollment_id,String start_date,String end_date,boolean isFinish){
 		super();
 		this.enrollment_id=enrollment_id;
 		this.start_date=start_date;
@@ -48,19 +53,19 @@ public class Enrollment {
 		this.enrollment_id = enrollment_id;
 	}
 	
-	public Date getStart_date() {
-		return start_date;
+	public String getStart_date() {
+		return start_date=df.format(today);
 	}
 	
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
 	
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 	
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	

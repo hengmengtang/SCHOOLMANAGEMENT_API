@@ -1,11 +1,14 @@
 package org.khmeracademy.smg_btb.entity.student;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Student{
+	Date today=new Date();
+	SimpleDateFormat currentTime=new SimpleDateFormat("yyyy-MM-dd");
 	
 	@JsonProperty("STUDENT_ID")
 	private int stu_id;
@@ -20,7 +23,7 @@ public class Student{
 	private char gender;
 	
 	@JsonProperty("DATE_OF_BIRTH")
-	private Date dob;
+	private String dob=currentTime.format(today);
 	
 	@JsonProperty("PLACE_OF_BIRTH")
 	private String pob;
@@ -83,16 +86,16 @@ public class Student{
 	private boolean status;
 	
 	@JsonProperty("DATE")
-	private Date date;
+	private String date=currentTime.format(today);
 	
 	public Student(){};
 	
-	public Student(int stu_id, String khmer_full_name, String eng_full_name, char gender, Date dob, String pob,
+	public Student(int stu_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
 			String email, String permanent_address, String phone, String education_level, String graduate,
 			String university, String khmer_id, String photo, String father_eng_name, String father_khmer_name,
 			String father_occupation, String father_address, String father_phone, String mother_khmer_name,
 			String mother_eng_name, String mother_occupation, String mother_address, String mother_phone,
-			boolean status, Date date) {
+			boolean status, String date) {
 		super();
 		this.stu_id = stu_id;
 		this.khmer_full_name = khmer_full_name;
@@ -154,11 +157,11 @@ public class Student{
 		this.gender = gender;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
@@ -322,11 +325,11 @@ public class Student{
 		this.status = status;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

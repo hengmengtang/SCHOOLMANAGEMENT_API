@@ -24,7 +24,7 @@ public interface UserRepository {
 				+ "#{password,jdbcType=VARCHAR,mode=IN},"
 				+ "#{possition,jdbcType=VARCHAR,mode=IN},"
 				+ "#{phone,jdbcType=VARCHAR,mode=IN},"
-				+ "#{date,jdbcType=DATE,mode=IN},"
+				+ "#{date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{status,jdbcType=BOOLEAN,mode=IN})}";
 		
 		final String U_CHANGE_PASSWORD="{CALL change_password(#{username,jdbcType=VARCHAR,mode=IN},#{old_password,jdbcType=VARCHAR,mode=IN},"
