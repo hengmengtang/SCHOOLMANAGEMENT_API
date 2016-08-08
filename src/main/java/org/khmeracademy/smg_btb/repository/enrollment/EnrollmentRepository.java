@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 public interface EnrollmentRepository {
 
 	interface SQL{
-		
+		final String R_ENROLLMENT="";
 	}
 }
