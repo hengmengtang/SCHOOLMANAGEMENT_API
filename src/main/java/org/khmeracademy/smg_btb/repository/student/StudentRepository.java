@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -176,5 +177,5 @@ public interface StudentRepository {
 	@Results({
 		@Result(property="maxStuId",column="max_stu_id")
 	})
-	public String selectMax();
+	public MaxId selectMax();
 }

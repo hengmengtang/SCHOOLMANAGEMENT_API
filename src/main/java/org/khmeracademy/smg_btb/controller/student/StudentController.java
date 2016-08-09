@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.khmeracademy.smg_btb.service.student.StudentService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -112,9 +113,18 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="/student-the-last-id",method=RequestMethod.GET)
-	public String selectMax(){
+	public ResponseRecord<MaxId> selectMax(){
+		ResponseRecord<MaxId> response=new ResponseRecord<>();
 		
-		return studentService.selectMax();
+		MaxId maxId=studentService.selectMax();
+		if(maxId==null)
+			response.setCode(ResponseCode.FAIL);
+		else
+			response.setCode(ResponseCode.SUCCESS);
+		
+		response.setData(maxId);
+		
+		return response;
 	}
 	
 }

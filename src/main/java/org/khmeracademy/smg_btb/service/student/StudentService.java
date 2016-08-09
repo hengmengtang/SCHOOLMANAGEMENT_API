@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 
 public interface StudentService {
 
@@ -13,5 +14,5 @@ public interface StudentService {
 	public boolean updateStatus(int id);
 	public boolean updateById(Student student);
 	public CheckUser checkUser(String eng_full_name,String phone);
-	public String selectMax();
+	public MaxId selectMax();
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.khmeracademy.smg_btb.repository.student.StudentRepository;
 import org.khmeracademy.smg_btb.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public String selectMax() {
+	public MaxId selectMax() {
 		return studentRepository.selectMax();
 	}
 }
