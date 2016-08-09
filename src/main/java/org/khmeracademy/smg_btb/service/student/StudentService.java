@@ -13,4 +13,5 @@ public interface StudentService {
 	public boolean updateStatus(int id);
 	public boolean updateById(Student student);
 	public CheckUser checkUser(String eng_full_name,String phone);
+	public String selectMax();
 }

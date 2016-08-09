@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.staff.Staff;
 import org.khmeracademy.smg_btb.service.staff.StaffService;
+import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,4 +36,15 @@ public class StaffController {
 		return response;
 	}
 	
+	
+	@RequestMapping(value="/insert-staff",method=RequestMethod.POST)
+	public Response save(@RequestBody Staff staff){
+		Response response=new Response();
+		if(staffService.save(staff))
+			response.setCode(ResponseCode.INSERT_SUCCESS);
+		else
+			response.setCode(ResponseCode.INSERT_FAIL);
+		
+		return response;
+	}
 }

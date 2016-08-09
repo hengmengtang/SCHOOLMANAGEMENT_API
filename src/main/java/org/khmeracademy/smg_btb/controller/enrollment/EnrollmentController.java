@@ -37,7 +37,7 @@ public class EnrollmentController {
 		return response;
 	}
 	
-	@RequestMapping(value="/save-enrollment",method=RequestMethod.POST)
+	@RequestMapping(value="/register-generation",method=RequestMethod.POST)
 	public Response save(@RequestBody Enrollment enrollment){
 		Response response=new Response();
 		if(enrollmentService.insert(enrollment))

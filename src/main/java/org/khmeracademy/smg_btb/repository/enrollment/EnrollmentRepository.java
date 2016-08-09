@@ -22,7 +22,7 @@ public interface EnrollmentRepository {
 				+ "#{start_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{end_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{is_finish,jdbcType=BOOLEAN,mode=IN})}";
-		final String U_STATUS_ENROLLMENT="UPDATE smg_enrollment SET is_finish='f' WHERE is_finish='t' AND end_date>#{end_date}";
+		final String U_STATUS_ENROLLMENT="UPDATE smg_enrollment SET active='f' WHERE active='t' AND end_date>#{end_date}";
 	}
 	@Select(SQL.R_ENROLLMENT)
 	@Results({

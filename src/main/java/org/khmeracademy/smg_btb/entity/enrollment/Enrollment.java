@@ -32,8 +32,8 @@ public class Enrollment {
 	 * if isFinish=true mean generation or course or class is active
 	 * else closed 
 	 */
-	@JsonProperty("IS_FINIST")
-	private boolean is_finish;
+	@JsonProperty("ACTIVE")
+	private boolean active;
 	
 	public Enrollment(){};
 	
@@ -67,12 +67,12 @@ public class Enrollment {
 		this.end_date = end_date;
 	}
 
-	public boolean isIs_finish() {
-		return is_finish;
+	public boolean getActive() {
+		return active;
 	}
 
-	public void setIs_finish(boolean is_finish) {
-		this.is_finish = is_finish;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 }

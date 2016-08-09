@@ -41,4 +41,9 @@ public class StudentServiceImpl implements StudentService{
 	public CheckUser checkUser(String user_name, String phone) {	
 		return studentRepository.checkUser(user_name, phone);
 	}
+
+	@Override
+	public String selectMax() {
+		return studentRepository.selectMax();
+	}
 }

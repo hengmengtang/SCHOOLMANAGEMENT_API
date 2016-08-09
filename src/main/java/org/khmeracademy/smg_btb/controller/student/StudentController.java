@@ -111,4 +111,10 @@ public class StudentController {
 		return responseRecord;
 	}
 	
+	@RequestMapping(value="/student-the-last-id",method=RequestMethod.GET)
+	public String selectMax(){
+		
+		return studentService.selectMax();
+	}
+	
 }

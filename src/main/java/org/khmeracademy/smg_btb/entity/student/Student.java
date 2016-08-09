@@ -346,4 +346,17 @@ public class Student{
 				+ mother_phone + ", status=" + status + ", date=" + date + "]";
 	}
 	
+	public static class MaxId{
+		
+		private String maxStuId;
+
+		public String getMaxStuId() {
+			return maxStuId;
+		}
+
+		public void setMaxStuId(String maxStuId) {
+			this.maxStuId = maxStuId;
+		}
+	}
+	
 }

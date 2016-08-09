@@ -1,4 +1,4 @@
-package org.khmeracademy.smg_btb.service.impl.user;
+package org.khmeracademy.smg_btb.service.impl.staff;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,11 @@ public class StaffServiceImpl implements StaffService{
 	@Override
 	public ArrayList<Staff> findAll() {
 		return staffRepository.findAll();
+	}
+
+	@Override
+	public boolean save(Staff staff) {
+		return staffRepository.save(staff);
 	}
 
 }
