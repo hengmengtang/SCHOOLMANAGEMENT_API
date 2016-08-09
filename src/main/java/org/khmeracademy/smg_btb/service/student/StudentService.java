@@ -13,6 +13,6 @@ public interface StudentService {
 	public boolean save(Student student);
 	public boolean updateStatus(int id);
 	public boolean updateById(Student student);
-	public CheckUser checkUser(String eng_full_name,String phone);
+	public CheckUser checkUser(CheckUser checkUser);
 	public MaxId selectMax();
 }

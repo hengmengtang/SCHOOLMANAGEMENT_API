@@ -1,15 +1,10 @@
 package org.khmeracademy.smg_btb.entity.student;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Student{
-	Date today=new Date();
-	SimpleDateFormat currentTime=new SimpleDateFormat("yyyy-MM-dd");
-	
+
 	@JsonProperty("STUDENT_ID")
 	private int stu_id;
 	
@@ -23,7 +18,7 @@ public class Student{
 	private char gender;
 	
 	@JsonProperty("DATE_OF_BIRTH")
-	private String dob=currentTime.format(today);
+	private String dob;
 	
 	@JsonProperty("PLACE_OF_BIRTH")
 	private String pob;
@@ -39,6 +34,15 @@ public class Student{
 	
 	@JsonProperty("EDUCATION_LEVEL")
 	private String education_level;
+	
+	@JsonProperty("ENGLISH_LEVEL")
+	private String english_level;
+	
+	@JsonProperty("KOREAN_LEVEL")
+	private String korean_level;
+	
+	@JsonProperty("STUDENT_STATUS")
+	private String student_status;
 	
 	@JsonProperty("GRADUATE")
 	private String graduate;
@@ -86,16 +90,16 @@ public class Student{
 	private boolean status;
 	
 	@JsonProperty("DATE")
-	private String date=currentTime.format(today);
+	private String date;
 	
 	public Student(){};
-	
+
 	public Student(int stu_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
-			String email, String permanent_address, String phone, String education_level, String graduate,
-			String university, String khmer_id, String photo, String father_eng_name, String father_khmer_name,
-			String father_occupation, String father_address, String father_phone, String mother_khmer_name,
-			String mother_eng_name, String mother_occupation, String mother_address, String mother_phone,
-			boolean status, String date) {
+			String email, String permanent_address, String phone, String education_level, String english_level,
+			String korean_level, String student_status, String graduate, String university, String khmer_id,
+			String photo, String father_eng_name, String father_khmer_name, String father_occupation,
+			String father_address, String father_phone, String mother_khmer_name, String mother_eng_name,
+			String mother_occupation, String mother_address, String mother_phone, boolean status, String date) {
 		super();
 		this.stu_id = stu_id;
 		this.khmer_full_name = khmer_full_name;
@@ -107,6 +111,9 @@ public class Student{
 		this.permanent_address = permanent_address;
 		this.phone = phone;
 		this.education_level = education_level;
+		this.english_level = english_level;
+		this.korean_level = korean_level;
+		this.student_status = student_status;
 		this.graduate = graduate;
 		this.university = university;
 		this.khmer_id = khmer_id;
@@ -333,19 +340,30 @@ public class Student{
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Student [stu_id=" + stu_id + ", khmer_full_name=" + khmer_full_name + ", eng_full_name=" + eng_full_name
-				+ ", gender=" + gender + ", dob=" + dob + ", pob=" + pob + ", email=" + email + ", permanent_address="
-				+ permanent_address + ", phone=" + phone + ", education_level=" + education_level + ", graduate="
-				+ graduate + ", university=" + university + ", khmer_id=" + khmer_id + ", photo=" + photo
-				+ ", father_eng_name=" + father_eng_name + ", father_khmer_name=" + father_khmer_name
-				+ ", father_occupation=" + father_occupation + ", father_address=" + father_address + ", father_phone="
-				+ father_phone + ", mother_khmer_name=" + mother_khmer_name + ", mother_eng_name=" + mother_eng_name
-				+ ", mother_occupation=" + mother_occupation + ", mother_address=" + mother_address + ", mother_phone="
-				+ mother_phone + ", status=" + status + ", date=" + date + "]";
+	public String getEnglish_level() {
+		return english_level;
 	}
-	
+
+	public void setEnglish_level(String english_level) {
+		this.english_level = english_level;
+	}
+
+	public String getKorean_level() {
+		return korean_level;
+	}
+
+	public void setKorean_level(String korean_level) {
+		this.korean_level = korean_level;
+	}
+
+	public String getStudent_status() {
+		return student_status;
+	}
+
+	public void setStudent_status(String student_status) {
+		this.student_status = student_status;
+	}
+
 	public static class MaxId{
 		
 		private String maxStuId;

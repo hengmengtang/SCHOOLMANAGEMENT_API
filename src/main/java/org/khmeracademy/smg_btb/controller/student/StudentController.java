@@ -98,18 +98,18 @@ public class StudentController {
 	 * @param phone
 	 * @return
 	 */
-	@RequestMapping(value="/checkUser/{user_name}/{phone}",method=RequestMethod.GET)
-	public ResponseRecord<CheckUser> checkUser(@PathVariable("user_name") String user_name,
-			@PathVariable("phone") String phone){
-		ResponseRecord<CheckUser> responseRecord=new ResponseRecord<>();
-		CheckUser user=studentService.checkUser(user_name, phone);
-		if(user==null)
-			responseRecord.setCode(ResponseCode.RECORD_NOT_FOUND);
+	@RequestMapping(value="/check-user-is-exit",method=RequestMethod.POST)
+	public ResponseRecord<CheckUser> checkUser(@RequestBody CheckUser checkUser){
+		ResponseRecord<CheckUser> response=new ResponseRecord<>();
+		CheckUser foundUser=studentService.checkUser(checkUser);
+		if(foundUser==null)
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		else
-			responseRecord.setCode(ResponseCode.RECORD_FOUND);
-		responseRecord.setData(user);
+			response.setCode(ResponseCode.RECORD_FOUND);
 		
-		return responseRecord;
+		response.setData(foundUser);
+		
+		return response;
 	}
 	
 	@RequestMapping(value="/student-the-last-id",method=RequestMethod.GET)

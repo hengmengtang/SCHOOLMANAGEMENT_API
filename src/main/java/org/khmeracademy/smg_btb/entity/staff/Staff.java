@@ -34,6 +34,15 @@ public class Staff {
 	@JsonProperty("EDUCATION_LEVEL")
 	private String education_level;
 	
+	@JsonProperty("ENGLISH_LEVEL")
+	private String english_level;
+	
+	@JsonProperty("KOREAN_LEVEL")
+	private String korean_level;
+	
+	@JsonProperty("STUDENT_STATUS")
+	private String student_status;
+	
 	@JsonProperty("GRADUATE")
 	private String graduate;
 	
@@ -85,13 +94,12 @@ public class Staff {
 
 	public Staff(){}
 
-
 	public Staff(int staff_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
-			String email, String permanent_address, String phone, String education_level, String graduate,
-			String university, String khmer_id, String photo, String father_eng_name, String father_khmer_name,
-			String father_occupation, String father_address, String father_phone, String mother_khmer_name,
-			String mother_eng_name, String mother_occupation, String mother_address, String mother_phone,
-			boolean status, String date) {
+			String email, String permanent_address, String phone, String education_level, String english_level,
+			String korean_level, String student_status, String graduate, String university, String khmer_id,
+			String photo, String father_eng_name, String father_khmer_name, String father_occupation,
+			String father_address, String father_phone, String mother_khmer_name, String mother_eng_name,
+			String mother_occupation, String mother_address, String mother_phone, boolean status, String date) {
 		super();
 		this.staff_id = staff_id;
 		this.khmer_full_name = khmer_full_name;
@@ -103,6 +111,9 @@ public class Staff {
 		this.permanent_address = permanent_address;
 		this.phone = phone;
 		this.education_level = education_level;
+		this.english_level = english_level;
+		this.korean_level = korean_level;
+		this.student_status = student_status;
 		this.graduate = graduate;
 		this.university = university;
 		this.khmer_id = khmer_id;
@@ -120,7 +131,6 @@ public class Staff {
 		this.status = status;
 		this.date = date;
 	}
-
 
 	public int getStaff_id() {
 		return staff_id;
@@ -379,6 +389,37 @@ public class Staff {
 
 	public void setDate(String date) {
 		this.date = date;
-	};
+	}
+
+
+	public String getEnglish_level() {
+		return english_level;
+	}
+
+
+	public void setEnglish_level(String english_level) {
+		this.english_level = english_level;
+	}
+
+
+	public String getKorean_level() {
+		return korean_level;
+	}
+
+
+	public void setKorean_level(String korean_level) {
+		this.korean_level = korean_level;
+	}
+
+
+	public String getStudent_status() {
+		return student_status;
+	}
+
+
+	public void setStudent_status(String student_status) {
+		this.student_status = student_status;
+	}
+	
 	
 }

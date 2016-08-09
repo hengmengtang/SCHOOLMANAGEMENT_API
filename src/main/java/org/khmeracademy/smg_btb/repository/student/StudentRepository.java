@@ -27,6 +27,9 @@ public interface StudentRepository {
 				+ "permanent_address,"
 				+ "phone,"
 				+ "education_level,"
+				+ "english_level,"
+				+ "korean_level,"
+				+ "student_status,"
 				+ "graduate,"
 				+ "university,"
 				+ "khmer_id,"
@@ -54,6 +57,9 @@ public interface StudentRepository {
 				+ "#{permanent_address},"
 				+ "#{phone},"
 				+ "#{education_level},"
+				+ "#{english_level},"
+				+ "#{korean_level},"
+				+ "#{student_status},"
 				+ "#{graduate},"
 				+ "#{university},"
 				+ "#{khmer_id},"
@@ -81,6 +87,9 @@ public interface StudentRepository {
 				+ "permanent_address=#{permanent_address},"
 				+ "phone=#{phone},"
 				+ "education_level=#{education_level},"
+				+ "english_level=#{english_level},"
+				+ "korean_level=#{korean_level},"
+				+ "student_status=#{student_status},"
 				+ "graduate=#{graduate},"
 				+ "university=#{university},"
 				+ "khmer_id=#{khmer_id},"
@@ -97,37 +106,11 @@ public interface StudentRepository {
 				+ "mother_phone=#{mother_phone},"
 				+ "date=#{date},"
 				+ "status=#{status} WHERE stu_id=#{stu_id}";
-		final String R_SELECT_STUDENT="SELECT "
-				+ "stu_id,"
-				+ "khmer_full_name,"
-				+ "eng_full_name,"
-				+ "gender,"
-				+ "dob,"
-				+ "pob,"
-				+ "email,"
-				+ "permanent_address,"
-				+ "phone,"
-				+ "education_level,"
-				+ "graduate,"
-				+ "university,"
-				+ "khmer_id,"
-				+ "photo,"
-				+ "father_eng_name,"
-				+ "father_khmer_name,"
-				+ "father_occupation,"
-				+ "father_address,"
-				+ "father_phone,"
-				+ "mother_khmer_name,"
-				+ "mother_eng_name,"
-				+ "mother_occupation,"
-				+ "mother_address,"
-				+ "mother_phone,"
-				+ "date,"
-				+ "status FROM smg_student ORDER BY stu_id";
+		final String R_SELECT_STUDENT="SELECT * FROM smg_student ORDER BY stu_id";
 		
 		final String R_MODIFY_USER="SELECT eng_full_name,phone FROM smg_student "
 				+ "WHERE eng_full_name=#{user_name} AND phone=#{phone}";
-		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(stu_id)::text, 5,'0') AS max_stu_id FROM smg_student";
+		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(stu_id + 1)::text, 5,'0') AS max_stu_id FROM smg_student";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -141,6 +124,9 @@ public interface StudentRepository {
 		@Result(property="permanent_address" ,column="permanent_address"),
 		@Result(property="phone" ,column="phone"),
 		@Result(property="education_level" ,column="education_level"),
+		@Result(property="english_level" ,column="english_level"),
+		@Result(property="korean_level" ,column="korean"),
+		@Result(property="student_status" ,column="student_status"),
 		@Result(property="graduate" ,column="graduate"),
 		@Result(property="university" ,column="university"),
 		@Result(property="khmer_id" ,column="khmer_id"),
@@ -171,7 +157,7 @@ public interface StudentRepository {
 		@Result(property="user_name" ,column="eng_full_name"),
 		@Result(property="phone",column="phone")
 	})
-	public CheckUser checkUser(String user_name,String phone);
+	public CheckUser checkUser(CheckUser checkUser);
 	
 	@Select(SQL.R_SELECT_MAX)
 	@Results({

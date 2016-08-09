@@ -25,6 +25,9 @@ public interface StaffRepository {
 				+ "permanent_address,"
 				+ "phone,"
 				+ "education_level,"
+				+ "english_level,"
+				+ "korean_level,"
+				+ "student_status,"
 				+ "graduate,"
 				+ "university,"
 				+ "khmer_id,"
@@ -52,6 +55,9 @@ public interface StaffRepository {
 				+ "#{permanent_address},"
 				+ "#{phone},"
 				+ "#{education_level},"
+				+ "#{english_level},"
+				+ "#{korean_level},"
+				+ "#{student_status},"
 				+ "#{graduate},"
 				+ "#{university},"
 				+ "#{khmer_id},"
@@ -82,6 +88,9 @@ public interface StaffRepository {
 		@Result(property="permanent_address" ,column="permanent_address"),
 		@Result(property="phone" ,column="phone"),
 		@Result(property="education_level" ,column="education_level"),
+		@Result(property="english_level" ,column="english_level"),
+		@Result(property="korean_level" ,column="korean_level"),
+		@Result(property="student_status" ,column="student_status"),
 		@Result(property="graduate" ,column="graduate"),
 		@Result(property="university" ,column="university"),
 		@Result(property="khmer_id" ,column="khmer_id"),

@@ -39,8 +39,8 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public CheckUser checkUser(String user_name, String phone) {	
-		return studentRepository.checkUser(user_name, phone);
+	public CheckUser checkUser(CheckUser checkUser) {	
+		return studentRepository.checkUser(checkUser);
 	}
 
 	@Override

@@ -4,6 +4,7 @@ public class CheckUser {
 
 	private String user_name;
 	private String phone;
+	
 	public String getUser_name() {
 		return user_name;
 	}
