@@ -15,19 +15,19 @@ public class EnrollmentServiceEmpl implements EnrollmentService{
 	@Autowired
 	EnrollmentRepository enrollmentRepository;
 	
-	@Override
+	/*@Override
 	public ArrayList<Enrollment> findAll() {
 		return enrollmentRepository.findAll();
-	}
+	}*/
 
 	@Override
-	public boolean insert(Enrollment enrollment) {		
-		return enrollmentRepository.insert(enrollment);
+	public int enrollStudent(Enrollment.EnrollmentStudent enrollmentStudent) {		
+		return enrollmentRepository.enrollStudent(enrollmentStudent);
 	}
 	
-	@Override
+	/*@Override
 	public boolean changeStatus(CloseCourse closeGeneration){
 		return enrollmentRepository.changeStatus(closeGeneration);
-	}
+	}*/
 
 }

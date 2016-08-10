@@ -21,7 +21,7 @@ public class EnrollmentController {
 	@Autowired
 	EnrollmentService enrollmentService;
 	
-	@RequestMapping(value="/find-all-enrollment",method=RequestMethod.GET)
+	/*@RequestMapping(value="/find-all-enrollment",method=RequestMethod.GET)
 	public ResponseList<Enrollment> findAll(){
 		ResponseList<Enrollment> response=new ResponseList<>();
 	
@@ -35,12 +35,12 @@ public class EnrollmentController {
 		response.setData(enrollmentList);
 		
 		return response;
-	}
+	}*/
 	
-	@RequestMapping(value="/register-generation",method=RequestMethod.POST)
-	public Response save(@RequestBody Enrollment enrollment){
+	@RequestMapping(value="/enroll-student",method=RequestMethod.POST)
+	public Response enrollStudent(@RequestBody Enrollment.EnrollmentStudent enrollmentStudent){
 		Response response=new Response();
-		if(enrollmentService.insert(enrollment))
+		if(enrollmentService.enrollStudent(enrollmentStudent)==1)
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);
@@ -48,7 +48,7 @@ public class EnrollmentController {
 		return response;
 	}
 	
-	@RequestMapping(value="/change-enrollment-status",method=RequestMethod.PUT)
+	/*@RequestMapping(value="/change-enrollment-status",method=RequestMethod.PUT)
 	public Response changeStatus(@RequestBody CloseCourse closeGeneration){
 		Response response=new Response();
 		if(enrollmentService.changeStatus(closeGeneration))
@@ -57,5 +57,5 @@ public class EnrollmentController {
 			response.setCode(ResponseCode.UPDATE_FAIL);
 		
 		return response;
-	}
+	}*/
 }

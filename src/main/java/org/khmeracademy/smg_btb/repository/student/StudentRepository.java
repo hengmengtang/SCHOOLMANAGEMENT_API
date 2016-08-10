@@ -110,7 +110,7 @@ public interface StudentRepository {
 		
 		final String R_MODIFY_USER="SELECT eng_full_name,phone FROM smg_student "
 				+ "WHERE eng_full_name=#{user_name} AND phone=#{phone}";
-		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(stu_id + 1)::text, 5,'0') AS max_stu_id FROM smg_student";
+		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(split_part(stu_id, 'stu', 2)::int + 1)::text,5,'0') AS max_stu_id FROM smg_student";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -148,7 +148,7 @@ public interface StudentRepository {
 	@Insert(SQL.C_INSERT_STUDENT)
 	public boolean save(Student student);
 	@Update(SQL.U_STUDENT_STATUS)
-	public boolean updateStatus(int id);
+	public boolean updateStatus(String id);
 	@Update(SQL.U_STUDENT_BYID)
 	public boolean updateById(Student student);
 	

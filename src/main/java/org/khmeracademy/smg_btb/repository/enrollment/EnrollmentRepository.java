@@ -17,25 +17,23 @@ import org.springframework.stereotype.Repository;
 public interface EnrollmentRepository {
 
 	interface SQL{
-		final String R_ENROLLMENT="SELECT * FROM smg_enrollment";
-		final String C_INSERT_ENROLLMENT="{CALL insert_enrollment(#{enrollment_id,jdbcType=INTEGER,mode=IN},"
-				+ "#{start_date,jdbcType=VARCHAR,mode=IN},"
-				+ "#{end_date,jdbcType=VARCHAR,mode=IN},"
-				+ "#{is_finish,jdbcType=BOOLEAN,mode=IN})}";
-		final String U_STATUS_ENROLLMENT="UPDATE smg_enrollment SET active='f' WHERE active='t' AND end_date>#{end_date}";
+		/*final String R_ENROLLMENT="SELECT * FROM smg_enrollment";*/
+		final String C_ENROLLMENT_STUDENT="{CALL enroll_student(#{generation_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{student_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{enroll_date,jdbcType=VARCHAR,mode=IN})}";
 	}
-	@Select(SQL.R_ENROLLMENT)
+	/*@Select(SQL.R_ENROLLMENT)
 	@Results({
 		@Result(property="enrollment_id",column="en_id"),
-		@Result(property="start_date",column="start_date"),
+		@Result(property="",column="start_date"),
 		@Result(property="end_date",column="end_date")
 	})
 	public ArrayList<Enrollment> findAll();
-	
-	@Insert(SQL.C_INSERT_ENROLLMENT)
+	*/
+	@Insert(SQL.C_ENROLLMENT_STUDENT)
 	@Options(statementType=StatementType.CALLABLE)
-	public boolean insert(Enrollment enrollment);
+	public int enrollStudent(Enrollment.EnrollmentStudent enrollmentStudent);
 	
-	@Update(SQL.U_STATUS_ENROLLMENT)
-	public boolean changeStatus(CloseCourse closeGeneration);
 }

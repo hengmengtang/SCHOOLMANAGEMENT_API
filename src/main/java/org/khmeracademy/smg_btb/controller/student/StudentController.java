@@ -65,7 +65,7 @@ public class StudentController {
 	 * @return
 	 */
 	@RequestMapping(value="/updateStatus/{id}",method=RequestMethod.PUT)
-	public Response updateStatus(@PathVariable("id") int id){
+	public Response updateStatus(@PathVariable("id") String id){
 		Response response=new Response();
 		
 		if(this.studentService.updateStatus(id))
@@ -113,10 +113,10 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="/student-the-last-id",method=RequestMethod.GET)
-	public ResponseRecord<MaxId> selectMax(){
+	public ResponseRecord<MaxId> selectMaxId(){
 		ResponseRecord<MaxId> response=new ResponseRecord<>();
 		
-		MaxId maxId=studentService.selectMax();
+		MaxId maxId=studentService.selectMaxId();
 		if(maxId==null)
 			response.setCode(ResponseCode.FAIL);
 		else

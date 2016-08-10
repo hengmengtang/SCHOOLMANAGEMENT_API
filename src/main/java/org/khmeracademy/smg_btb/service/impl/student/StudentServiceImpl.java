@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public boolean updateStatus(int id) {
+	public boolean updateStatus(String id) {
 		return studentRepository.updateStatus(id);
 	}
 
@@ -44,7 +44,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public MaxId selectMax() {
+	public MaxId selectMaxId() {
 		return studentRepository.selectMax();
 	}
 }

@@ -2,11 +2,10 @@ package org.khmeracademy.smg_btb.entity.student;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class Student{
 
 	@JsonProperty("STUDENT_ID")
-	private int stu_id;
+	private String stu_id;
 	
 	@JsonProperty("KHMER_FULL_NAME")
 	private String khmer_full_name;
@@ -94,7 +93,7 @@ public class Student{
 	
 	public Student(){};
 
-	public Student(int stu_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
+	public Student(String stu_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
 			String email, String permanent_address, String phone, String education_level, String english_level,
 			String korean_level, String student_status, String graduate, String university, String khmer_id,
 			String photo, String father_eng_name, String father_khmer_name, String father_occupation,
@@ -132,11 +131,11 @@ public class Student{
 		this.date = date;
 	}
 
-	public int getStu_id() {
+	public String getStu_id() {
 		return stu_id;
 	}
 
-	public void setStu_id(int stu_id) {
+	public void setStu_id(String stu_id) {
 		this.stu_id = stu_id;
 	}
 
@@ -364,6 +363,11 @@ public class Student{
 		this.student_status = student_status;
 	}
 
+	/**
+	 * class MaxId for used for generate auto student id from database
+	 * @author Tang
+	 *
+	 */
 	public static class MaxId{
 		
 		private String maxStuId;

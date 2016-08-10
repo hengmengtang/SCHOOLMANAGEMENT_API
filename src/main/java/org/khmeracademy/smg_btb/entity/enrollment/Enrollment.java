@@ -13,66 +13,72 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  */
 public class Enrollment {
-	Date today=new Date();
-	SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 	
 	@JsonProperty("ENROLLMENT_ID")
-	private int enrollment_id;
+	private String enrollment_id;
 	
 	/**
-	 * start_date can be start generation or course or class
+	 * enrollment_date for know what day that student enroll to generation,class and course
 	 */
-	@JsonProperty("START_DATE")
-	private String start_date;
 	
-	@JsonProperty(value="END_DATE")
-	private String end_date;
-	
-	/**
-	 * if isFinish=true mean generation or course or class is active
-	 * else closed 
-	 */
-	@JsonProperty("ACTIVE")
-	private boolean active;
-	
-	public Enrollment(){};
-	
-	public Enrollment(int enrollment_id,String start_date,String end_date,boolean isFinish){
-		super();
-		this.enrollment_id=enrollment_id;
-		this.start_date=start_date;
-		this.end_date=end_date;
-	}
-	public int getEnrollment_id() {
+	@JsonProperty(value="ENROLLMENT_DATE")
+	private String enroll_date;
+
+	public String getEnrollment_id() {
 		return enrollment_id;
 	}
-	
-	public void setEnrollment_id(int enrollment_id) {
+
+	public void setEnrollment_id(String enrollment_id) {
 		this.enrollment_id = enrollment_id;
 	}
-	
-	public String getStart_date() {
-		return start_date=df.format(today);
-	}
-	
-	public void setStart_date(String start_date) {
-		this.start_date = start_date;
-	}
-	
-	public String getEnd_date() {
-		return end_date;
-	}
-	
-	public void setEnd_date(String end_date) {
-		this.end_date = end_date;
+
+	public String getEnroll_date() {
+		return enroll_date;
 	}
 
-	public boolean getActive() {
-		return active;
+	public void setEnroll_date(String enroll_date) {
+		this.enroll_date = enroll_date;
 	}
-
-	public void setActive(boolean active) {
-		this.active = active;
+	
+	public static class EnrollmentStudent{
+		
+		private String generation_name;
+		private String course_name;
+		private String class_name;
+		private String student_name;
+		private String enroll_date;
+		public String getGeneration_name() {
+			return generation_name;
+		}
+		public void setGeneration_name(String generation_name) {
+			this.generation_name = generation_name;
+		}
+		public String getCourse_name() {
+			return course_name;
+		}
+		public void setCourse_name(String course_name) {
+			this.course_name = course_name;
+		}
+		public String getClass_name() {
+			return class_name;
+		}
+		public void setClass_name(String class_name) {
+			this.class_name = class_name;
+		}
+		public String getStudent_name() {
+			return student_name;
+		}
+		public void setStudent_name(String student_name) {
+			this.student_name = student_name;
+		}
+		public String getEnroll_date() {
+			return enroll_date;
+		}
+		public void setEnroll_date(String enroll_date) {
+			this.enroll_date = enroll_date;
+		}
+		
 	}
+	
 	
 }

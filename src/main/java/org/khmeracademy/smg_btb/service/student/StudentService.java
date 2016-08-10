@@ -11,8 +11,8 @@ public interface StudentService {
 
 	public ArrayList<Student> findAll();
 	public boolean save(Student student);
-	public boolean updateStatus(int id);
+	public boolean updateStatus(String id);
 	public boolean updateById(Student student);
 	public CheckUser checkUser(CheckUser checkUser);
-	public MaxId selectMax();
+	public MaxId selectMaxId();
 }

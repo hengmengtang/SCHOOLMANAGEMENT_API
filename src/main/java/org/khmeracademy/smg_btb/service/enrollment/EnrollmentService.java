@@ -7,7 +7,7 @@ import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 
 public interface EnrollmentService {
 	
-	public ArrayList<Enrollment> findAll();
-	public boolean insert(Enrollment enrollment);
-	public boolean changeStatus(CloseCourse closeGeneration);
+	/*public ArrayList<Enrollment> findAll();*/
+	public int enrollStudent(Enrollment.EnrollmentStudent enrollmentStudent);
+	/*public boolean changeStatus(CloseCourse closeGeneration);*/
 }
