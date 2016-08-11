@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/generation")
+@RequestMapping("/api/generation")
 public class GenerationController {
 	
 	@Autowired
@@ -38,7 +38,7 @@ public class GenerationController {
 		return response;
 	}
 	
-	@RequestMapping(value="/register-generation",method=RequestMethod.POST)
+	@RequestMapping(value="/add-generation",method=RequestMethod.POST)
 	public Response enrollGeneration(@RequestBody Generation generation){
 		Response response=new Response();
 		

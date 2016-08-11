@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/class")
 public class ClassRoomController {
 
 	@Autowired
@@ -37,7 +38,7 @@ public class ClassRoomController {
 		return response;
 	}
 	
-	@RequestMapping(value="/register-class",method=RequestMethod.POST)
+	@RequestMapping(value="/add-class",method=RequestMethod.POST)
 	public Response insert(@RequestBody ClassRoom classRoom){
 		Response response=new Response();
 		if(!classService.insert(classRoom))

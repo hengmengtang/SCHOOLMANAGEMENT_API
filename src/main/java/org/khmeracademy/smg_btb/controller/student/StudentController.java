@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/student")
 public class StudentController {
 
 	@Autowired
@@ -131,18 +131,19 @@ public class StudentController {
 	public ResponseList<Student.subStudent> selectStudentByGenerationCourse(@RequestBody Student.getGenerationCourse getGenerationCourse){
 		ResponseList<Student.subStudent> response=new ResponseList<>();
 		try{
-		ArrayList<Student.subStudent> subStudentList=studentService.select_student_by_generation_course(getGenerationCourse);
-		
-		if(subStudentList==null)
-			response.setCode(ResponseCode.RECORD_NOT_FOUND);
-		else
-			response.setCode(ResponseCode.RECORD_FOUND);
-		
-		response.setData(subStudentList);
+			ArrayList<Student.subStudent> subStudentList=studentService.select_student_by_generation_course(getGenerationCourse);
+			
+			if(subStudentList==null)
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
 		
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
 		return response;
 	}
 	

@@ -1,13 +1,9 @@
 package org.khmeracademy.smg_btb.controller.enrollment;
 
-import java.util.ArrayList;
-
 import org.khmeracademy.smg_btb.entity.enrollment.Enrollment;
-import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 import org.khmeracademy.smg_btb.service.enrollment.EnrollmentService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
-import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/enrollment")
+@RequestMapping("/api/enrollment")
 public class EnrollmentController {
 
 	@Autowired

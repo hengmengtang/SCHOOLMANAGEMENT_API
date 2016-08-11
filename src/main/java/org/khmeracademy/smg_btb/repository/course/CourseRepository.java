@@ -29,7 +29,8 @@ public interface CourseRepository {
 					+ " #{cou_end_date},"
 					+ " #{status})";
 		
-		final String R_SELECT_MAX="SELECT 'cou' || lpad(MAX(split_part(cou_id, 'cou', 2)::int + 1)::text,4,'0') AS max_cou_id FROM smg_course";
+		final String R_SELECT_MAX="SELECT 'cou' || lpad(MAX(split_part(cou_id, 'cou', 2)::int + 1)::text,4,'0') "
+				+ "AS max_cou_id FROM smg_course";
 	}
 	
 	@Select(SQL.R_COURSE)
