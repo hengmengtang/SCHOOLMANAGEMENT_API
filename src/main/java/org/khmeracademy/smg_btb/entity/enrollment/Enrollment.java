@@ -47,6 +47,8 @@ public class Enrollment {
 		private String class_name;
 		private String student_name;
 		private String enroll_date;
+		private int success;
+		
 		public String getGeneration_name() {
 			return generation_name;
 		}
@@ -76,6 +78,12 @@ public class Enrollment {
 		}
 		public void setEnroll_date(String enroll_date) {
 			this.enroll_date = enroll_date;
+		}
+		public int getSuccess() {
+			return success;
+		}
+		public void setSuccess(int success) {
+			this.success = success;
 		}
 		
 	}

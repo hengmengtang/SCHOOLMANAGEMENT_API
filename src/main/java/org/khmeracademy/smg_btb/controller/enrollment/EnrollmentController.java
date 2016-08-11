@@ -40,7 +40,8 @@ public class EnrollmentController {
 	@RequestMapping(value="/enroll-student",method=RequestMethod.POST)
 	public Response enrollStudent(@RequestBody Enrollment.EnrollmentStudent enrollmentStudent){
 		Response response=new Response();
-		if(enrollmentService.enrollStudent(enrollmentStudent)==1)
+		enrollmentService.enrollStudent(enrollmentStudent);
+		if(enrollmentStudent.getSuccess()==1)
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);

@@ -47,4 +47,9 @@ public class StudentServiceImpl implements StudentService{
 	public MaxId selectMaxId() {
 		return studentRepository.selectMax();
 	}
+
+	@Override
+	public ArrayList<Student> select_student_by_generation_course() {
+		return studentRepository.select_student_by_generation_course();
+	}
 }

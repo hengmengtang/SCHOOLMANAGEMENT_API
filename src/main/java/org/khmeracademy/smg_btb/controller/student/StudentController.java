@@ -127,4 +127,20 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/select_student-by-generation-and-course",method=RequestMethod.GET)
+	public ResponseList<Student> selectStudentByGenerationCourse(){
+		ResponseList<Student> response=new ResponseList<>();
+		
+		ArrayList<Student> studentList=studentService.select_student_by_generation_course();
+		
+		if(studentList==null)
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		else
+			response.setCode(ResponseCode.RECORD_FOUND);
+		
+		response.setData(studentList);
+		
+		return response;
+	}
+	
 }
