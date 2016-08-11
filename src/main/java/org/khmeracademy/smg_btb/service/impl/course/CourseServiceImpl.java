@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.repository.course.CourseRepository;
 import org.khmeracademy.smg_btb.service.course.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,14 @@ public class CourseServiceImpl implements CourseService{
 
 
 	@Override
-	public int registerCourse(Course course) {
+	public boolean registerCourse(Course course) {
 		return courseRepository.registerCourse(course);
+	}
+
+
+	@Override
+	public MaxId selectMax() {
+		return courseRepository.selectMax();
 	}
 
 }

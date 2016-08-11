@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.repository.course.CourseRepository.SQL;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -16,11 +18,15 @@ public interface ClassRoomRepository {
 
 	interface SQL{
 		final String R_CLASS="SELECT * FROM smg_class";
+		
 		final String C_CLASS="{CALL insert_class(#{class_id,jdbcType=INTEGER,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{start_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{end_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{active,jdbcType=BOOLEAN,mode=IN})}";
+		
+		final String R_SELECT_MAX="SELECT 'cls' || lpad(MAX(split_part(class_id, 'cls', 2)::int + 1)::text,4,'0') "
+				+ "AS max_class_id FROM smg_class";
 	}
 	
 	@Select(SQL.R_CLASS)
@@ -36,4 +42,10 @@ public interface ClassRoomRepository {
 	@Insert(SQL.C_CLASS)
 	@Options(statementType=StatementType.CALLABLE)
 	public boolean insert(ClassRoom classRoom);
+	
+	@Select(SQL.R_SELECT_MAX)
+	@Results({
+		@Result(property="maxId",column="max_class_id")
+	})
+	public MaxId selectMax();
 }

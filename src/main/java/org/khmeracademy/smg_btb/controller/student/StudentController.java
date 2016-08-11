@@ -3,10 +3,8 @@ package org.khmeracademy.smg_btb.controller.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
-import org.khmeracademy.smg_btb.entity.course.Course;
-import org.khmeracademy.smg_btb.entity.generation.Generation;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
-import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.khmeracademy.smg_btb.service.student.StudentService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -100,7 +98,7 @@ public class StudentController {
 	 * @param phone
 	 * @return
 	 */
-	@RequestMapping(value="/check-user-is-exit",method=RequestMethod.POST)
+	@RequestMapping(value="/check-user-is-exist",method=RequestMethod.POST)
 	public ResponseRecord<CheckUser> checkUser(@RequestBody CheckUser checkUser){
 		ResponseRecord<CheckUser> response=new ResponseRecord<>();
 		CheckUser foundUser=studentService.checkUser(checkUser);
@@ -114,7 +112,7 @@ public class StudentController {
 		return response;
 	}
 	
-	@RequestMapping(value="/student-the-last-id",method=RequestMethod.GET)
+	@RequestMapping(value="/auto-student-id",method=RequestMethod.GET)
 	public ResponseRecord<MaxId> selectMaxId(){
 		ResponseRecord<MaxId> response=new ResponseRecord<>();
 		
@@ -145,6 +143,20 @@ public class StudentController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return response;
+	}
+	
+	@RequestMapping(value="/select-student-by-id/{stu_id}",method=RequestMethod.POST)
+	public ResponseRecord<Student> selectStudentById(@PathVariable("stu_id") String stu_id){
+		ResponseRecord<Student> response=new ResponseRecord<>();
+		Student recordStudent=studentService.selectStudentById(stu_id);
+		if(recordStudent==null)
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		else
+			response.setCode(ResponseCode.RECORD_FOUND);
+		
+		response.setData(recordStudent);
+		
 		return response;
 	}
 	

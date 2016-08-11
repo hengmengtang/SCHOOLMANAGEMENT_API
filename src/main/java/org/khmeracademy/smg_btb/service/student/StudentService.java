@@ -3,8 +3,8 @@ package org.khmeracademy.smg_btb.service.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
-import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 
 public interface StudentService {
 
@@ -16,4 +16,5 @@ public interface StudentService {
 	public CheckUser checkUser(CheckUser checkUser);
 	public MaxId selectMaxId();
 	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
+	public Student selectStudentById(String stu_id);
 }

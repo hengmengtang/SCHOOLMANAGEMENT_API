@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.staff;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
 import org.khmeracademy.smg_btb.repository.staff.StaffRepository;
 import org.khmeracademy.smg_btb.service.staff.StaffService;
@@ -22,6 +23,11 @@ public class StaffServiceImpl implements StaffService{
 	@Override
 	public boolean save(Staff staff) {
 		return staffRepository.save(staff);
+	}
+
+	@Override
+	public MaxId selectMax() {
+		return staffRepository.selectMax();
 	}
 
 }

@@ -3,8 +3,8 @@ package org.khmeracademy.smg_btb.service.impl.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
-import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.khmeracademy.smg_btb.repository.student.StudentRepository;
 import org.khmeracademy.smg_btb.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +51,10 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse) {
 		return studentRepository.select_student_by_generation_course(getGenerationCourse);
+	}
+
+	@Override
+	public Student selectStudentById(String stu_id) {
+		return studentRepository.selectStudentById(stu_id);
 	}
 }

@@ -362,25 +362,6 @@ public class Student{
 	public void setStudent_status(String student_status) {
 		this.student_status = student_status;
 	}
-
-	/**
-	 * class MaxId for used for generate auto student id from database
-	 * @author Tang
-	 *
-	 */
-	public static class MaxId{
-		
-		@JsonProperty("MAX_STUDENT_ID")
-		private String maxStuId;
-
-		public String getMaxStuId() {
-			return maxStuId;
-		}
-
-		public void setMaxStuId(String maxStuId) {
-			this.maxStuId = maxStuId;
-		}
-	}
 	
 	public static class getGenerationCourse{
 		

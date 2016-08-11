@@ -3,10 +3,12 @@ package org.khmeracademy.smg_btb.controller.classroom;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.service.classroom.ClassService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
+import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,21 @@ public class ClassRoomController {
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/auto-class-id",method=RequestMethod.GET)
+	public ResponseRecord<MaxId> selectMaxId(){
+		ResponseRecord<MaxId> response=new ResponseRecord<>();
+		
+		MaxId maxId=classService.selectMax();
+		if(maxId==null)
+			response.setCode(ResponseCode.FAIL);
+		else
+			response.setCode(ResponseCode.SUCCESS);
+		
+		response.setData(maxId);
 		
 		return response;
 	}

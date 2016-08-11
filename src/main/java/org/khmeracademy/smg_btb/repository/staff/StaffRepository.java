@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
+import org.khmeracademy.smg_btb.repository.course.CourseRepository.SQL;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -74,6 +76,9 @@ public interface StaffRepository {
 				+ "#{mother_phone},"
 				+ "#{date},"
 				+ "#{status})";
+		
+		final String R_SELECT_MAX="SELECT 'stf' || lpad(MAX(split_part(staff_id, 'stf', 2)::int + 1)::text,4,'0') "
+				+ " AS max_staff_id FROM smg_staff";
 	}
 	
 	@Select(SQL.R_SELECT_STAFF)
@@ -111,4 +116,10 @@ public interface StaffRepository {
 	
 	@Insert(SQL.C_INSERT_STAFF)
 	public boolean save(Staff staff);
+	
+	@Select(SQL.R_SELECT_MAX)
+	@Results({
+		@Result(property="maxId",column="max_staff_id")
+	})
+	public MaxId selectMax();
 }

@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.generation;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.repository.generation.GenerationRepository;
 import org.khmeracademy.smg_btb.service.generation.GenerationService;
@@ -17,6 +18,17 @@ public class GenerationImpl implements GenerationService{
 	@Override
 	public ArrayList<Generation> findAll() {
 		return generationRepository.findAll();
+	}
+
+	@Override
+	public boolean registerGeneration(Generation generation) {
+		return generationRepository.registerGeneration(generation);
+	}
+
+	@Override
+	public MaxId selectMax() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

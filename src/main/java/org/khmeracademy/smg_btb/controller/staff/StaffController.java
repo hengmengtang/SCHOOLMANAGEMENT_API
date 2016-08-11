@@ -2,11 +2,13 @@ package org.khmeracademy.smg_btb.controller.staff;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
 import org.khmeracademy.smg_btb.service.staff.StaffService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
+import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +46,21 @@ public class StaffController {
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/auto-staff-id",method=RequestMethod.GET)
+	public ResponseRecord<MaxId> selectMaxId(){
+		ResponseRecord<MaxId> response=new ResponseRecord<>();
+		
+		MaxId maxId=staffService.selectMax();
+		if(maxId==null)
+			response.setCode(ResponseCode.FAIL);
+		else
+			response.setCode(ResponseCode.SUCCESS);
+		
+		response.setData(maxId);
 		
 		return response;
 	}
