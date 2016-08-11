@@ -370,6 +370,7 @@ public class Student{
 	 */
 	public static class MaxId{
 		
+		@JsonProperty("MAX_STUDENT_ID")
 		private String maxStuId;
 
 		public String getMaxStuId() {
@@ -383,7 +384,10 @@ public class Student{
 	
 	public static class getGenerationCourse{
 		
+		@JsonProperty("GENERATION_NAME")
 		private String generation_name;
+		
+		@JsonProperty("COURSE_NAME")
 		private String course_name;
 		
 		public String getGeneration_name() {
@@ -406,12 +410,25 @@ public class Student{
 	
 	public static class subStudent{
 		
+		@JsonProperty("STUDENT_ID")
 		private String stu_id;
+		
+		@JsonProperty("KHMER_FULL_NAME")
 		private String khmer_full_name;
+		
+		@JsonProperty("ENGLISH_FULL_NAME")
 		private String eng_full_name;
+		
+		@JsonProperty("GENDER")
 		private String gender;
+		
+		@JsonProperty("DATE_OF_BIRTH")
 		private String dob;
+		
+		@JsonProperty("EMAIL")
 		private String email;
+		
+		@JsonProperty("PERMANENT_ADDRESS")
 		private String permanent_address;
 		
 		
