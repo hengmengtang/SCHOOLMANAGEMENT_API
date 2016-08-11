@@ -381,4 +381,97 @@ public class Student{
 		}
 	}
 	
+	public static class getGenerationCourse{
+		
+		private String generation_name;
+		private String course_name;
+		
+		public String getGeneration_name() {
+			return generation_name;
+		}
+		
+		public void setGeneration_name(String generation_name) {
+			this.generation_name = generation_name;
+		}
+		
+		public String getCourse_name() {
+			return course_name;
+		}
+		
+		public void setCourse_name(String course_name) {
+			this.course_name = course_name;
+		}
+		
+	}
+	
+	public static class subStudent{
+		
+		private String stu_id;
+		private String khmer_full_name;
+		private String eng_full_name;
+		private String gender;
+		private String dob;
+		private String email;
+		private String permanent_address;
+		
+		
+		public String getKhmer_full_name() {
+			return khmer_full_name;
+		}
+		
+		public void setKhmer_full_name(String khmer_full_name) {
+			this.khmer_full_name = khmer_full_name;
+		}
+		
+		public String getEng_full_name() {
+			return eng_full_name;
+		}
+		
+		public void setEng_full_name(String english_full_name) {
+			this.eng_full_name = english_full_name;
+		}
+		
+		public String getGender() {
+			return gender;
+		}
+		
+		public void setGender(String gender) {
+			this.gender = gender;
+		}
+		
+		public String getDob() {
+			return dob;
+		}
+		
+		public void setDob(String dob) {
+			this.dob = dob;
+		}
+		
+		public String getEmail() {
+			return email;
+		}
+		
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public String getStu_id() {
+			return stu_id;
+		}
+
+		public void setStu_id(String stu_id) {
+			this.stu_id = stu_id;
+		}
+
+		public String getPermanent_address() {
+			return permanent_address;
+		}
+
+		public void setPermanent_address(String permanent_address) {
+			this.permanent_address = permanent_address;
+		}
+		
+		
+	}
+	
 }

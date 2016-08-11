@@ -110,6 +110,7 @@ public interface StudentRepository {
 		
 		final String R_MODIFY_USER="SELECT eng_full_name,phone FROM smg_student "
 				+ "WHERE eng_full_name=#{user_name} AND phone=#{phone}";
+		
 		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(split_part(stu_id, 'stu', 2)::int + 1)::text,5,'0') AS max_stu_id FROM smg_student";
 		
 		final String R_SELECT_STUDENT_BY_GENERATION_COURSE="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
@@ -117,7 +118,8 @@ public interface StudentRepository {
 				+ " FROM smg_generation gen "
 				+ " INNER JOIN smg_enrollment en ON gen.gen_id=en.gen_id "
 				+ " INNER JOIN smg_student stu ON en.stu_id=stu.stu_id "
-				+ " INNER JOIN smg_course cou ON en.course_id=cou.cou_id;";
+				+ " INNER JOIN smg_course cou ON en.course_id=cou.cou_id"
+				+ "	WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name};";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -154,8 +156,10 @@ public interface StudentRepository {
 	
 	@Insert(SQL.C_INSERT_STUDENT)
 	public boolean save(Student student);
+	
 	@Update(SQL.U_STUDENT_STATUS)
 	public boolean updateStatus(String id);
+	
 	@Update(SQL.U_STUDENT_BYID)
 	public boolean updateById(Student student);
 	
@@ -182,5 +186,5 @@ public interface StudentRepository {
 		@Result(property="permanent_address" ,column="address"),
 		@Result(property="email" ,column="email")
 	})
-	public ArrayList<Student> select_student_by_generation_course();
+	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
 }

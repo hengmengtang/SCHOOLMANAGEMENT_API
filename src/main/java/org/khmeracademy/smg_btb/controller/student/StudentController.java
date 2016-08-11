@@ -3,6 +3,8 @@ package org.khmeracademy.smg_btb.controller.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.student.Student.MaxId;
 import org.khmeracademy.smg_btb.service.student.StudentService;
@@ -127,19 +129,22 @@ public class StudentController {
 		return response;
 	}
 	
-	@RequestMapping(value="/select_student-by-generation-and-course",method=RequestMethod.GET)
-	public ResponseList<Student> selectStudentByGenerationCourse(){
-		ResponseList<Student> response=new ResponseList<>();
+	@RequestMapping(value="/select_student-by-generation-and-course",method=RequestMethod.POST)
+	public ResponseList<Student.subStudent> selectStudentByGenerationCourse(@RequestBody Student.getGenerationCourse getGenerationCourse){
+		ResponseList<Student.subStudent> response=new ResponseList<>();
+		try{
+		ArrayList<Student.subStudent> subStudentList=studentService.select_student_by_generation_course(getGenerationCourse);
 		
-		ArrayList<Student> studentList=studentService.select_student_by_generation_course();
-		
-		if(studentList==null)
+		if(subStudentList==null)
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		else
 			response.setCode(ResponseCode.RECORD_FOUND);
 		
-		response.setData(studentList);
+		response.setData(subStudentList);
 		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return response;
 	}
 	

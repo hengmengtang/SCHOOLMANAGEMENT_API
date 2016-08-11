@@ -15,5 +15,5 @@ public interface StudentService {
 	public boolean updateById(Student student);
 	public CheckUser checkUser(CheckUser checkUser);
 	public MaxId selectMaxId();
-	public ArrayList<Student> select_student_by_generation_course();
+	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
 }
