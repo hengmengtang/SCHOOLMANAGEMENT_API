@@ -3,7 +3,6 @@ package org.khmeracademy.smg_btb.controller.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
-import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.service.course.CourseService;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;

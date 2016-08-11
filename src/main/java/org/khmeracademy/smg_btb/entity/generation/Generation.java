@@ -16,6 +16,9 @@ public class Generation {
 	@JsonProperty("GENERATION_END_DATE")
 	private String gen_end_date;
 	
+	@JsonProperty("ACTIVE")
+	private boolean active;
+	
 	public Generation(){};
 	
 	public Generation(String gen_id,String gen_name){

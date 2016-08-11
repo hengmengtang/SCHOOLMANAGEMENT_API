@@ -15,6 +15,9 @@ public class Course {
 	
 	@JsonProperty("COURSE_END_DATE")
 	private String cou_end_date;
+	
+	@JsonProperty("STATUS")
+	private boolean status;
 
 	public Course(){};
 	
@@ -54,6 +57,14 @@ public class Course {
 
 	public void setCou_end_date(String cou_end_date) {
 		this.cou_end_date = cou_end_date;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	

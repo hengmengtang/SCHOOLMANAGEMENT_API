@@ -18,7 +18,7 @@ public interface CourseRepository {
 	@Select(SQL.R_COURSE)
 	@Results({
 		@Result(property="course_id" ,column="cou_id"),
-		@Result(property="cou_name" ,column="cou_name"),
+		@Result(property="course_name" ,column="cou_name"),
 		@Result(property="cou_start_date" ,column="cou_start_date"),
 		@Result(property="cou_end_date" ,column="cou_end_date")
 	})
