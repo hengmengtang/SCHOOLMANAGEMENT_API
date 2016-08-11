@@ -20,4 +20,10 @@ public class CourseServiceImpl implements CourseService{
 		return courseRepository.findAll();
 	}
 
+
+	@Override
+	public int registerCourse(Course course) {
+		return courseRepository.registerCourse(course);
+	}
+
 }

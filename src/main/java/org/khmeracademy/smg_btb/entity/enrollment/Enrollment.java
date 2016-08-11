@@ -42,11 +42,22 @@ public class Enrollment {
 	
 	public static class EnrollmentStudent{
 		
+		@JsonProperty("GENERATION_NAME")
 		private String generation_name;
+		
+		@JsonProperty("COURSE_NAME")
 		private String course_name;
+		
+		@JsonProperty("CLASS_NAME")
 		private String class_name;
+		
+		@JsonProperty("STUDENT_NAME")
 		private String student_name;
+		
+		@JsonProperty("ENROLL_DATE")
 		private String enroll_date;
+		
+		@JsonProperty("SUCCESS")
 		private int success;
 		
 		public String getGeneration_name() {

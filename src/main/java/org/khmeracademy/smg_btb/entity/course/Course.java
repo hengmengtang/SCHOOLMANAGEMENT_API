@@ -18,6 +18,9 @@ public class Course {
 	
 	@JsonProperty("STATUS")
 	private boolean status;
+	
+	@JsonProperty("SUCCESS")
+	private int success;
 
 	public Course(){};
 	
@@ -66,6 +69,13 @@ public class Course {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
+	public int getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(int success) {
+		this.success = success;
+	}
 	
 }

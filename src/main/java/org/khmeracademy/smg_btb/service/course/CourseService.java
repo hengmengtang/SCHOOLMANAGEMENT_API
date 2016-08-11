@@ -7,4 +7,5 @@ import org.khmeracademy.smg_btb.entity.course.Course;
 public interface CourseService {
 
 	public ArrayList<Course> findAll();
+	public int registerCourse(Course course);
 }
