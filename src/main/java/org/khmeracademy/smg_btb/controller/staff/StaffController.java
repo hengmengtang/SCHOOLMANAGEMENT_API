@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.controller.staff;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.display_staff_in_class.StaffInClass;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
 import org.khmeracademy.smg_btb.service.staff.StaffService;
@@ -61,6 +62,23 @@ public class StaffController {
 			response.setCode(ResponseCode.SUCCESS);
 		
 		response.setData(maxId);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/display-staff-in-class",method=RequestMethod.GET)
+	public ResponseList<StaffInClass> getStaffInClass(){
+		ResponseList<StaffInClass> response=new ResponseList<>();
+	
+		ArrayList<StaffInClass> staffList=staffService.getStaffInClass();
+		
+		if(staffList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(staffList);
 		
 		return response;
 	}

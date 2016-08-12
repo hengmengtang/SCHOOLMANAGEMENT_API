@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.khmeracademy.smg_btb.entity.form.display_staff_in_class.StaffInClass;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
 import org.springframework.stereotype.Repository;
@@ -78,6 +79,11 @@ public interface StaffRepository {
 		
 		final String R_SELECT_MAX="SELECT 'stf' || lpad(MAX(split_part(staff_id, 'stf', 2)::int + 1)::text,4,'0') "
 				+ " AS max_staff_id FROM smg_staff";
+		
+		final String R_STAFF_IN_CLASS="SELECT st.khmer_full_name ,st.eng_full_name,cls.class_name,h.date"
+					+ " FROM smg_staff st"
+					+ " INNER JOIN smg_handlings h ON h.staff_id=st.staff_id"
+					+ " INNER JOIN smg_class cls ON h.class_id=cls.class_id;";
 	}
 	
 	@Select(SQL.R_SELECT_STAFF)
@@ -121,4 +127,13 @@ public interface StaffRepository {
 		@Result(property="maxId",column="max_staff_id")
 	})
 	public MaxId selectMax();
+	
+	@Select(SQL.R_STAFF_IN_CLASS)
+	@Results({
+		@Result(property="khmer_full_name" ,column="khmer_full_name"),
+		@Result(property="eng_full_name" ,column="eng_full_name"),
+		@Result(property="class_name" ,column="class_name"),
+		@Result(property="date" ,column="date")
+	})
+	public ArrayList<StaffInClass> getStaffInClass();
 }

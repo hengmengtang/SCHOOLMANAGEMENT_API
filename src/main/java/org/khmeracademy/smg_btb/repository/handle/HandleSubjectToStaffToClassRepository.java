@@ -14,6 +14,7 @@ public interface HandleSubjectToStaffToClassRepository {
 				+ "#{staff_handle_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{class_room_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{subject_type_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	

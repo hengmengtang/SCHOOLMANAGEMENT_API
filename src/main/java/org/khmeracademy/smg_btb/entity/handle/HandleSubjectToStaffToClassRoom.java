@@ -13,6 +13,9 @@ public class HandleSubjectToStaffToClassRoom {
 	@JsonProperty("SUBJECT_TYPE_NAME")
 	private String subject_type_name;
 	
+	@JsonProperty("DATE")
+	private String date;
+	
 	@JsonProperty("SUCCESS")
 	private int success;
 	
@@ -47,6 +50,13 @@ public class HandleSubjectToStaffToClassRoom {
 	public void setSuccess(int success) {
 		this.success = success;
 	}
-	
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+		
 }
