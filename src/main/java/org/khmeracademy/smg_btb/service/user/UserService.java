@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
 import org.khmeracademy.smg_btb.entity.user.User;
-import org.springframework.social.twitter.api.UserList;
 
 
 public interface UserService {

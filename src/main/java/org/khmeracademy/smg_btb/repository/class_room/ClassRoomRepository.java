@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
-import org.khmeracademy.smg_btb.repository.course.CourseRepository.SQL;
 import org.springframework.stereotype.Repository;
 
 @Repository

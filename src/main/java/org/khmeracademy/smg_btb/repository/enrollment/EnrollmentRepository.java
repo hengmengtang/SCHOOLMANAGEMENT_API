@@ -1,16 +1,9 @@
 package org.khmeracademy.smg_btb.repository.enrollment;
 
-import java.util.ArrayList;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.enrollment.Enrollment;
-import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 import org.springframework.stereotype.Repository;
 
 @Repository

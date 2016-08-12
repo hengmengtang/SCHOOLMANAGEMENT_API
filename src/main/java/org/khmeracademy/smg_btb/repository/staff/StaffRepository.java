@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
-import org.khmeracademy.smg_btb.repository.course.CourseRepository.SQL;
 import org.springframework.stereotype.Repository;
 
 @Repository

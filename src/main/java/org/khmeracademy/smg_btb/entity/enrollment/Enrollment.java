@@ -1,7 +1,5 @@
 package org.khmeracademy.smg_btb.entity.enrollment;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
