@@ -150,6 +150,13 @@ public interface StudentRepository {
 				+ "mother_phone,"
 				+ "date,"
 				+ "status FROM smg_student WHERE stu_id=#{stu_id}";
+		
+		final String R_STUDENT_BY_GENERATION="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
+				+ " stu.gender,stu.dob,stu.permanent_address,stu.email"
+				+ " FROM smg_student stu "
+				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
+				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
+				+ " WHERE gen.gen_name=#{generation_name};";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -250,4 +257,16 @@ public interface StudentRepository {
 		@Result(property="date" ,column="date")
 	})
 	public Student selectStudentById(String stu_id);
+	
+	@Select(SQL.R_STUDENT_BY_GENERATION)
+	@Results({
+		@Result(property="stu_id" ,column="stu_id"),
+		@Result(property="khmer_full_name" ,column="khmer_full_name"),
+		@Result(property="eng_full_name" ,column="eng_full_name"),
+		@Result(property="gender" ,column="gender"),
+		@Result(property="dob" ,column="dob"),
+		@Result(property="permanent_address" ,column="address"),
+		@Result(property="email" ,column="email")
+	})
+	public ArrayList<Student.subStudent> getStudentByGeneration(String generation_name);
 }

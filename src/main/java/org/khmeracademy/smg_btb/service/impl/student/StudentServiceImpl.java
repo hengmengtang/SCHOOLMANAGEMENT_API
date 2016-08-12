@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.entity.student.Student.subStudent;
 import org.khmeracademy.smg_btb.repository.student.StudentRepository;
 import org.khmeracademy.smg_btb.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,10 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public Student selectStudentById(String stu_id) {
 		return studentRepository.selectStudentById(stu_id);
+	}
+
+	@Override
+	public ArrayList<subStudent> getStudentByGeneration(String generation_name) {
+		return studentRepository.getStudentByGeneration(generation_name);
 	}
 }

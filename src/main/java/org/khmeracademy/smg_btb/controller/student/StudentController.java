@@ -161,4 +161,24 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/display-student-by-generation/{generation_name}",method=RequestMethod.POST)
+	public ResponseList<Student.subStudent> getStudentByGeneration(@PathVariable("generation_name") String generation_name){
+		ResponseList<Student.subStudent> response=new ResponseList<>();
+		try{
+			ArrayList<Student.subStudent> subStudentList=studentService.getStudentByGeneration(generation_name);
+			
+			if(subStudentList==null)
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
 }

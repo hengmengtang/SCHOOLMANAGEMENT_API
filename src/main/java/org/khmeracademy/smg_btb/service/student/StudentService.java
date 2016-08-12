@@ -17,4 +17,5 @@ public interface StudentService {
 	public MaxId selectMaxId();
 	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
 	public Student selectStudentById(String stu_id);
+	public ArrayList<Student.subStudent> getStudentByGeneration(String generation_name);
 }
