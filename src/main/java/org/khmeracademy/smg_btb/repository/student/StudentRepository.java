@@ -202,7 +202,7 @@ public interface StudentRepository {
 	
 	@Select(SQL.R_SELECT_MAX)
 	@Results({
-		@Result(property="maxStuId",column="max_stu_id")
+		@Result(property="maxId",column="max_stu_id")
 	})
 	public MaxId selectMax();
 	
