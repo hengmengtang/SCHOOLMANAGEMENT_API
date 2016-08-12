@@ -27,8 +27,7 @@ public class GenerationImpl implements GenerationService{
 
 	@Override
 	public MaxId selectMax() {
-		// TODO Auto-generated method stub
-		return null;
+		return generationRepository.selectMax();
 	}
 
 }

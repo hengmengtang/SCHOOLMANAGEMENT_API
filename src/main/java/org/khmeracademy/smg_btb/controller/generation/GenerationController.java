@@ -53,14 +53,17 @@ public class GenerationController {
 	@RequestMapping(value="/auto-generation-id",method=RequestMethod.GET)
 	public ResponseRecord<MaxId> selectMaxId(){
 		ResponseRecord<MaxId> response=new ResponseRecord<>();
-		
-		MaxId maxId=generationService.selectMax();
-		if(maxId==null)
-			response.setCode(ResponseCode.FAIL);
-		else
-			response.setCode(ResponseCode.SUCCESS);
-		
-		response.setData(maxId);
+		try{
+			MaxId maxId=generationService.selectMax();
+			if(maxId==null)
+				response.setCode(ResponseCode.FAIL);
+			else
+				response.setCode(ResponseCode.SUCCESS);
+			
+			response.setData(maxId);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		
 		return response;
 	}

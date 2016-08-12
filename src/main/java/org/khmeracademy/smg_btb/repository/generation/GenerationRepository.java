@@ -30,7 +30,7 @@ public interface GenerationRepository {
 				+ " #{gen_end_date},"
 				+ " #{status})";
 		
-		final String R_SELECT_MAX="SELECT 'gen' || lpad(MAX(split_part(gen_id, 'gen', 2)::int + 1)::text,4,'0') "
+		final String R_SELECT_MAX="SELECT 'gen' || lpad(MAX(split_part(gen_id, 'gen', 2)::int + 1)::text,3,'0') "
 				+ "AS max_gen_id FROM smg_generation";
 	}
 	
