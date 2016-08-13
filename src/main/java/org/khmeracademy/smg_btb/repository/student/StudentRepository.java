@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.DisplayStudentToEnroll;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.ParamDisplayStudent;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.springframework.stereotype.Repository;
@@ -157,6 +159,25 @@ public interface StudentRepository {
 				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
 				+ " WHERE gen.gen_name=#{generation_name};";
+		
+		final String R_DISPLAY_STUDENT_LIST="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,stu.gender,"
+				+ " stu.email,stu.university,stu.permanent_address AS address"
+				+ " FROM smg_student stu"
+				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id" 
+				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
+				+ " INNER JOIN smg_course cou ON en.course_id=cou.cou_id"
+				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
+				+ " INNER JOIN smg_handlings h ON cls.class_id=h.class_id"
+				+ " INNER JOIN smg_subject sub ON h.sub_id=sub.subject_id"
+				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
+				+ " AND sub.subject_name=#{subject_name} AND cls.class_name=#{class_name};";
+		
+		final String R_STUDNET_BY_CLASS="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
+				+ " stu.gender,stu.dob,stu.permanent_address,stu.email"
+				+ " FROM smg_student stu "
+				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
+				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
+				+ " WHERE cls.class_name=#{class_name};";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -269,4 +290,28 @@ public interface StudentRepository {
 		@Result(property="email" ,column="email")
 	})
 	public ArrayList<Student.subStudent> getStudentByGeneration(String generation_name);
+	
+	@Select(SQL.R_DISPLAY_STUDENT_LIST)
+	@Results({
+		@Result(property="stu_id" ,column="stu_id"),
+		@Result(property="khmer_full_name" ,column="khmer_full_name"),
+		@Result(property="eng_full_name" ,column="eng_full_name"),
+		@Result(property="gender" ,column="gender"),
+		@Result(property="email" ,column="email"),
+		@Result(property="university" ,column="university"),
+		@Result(property="address" ,column="address")
+	})
+	public ArrayList<DisplayStudentToEnroll> displayStudentToEnroll(ParamDisplayStudent param);
+	
+	@Select(SQL.R_STUDNET_BY_CLASS)
+	@Results({
+		@Result(property="stu_id" ,column="stu_id"),
+		@Result(property="khmer_full_name" ,column="khmer_full_name"),
+		@Result(property="eng_full_name" ,column="eng_full_name"),
+		@Result(property="gender" ,column="gender"),
+		@Result(property="dob" ,column="dob"),
+		@Result(property="permanent_address" ,column="address"),
+		@Result(property="email" ,column="email")
+	})
+	public ArrayList<Student.subStudent> getStudentByClass(String class_name);
 }

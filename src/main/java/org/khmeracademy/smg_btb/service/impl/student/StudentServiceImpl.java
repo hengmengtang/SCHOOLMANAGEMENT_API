@@ -3,6 +3,8 @@ package org.khmeracademy.smg_btb.service.impl.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.DisplayStudentToEnroll;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.ParamDisplayStudent;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.student.Student.subStudent;
@@ -62,5 +64,15 @@ public class StudentServiceImpl implements StudentService{
 	@Override
 	public ArrayList<subStudent> getStudentByGeneration(String generation_name) {
 		return studentRepository.getStudentByGeneration(generation_name);
+	}
+
+	@Override
+	public ArrayList<DisplayStudentToEnroll> displayStudentToEnroll(ParamDisplayStudent param) {
+		return studentRepository.displayStudentToEnroll(param);
+	}
+
+	@Override
+	public ArrayList<subStudent> getStudentByClass(String class_name) {
+		return studentRepository.getStudentByClass(class_name);
 	}
 }

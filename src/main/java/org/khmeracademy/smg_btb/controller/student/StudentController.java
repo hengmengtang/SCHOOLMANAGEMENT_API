@@ -3,6 +3,8 @@ package org.khmeracademy.smg_btb.controller.student;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.checkUser.CheckUser;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.DisplayStudentToEnroll;
+import org.khmeracademy.smg_btb.entity.form.display_student_to_enroll.ParamDisplayStudent;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.student.StudentService;
@@ -133,7 +135,7 @@ public class StudentController {
 		try{
 			ArrayList<Student.subStudent> subStudentList=studentService.select_student_by_generation_course(getGenerationCourse);
 			
-			if(subStudentList==null)
+			if(subStudentList.isEmpty())
 				response.setCode(ResponseCode.RECORD_NOT_FOUND);
 			else
 				response.setCode(ResponseCode.RECORD_FOUND);
@@ -161,13 +163,54 @@ public class StudentController {
 		return response;
 	}
 	
-	@RequestMapping(value="/display-student-by-generation/{generation_name}",method=RequestMethod.POST)
+	@RequestMapping(value="/display-student-by-generation-name/{generation_name}",method=RequestMethod.POST)
 	public ResponseList<Student.subStudent> getStudentByGeneration(@PathVariable("generation_name") String generation_name){
 		ResponseList<Student.subStudent> response=new ResponseList<>();
 		try{
 			ArrayList<Student.subStudent> subStudentList=studentService.getStudentByGeneration(generation_name);
 			
-			if(subStudentList==null)
+			if(subStudentList.isEmpty())
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/display-student-by-generation-course-subject-class",method=RequestMethod.POST)
+	public ResponseList<DisplayStudentToEnroll> displayStudentToEnroll(@RequestBody ParamDisplayStudent param){
+		ResponseList<DisplayStudentToEnroll> response=new ResponseList<>();
+		try{
+			ArrayList<DisplayStudentToEnroll> studentList=studentService.displayStudentToEnroll(param);
+			
+			if(studentList.isEmpty())
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(studentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
+	
+	@RequestMapping(value="/display-student-by-class-name/{class_name}",method=RequestMethod.POST)
+	public ResponseList<Student.subStudent> getStudentByClass(@PathVariable("class_name") String class_name){
+		ResponseList<Student.subStudent> response=new ResponseList<>();
+		try{
+			ArrayList<Student.subStudent> subStudentList=studentService.getStudentByClass(class_name);
+			
+			if(subStudentList.isEmpty())
 				response.setCode(ResponseCode.RECORD_NOT_FOUND);
 			else
 				response.setCode(ResponseCode.RECORD_FOUND);
