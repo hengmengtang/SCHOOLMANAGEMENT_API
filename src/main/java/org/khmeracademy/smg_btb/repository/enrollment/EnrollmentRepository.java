@@ -15,7 +15,6 @@ public interface EnrollmentRepository {
 				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{student_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{enroll_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	/*@Select(SQL.R_ENROLLMENT)

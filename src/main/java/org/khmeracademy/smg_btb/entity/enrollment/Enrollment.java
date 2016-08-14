@@ -52,9 +52,6 @@ public class Enrollment {
 		@JsonProperty("STUDENT_NAME")
 		private String student_name;
 		
-		@JsonProperty("ENROLL_DATE")
-		private String enroll_date;
-		
 		@JsonProperty("SUCCESS")
 		private int success;
 		
@@ -82,12 +79,7 @@ public class Enrollment {
 		public void setStudent_name(String student_name) {
 			this.student_name = student_name;
 		}
-		public String getEnroll_date() {
-			return enroll_date;
-		}
-		public void setEnroll_date(String enroll_date) {
-			this.enroll_date = enroll_date;
-		}
+	
 		public int getSuccess() {
 			return success;
 		}
