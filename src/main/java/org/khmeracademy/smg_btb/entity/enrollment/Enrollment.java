@@ -15,27 +15,12 @@ public class Enrollment {
 	@JsonProperty("ENROLLMENT_ID")
 	private String enrollment_id;
 	
-	/**
-	 * enrollment_date for know what day that student enroll to generation,class and course
-	 */
-	
-	@JsonProperty(value="ENROLLMENT_DATE")
-	private String enroll_date;
-
 	public String getEnrollment_id() {
 		return enrollment_id;
 	}
 
 	public void setEnrollment_id(String enrollment_id) {
 		this.enrollment_id = enrollment_id;
-	}
-
-	public String getEnroll_date() {
-		return enroll_date;
-	}
-
-	public void setEnroll_date(String enroll_date) {
-		this.enroll_date = enroll_date;
 	}
 	
 	public static class EnrollmentStudent{
