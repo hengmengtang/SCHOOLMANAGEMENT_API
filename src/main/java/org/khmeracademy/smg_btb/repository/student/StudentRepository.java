@@ -178,6 +178,11 @@ public interface StudentRepository {
 				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
 				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
 				+ " WHERE cls.class_name=#{class_name};";
+		
+		final String R_DISPLAY_STUDENT_NOT_ENROLL="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
+					+ " stu.gender,stu.email,stu.university,stu.permanent_address"
+					+ " FROM smg_student stu"
+					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
