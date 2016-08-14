@@ -10,6 +10,9 @@ public class HandleSubjectToStaffToClassRoom {
 	@JsonProperty("CLASS_ROOM_NAME")
 	private String class_room_name;
 	
+	@JsonProperty("COURSE_NAME")
+	private String course_name;
+	
 	@JsonProperty("SUBJECT_TYPE_NAME")
 	private String subject_type_name;
 	
@@ -58,5 +61,13 @@ public class HandleSubjectToStaffToClassRoom {
 	public void setDate(String date) {
 		this.date = date;
 	}
-		
+
+	public String getCourse_name() {
+		return course_name;
+	}
+
+	public void setCourse_name(String course_name) {
+		this.course_name = course_name;
+	}
+	
 }
