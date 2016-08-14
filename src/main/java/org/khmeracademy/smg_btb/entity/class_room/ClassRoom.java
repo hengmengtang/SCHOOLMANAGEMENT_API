@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ClassRoom {
 
 	@JsonProperty("CLASS_ID")
-	private int class_id;
+	private String class_id;
 	
 	@JsonProperty("CLASS_NAME")
 	private String class_name;
@@ -26,7 +26,7 @@ public class ClassRoom {
 
 	public ClassRoom(){};
 	
-	public ClassRoom(int class_id, String class_name, String start_date, String end_date, boolean active) {
+	public ClassRoom(String class_id, String class_name, String start_date, String end_date, boolean active) {
 		super();
 		this.class_id = class_id;
 		this.class_name = class_name;
@@ -35,11 +35,11 @@ public class ClassRoom {
 		this.active = active;
 	}
 
-	public int getClass_id() {
+	public String getClass_id() {
 		return class_id;
 	}
 
-	public void setClass_id(int class_id) {
+	public void setClass_id(String class_id) {
 		this.class_id = class_id;
 	}
 
