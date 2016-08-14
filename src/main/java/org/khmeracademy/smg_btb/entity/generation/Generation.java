@@ -16,31 +16,23 @@ public class Generation {
 	@JsonProperty("GENERATION_END_DATE")
 	private String gen_end_date;
 	
-	@JsonProperty("ACTIVE")
-	private boolean active;
-	
-	public Generation(){};
-	
-	public Generation(String gen_id,String gen_name){
-		super();
-		this.gen_id=gen_id;
-		this.gen_name=gen_name;
-	}
-	
-	public String getGen_name() {
-		return gen_name;
-	}
-	
-	public void setGen_name(String gen_name) {
-		this.gen_name = gen_name;
-	}
-	
+	@JsonProperty("STATUS")
+	private boolean status;
+
 	public String getGen_id() {
 		return gen_id;
 	}
-	
+
 	public void setGen_id(String gen_id) {
 		this.gen_id = gen_id;
+	}
+
+	public String getGen_name() {
+		return gen_name;
+	}
+
+	public void setGen_name(String gen_name) {
+		this.gen_name = gen_name;
 	}
 
 	public String getGen_start_date() {
@@ -58,5 +50,14 @@ public class Generation {
 	public void setGen_end_date(String gen_end_date) {
 		this.gen_end_date = gen_end_date;
 	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	
 	
 }
