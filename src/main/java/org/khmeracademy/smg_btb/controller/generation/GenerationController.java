@@ -98,4 +98,18 @@ public class GenerationController {
 		return response;
 	}
 	
+	@RequestMapping(value="/get-generation-status-true",method=RequestMethod.GET)
+	public ResponseRecord<Generation> getGenerationStatusTrue(){
+		ResponseRecord<Generation> response=new ResponseRecord<>();
+		Generation gen=generationService.getGenerationStatusTrue();
+		if(gen!=null)
+			response.setCode(ResponseCode.RECORD_FOUND);
+		else
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		
+		response.setData(gen);
+		
+		return response;
+	}
+	
 }

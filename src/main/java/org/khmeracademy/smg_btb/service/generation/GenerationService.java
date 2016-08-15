@@ -12,4 +12,5 @@ public interface GenerationService {
 	public MaxId selectMax();
 	public ArrayList<Generation> getLastGeneration();
 	public boolean changeStatusTrue(String gen_id);
+	public Generation getGenerationStatusTrue();
 }

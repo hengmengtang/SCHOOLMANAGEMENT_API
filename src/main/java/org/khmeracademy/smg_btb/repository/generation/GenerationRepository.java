@@ -38,6 +38,8 @@ public interface GenerationRepository {
 				+ " AND gen_end_date>=now()::DATE::TEXT;";
 		
 		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='t' WHERE gen_id=#{gen_id}";
+		
+		final String R_GENERATION_STATUS_TRUE="SELECT status FROM smg_generation WHERE status='t'";
 	}
 	
 	@Select(SQL.R_GENERATION)
@@ -63,4 +65,7 @@ public interface GenerationRepository {
 	
 	@Update(SQL.U_STATUS_GENERATION_TRUE)
 	public boolean changeStatusTrue(String gen_id);
+	
+	@Select(SQL.R_GENERATION_STATUS_TRUE)
+	public Generation getGenerationStatusTrue();
 }

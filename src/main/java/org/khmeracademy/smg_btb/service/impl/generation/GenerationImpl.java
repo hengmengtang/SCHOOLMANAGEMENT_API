@@ -40,4 +40,9 @@ public class GenerationImpl implements GenerationService{
 		return generationRepository.changeStatusTrue(gen_id);
 	}
 
+	@Override
+	public Generation getGenerationStatusTrue() {
+		return generationRepository.getGenerationStatusTrue();
+	}
+
 }
