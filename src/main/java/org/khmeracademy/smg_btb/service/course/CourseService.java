@@ -10,4 +10,5 @@ public interface CourseService {
 	public ArrayList<Course> findAll();
 	public boolean registerCourse(Course course);
 	public MaxId selectMax();
+	public ArrayList<Course> getLastCourse();
 }

@@ -31,6 +31,9 @@ public interface CourseRepository {
 		
 		final String R_SELECT_MAX="SELECT 'cou' || lpad(MAX(split_part(cou_id, 'cou', 2)::int + 1)::text,4,'0') "
 				+ "AS max_cou_id FROM smg_course";
+		
+		final String R_SELECT_LAST_COURSE="SELECT cou_id FROM smg_course WHERE active='t'"
+				+ "AND end_date>=now()::DATE::TEXT;";
 	}
 	
 	@Select(SQL.R_COURSE)
@@ -51,4 +54,14 @@ public interface CourseRepository {
 		@Result(property="maxId",column="max_cou_id")
 	})
 	public MaxId selectMax();
+	
+	@Select(SQL.R_SELECT_LAST_COURSE)
+	@Results({
+		@Result(property="course_id" ,column="cou_id"),
+		@Result(property="course_name" ,column="cou_name"),
+		@Result(property="cou_start_date" ,column="start_date"),
+		@Result(property="cou_end_date" ,column="end_date"),
+		@Result(property="status" ,column="active")
+	})
+	public ArrayList<Course> getLastCourse();
 }

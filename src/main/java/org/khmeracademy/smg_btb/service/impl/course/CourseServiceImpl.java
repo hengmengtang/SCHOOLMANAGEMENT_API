@@ -33,4 +33,10 @@ public class CourseServiceImpl implements CourseService{
 		return courseRepository.selectMax();
 	}
 
+
+	@Override
+	public ArrayList<Course> getLastCourse() {
+		return courseRepository.getLastCourse();
+	}
+
 }

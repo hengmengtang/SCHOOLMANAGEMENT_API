@@ -64,4 +64,20 @@ public class CourseController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/get-last-course",method=RequestMethod.GET)
+	public ResponseList<Course> getLastCourse(){
+		ResponseList<Course> response=new ResponseList<>();
+	
+		ArrayList<Course> courseList=courseService.getLastCourse();
+		if(courseList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(courseList);
+		
+		return response;
+	}
 }
