@@ -51,7 +51,7 @@ public class Generation {
 		this.gen_end_date = gen_end_date;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
