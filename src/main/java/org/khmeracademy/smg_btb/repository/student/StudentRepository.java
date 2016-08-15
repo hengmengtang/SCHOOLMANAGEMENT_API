@@ -184,6 +184,15 @@ public interface StudentRepository {
 					+ " stu.gender,stu.email,stu.university,stu.permanent_address"
 					+ " FROM smg_student stu"
 					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";
+		
+		final String R_STUDENT_IN_LAST_GENERATION="SELECT stu.stu_id,stu.khmer_full_name,"
+				+ " stu.eng_full_name,stu.gender,stu.dob,"
+				+ " stu.permanent_address AS address,stu.email,stu.status,cls.class_name"
+				+ " FROM smg_student stu"
+				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
+				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
+				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
+				+ " WHERE gen.status='t';";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -316,4 +325,8 @@ public interface StudentRepository {
 		@Result(property="email" ,column="email")
 	})
 	public ArrayList<Student.subStudent> getStudentByClass(String class_name);
+	
+	@Select(SQL.R_STUDENT_IN_LAST_GENERATION)
+	public ArrayList<Student.subStudent> getStudentInLastGeneration();
+	
 }

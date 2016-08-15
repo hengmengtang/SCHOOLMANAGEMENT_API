@@ -224,4 +224,20 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/get-student-in-last-generation",method=RequestMethod.GET)
+	public ResponseList<Student.subStudent> getStudentInLastGeneration(){
+		ResponseList<Student.subStudent> response=new ResponseList<>();
+	
+		ArrayList<Student.subStudent> getStudentLastGeneration=studentService.getStudentInLastGeneration();
+		if(getStudentLastGeneration.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(getStudentLastGeneration);
+		
+		return response;
+	}
+	
 }

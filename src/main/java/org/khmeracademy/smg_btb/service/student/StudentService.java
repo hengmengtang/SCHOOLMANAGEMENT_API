@@ -22,4 +22,5 @@ public interface StudentService {
 	public ArrayList<Student.subStudent> getStudentByGeneration(String generation_name);
 	public ArrayList<DisplayStudentToEnroll> displayStudentToEnroll(ParamDisplayStudent param);
 	public ArrayList<Student.subStudent> getStudentByClass(String class_name);
+	public ArrayList<Student.subStudent> getStudentInLastGeneration();
 }

@@ -75,4 +75,9 @@ public class StudentServiceImpl implements StudentService{
 	public ArrayList<subStudent> getStudentByClass(String class_name) {
 		return studentRepository.getStudentByClass(class_name);
 	}
+
+	@Override
+	public ArrayList<subStudent> getStudentInLastGeneration() {
+		return studentRepository.getStudentInLastGeneration();
+	}
 }

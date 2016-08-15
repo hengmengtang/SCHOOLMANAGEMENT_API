@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
+import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.generation.GenerationService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -96,4 +97,5 @@ public class GenerationController {
 		
 		return response;
 	}
+	
 }
