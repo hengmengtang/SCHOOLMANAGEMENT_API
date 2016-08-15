@@ -10,4 +10,5 @@ public interface GenerationService {
 	public ArrayList<Generation> findAll();
 	public boolean registerGeneration(Generation generation);
 	public MaxId selectMax();
+	public ArrayList<Generation> getLastGeneration();
 }

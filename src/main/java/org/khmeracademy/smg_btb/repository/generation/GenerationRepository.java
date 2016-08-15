@@ -32,6 +32,9 @@ public interface GenerationRepository {
 		
 		final String R_SELECT_MAX="SELECT 'gen' || lpad(MAX(split_part(gen_id, 'gen', 2)::int + 1)::text,3,'0') "
 				+ "AS max_gen_id FROM smg_generation";
+		
+		final String R_LAST_GENERATION="SELECT gen_id FROM smg_generation WHERE status='t'"
+				+ " AND gen_end_date>=now()::DATE::TEXT;";
 	}
 	
 	@Select(SQL.R_GENERATION)
@@ -51,4 +54,7 @@ public interface GenerationRepository {
 		@Result(property="maxId",column="max_gen_id")
 	})
 	public MaxId selectMax();
+	
+	@Select(SQL.R_LAST_GENERATION)
+	public ArrayList<Generation> getLastGeneration();
 }

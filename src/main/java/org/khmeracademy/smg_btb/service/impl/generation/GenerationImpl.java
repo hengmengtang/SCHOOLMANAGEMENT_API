@@ -30,4 +30,9 @@ public class GenerationImpl implements GenerationService{
 		return generationRepository.selectMax();
 	}
 
+	@Override
+	public ArrayList<Generation> getLastGeneration() {
+		return generationRepository.getLastGeneration();
+	}
+
 }

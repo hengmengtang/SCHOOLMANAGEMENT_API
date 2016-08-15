@@ -68,4 +68,19 @@ public class GenerationController {
 		return response;
 	}
 
+	@RequestMapping(value="/get-last-generation",method=RequestMethod.GET)
+	public ResponseList<Generation> getLastGeneration(){
+		ResponseList<Generation> response=new ResponseList<>();
+	
+		ArrayList<Generation> generationList=generationService.getLastGeneration();
+		if(generationList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(generationList);
+		
+		return response;
+	}
 }
