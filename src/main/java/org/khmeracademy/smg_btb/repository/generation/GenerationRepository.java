@@ -34,7 +34,7 @@ public interface GenerationRepository {
 		final String R_SELECT_MAX="SELECT 'gen' || lpad(MAX(split_part(gen_id, 'gen', 2)::int + 1)::text,3,'0') "
 				+ "AS max_gen_id FROM smg_generation";
 		
-		final String R_LAST_GENERATION="SELECT gen_id FROM smg_generation WHERE status='t'"
+		final String R_LAST_GENERATION="SELECT gen_id,gen_name FROM smg_generation WHERE status='t'"
 				+ " AND gen_end_date>=now()::DATE::TEXT;";
 		
 		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='t' WHERE gen_id=#{gen_id}";
