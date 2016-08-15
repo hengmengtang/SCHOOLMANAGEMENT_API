@@ -409,8 +409,11 @@ public class Student{
 		@JsonProperty("EMAIL")
 		private String email;
 		
-		@JsonProperty("PERMANENT_ADDRESS")
-		private String permanent_address;
+		@JsonProperty("ADDRESS")
+		private String address;
+		
+		@JsonProperty("CLASS_NAME")
+		private String class_name;
 		
 		
 		public String getKhmer_full_name() {
@@ -461,12 +464,20 @@ public class Student{
 			this.stu_id = stu_id;
 		}
 
-		public String getPermanent_address() {
-			return permanent_address;
+		public String getAddress() {
+			return address;
 		}
 
-		public void setPermanent_address(String permanent_address) {
-			this.permanent_address = permanent_address;
+		public void setAddress(String address) {
+			this.address = address;
+		}
+
+		public String getClass_name() {
+			return class_name;
+		}
+
+		public void setClass_name(String class_name) {
+			this.class_name = class_name;
 		}
 		
 		

@@ -116,11 +116,12 @@ public interface StudentRepository {
 		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(split_part(stu_id, 'stu', 2)::int + 1)::text,5,'0') AS max_stu_id FROM smg_student";
 		
 		final String R_SELECT_STUDENT_BY_GENERATION_COURSE="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
-				+ " stu.gender,stu.dob,stu.permanent_address AS address,stu.email "
+				+ " stu.gender,stu.dob,stu.permanent_address,stu.status AS address,stu.email,cls.class_name "
 				+ " FROM smg_generation gen "
 				+ " INNER JOIN smg_enrollment en ON gen.gen_id=en.gen_id "
 				+ " INNER JOIN smg_student stu ON en.stu_id=stu.stu_id "
 				+ " INNER JOIN smg_course cou ON en.course_id=cou.cou_id"
+				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
 				+ "	WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name};";
 		
 		final String R_STUDENT_BY_ID="SELECT stu_id,"
@@ -240,15 +241,6 @@ public interface StudentRepository {
 	public MaxId selectMax();
 	
 	@Select(SQL.R_SELECT_STUDENT_BY_GENERATION_COURSE)
-	@Results({
-		@Result(property="stu_id" ,column="stu_id"),
-		@Result(property="khmer_full_name" ,column="khmer_full_name"),
-		@Result(property="eng_full_name" ,column="eng_full_name"),
-		@Result(property="gender" ,column="gender"),
-		@Result(property="dob" ,column="dob"),
-		@Result(property="permanent_address" ,column="address"),
-		@Result(property="email" ,column="email")
-	})
 	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
 	
 	@Select(SQL.R_STUDENT_BY_ID)
