@@ -10,6 +10,7 @@ import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,6 +81,18 @@ public class GenerationController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(generationList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/change-status-true/{gen_id}",method=RequestMethod.PUT)
+	public Response changeStatusTrue(@PathVariable("gen_id") String gen_id){
+		Response response=new Response();
+		
+		if(generationService.changeStatusTrue(gen_id))
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
+		else
+			response.setCode(ResponseCode.UPDATE_FAIL);
 		
 		return response;
 	}

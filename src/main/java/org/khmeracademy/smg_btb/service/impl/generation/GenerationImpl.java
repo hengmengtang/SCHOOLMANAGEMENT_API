@@ -35,4 +35,9 @@ public class GenerationImpl implements GenerationService{
 		return generationRepository.getLastGeneration();
 	}
 
+	@Override
+	public boolean changeStatusTrue(String gen_id) {
+		return generationRepository.changeStatusTrue(gen_id);
+	}
+
 }

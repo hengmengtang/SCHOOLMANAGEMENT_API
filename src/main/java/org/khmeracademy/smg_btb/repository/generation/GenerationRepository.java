@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.springframework.stereotype.Repository;
@@ -35,6 +36,8 @@ public interface GenerationRepository {
 		
 		final String R_LAST_GENERATION="SELECT gen_id FROM smg_generation WHERE status='t'"
 				+ " AND gen_end_date>=now()::DATE::TEXT;";
+		
+		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='t' WHERE gen_id=#{gen_id}";
 	}
 	
 	@Select(SQL.R_GENERATION)
@@ -57,4 +60,7 @@ public interface GenerationRepository {
 	
 	@Select(SQL.R_LAST_GENERATION)
 	public ArrayList<Generation> getLastGeneration();
+	
+	@Update(SQL.U_STATUS_GENERATION_TRUE)
+	public boolean changeStatusTrue(String gen_id);
 }

@@ -11,4 +11,5 @@ public interface GenerationService {
 	public boolean registerGeneration(Generation generation);
 	public MaxId selectMax();
 	public ArrayList<Generation> getLastGeneration();
+	public boolean changeStatusTrue(String gen_id);
 }
