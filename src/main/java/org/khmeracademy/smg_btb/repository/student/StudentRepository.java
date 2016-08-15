@@ -116,7 +116,7 @@ public interface StudentRepository {
 		final String R_SELECT_MAX="SELECT 'stu' || lpad(MAX(split_part(stu_id, 'stu', 2)::int + 1)::text,5,'0') AS max_stu_id FROM smg_student";
 		
 		final String R_SELECT_STUDENT_BY_GENERATION_COURSE="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
-				+ " stu.gender,stu.dob,stu.permanent_address,stu.status AS address,stu.email,cls.class_name "
+				+ " stu.gender,stu.dob,stu.permanent_address AS address,stu.email,stu.status,cls.class_name "
 				+ " FROM smg_generation gen "
 				+ " INNER JOIN smg_enrollment en ON gen.gen_id=en.gen_id "
 				+ " INNER JOIN smg_student stu ON en.stu_id=stu.stu_id "
@@ -240,6 +240,11 @@ public interface StudentRepository {
 	})
 	public MaxId selectMax();
 	
+	/**
+	 * 
+	 * @param getGenerationCourse
+	 * @return
+	 */
 	@Select(SQL.R_SELECT_STUDENT_BY_GENERATION_COURSE)
 	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
 	

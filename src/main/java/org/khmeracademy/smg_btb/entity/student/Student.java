@@ -415,6 +415,8 @@ public class Student{
 		@JsonProperty("CLASS_NAME")
 		private String class_name;
 		
+		@JsonProperty("STATUS")
+		private boolean status;
 		
 		public String getKhmer_full_name() {
 			return khmer_full_name;
@@ -478,6 +480,14 @@ public class Student{
 
 		public void setClass_name(String class_name) {
 			this.class_name = class_name;
+		}
+
+		public boolean isStatus() {
+			return status;
+		}
+
+		public void setStatus(boolean status) {
+			this.status = status;
 		}
 		
 		
