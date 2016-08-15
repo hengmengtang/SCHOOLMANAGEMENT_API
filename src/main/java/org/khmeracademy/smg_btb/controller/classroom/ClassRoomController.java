@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.classroom.ClassService;
 import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -60,6 +61,23 @@ public class ClassRoomController {
 			response.setCode(ResponseCode.SUCCESS);
 		
 		response.setData(maxId);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/get-class-by-generation-course",method=RequestMethod.POST)
+	public ResponseList<ClassRoom> getClassBygenerationCourse(@RequestBody Student.getGenerationCourse generationCourse){
+		ResponseList<ClassRoom> response=new ResponseList<>();
+		
+		ArrayList<ClassRoom> classRoomList=classService.getClassGenerationCourse(generationCourse);
+		
+		if(classRoomList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(classRoomList);
 		
 		return response;
 	}

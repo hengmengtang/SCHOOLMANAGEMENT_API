@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.entity.student.Student;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -26,6 +27,13 @@ public interface ClassRoomRepository {
 		
 		final String R_SELECT_MAX="SELECT 'cls' || lpad(MAX(split_part(class_id, 'cls', 2)::int + 1)::text,4,'0') "
 				+ "AS max_class_id FROM smg_class";
+		
+		final String R_SELECT_CLASS_IN_GENERATION_COURSE="SELECT cls.class_name"
+				+ " FROM smg_generation gen"
+				+ " LEFT JOIN smg_enrollment en ON gen.gen_id=en.gen_id"
+				+ " LEFT JOIN smg_course cou ON en.course_id=cou.cou_id"
+				+ " LEFT JOIN smg_class cls ON en.class_id=cls.class_id"
+				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name};";
 	}
 	
 	@Select(SQL.R_CLASS)
@@ -47,4 +55,8 @@ public interface ClassRoomRepository {
 		@Result(property="maxId",column="max_class_id")
 	})
 	public MaxId selectMax();
+	
+	@Select(SQL.R_SELECT_CLASS_IN_GENERATION_COURSE)
+	public ArrayList<ClassRoom> getClassGenerationCourse(Student.getGenerationCourse generationCourse);
+		
 }
