@@ -61,7 +61,7 @@ public interface GenerationRepository {
 	public MaxId selectMax();
 	
 	@Select(SQL.R_LAST_GENERATION)
-	public ArrayList<Generation> getLastGeneration();
+	public Generation getLastGeneration();
 	
 	@Update(SQL.U_STATUS_GENERATION_TRUE)
 	public boolean changeStatusTrue(String gen_id);

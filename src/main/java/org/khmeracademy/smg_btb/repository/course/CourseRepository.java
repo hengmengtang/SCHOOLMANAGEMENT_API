@@ -63,5 +63,5 @@ public interface CourseRepository {
 		@Result(property="cou_end_date" ,column="end_date"),
 		@Result(property="status" ,column="active")
 	})
-	public ArrayList<Course> getLastCourse();
+	public Course getLastCourse();
 }

@@ -31,7 +31,7 @@ public class GenerationImpl implements GenerationService{
 	}
 
 	@Override
-	public ArrayList<Generation> getLastGeneration() {
+	public Generation getLastGeneration() {
 		return generationRepository.getLastGeneration();
 	}
 

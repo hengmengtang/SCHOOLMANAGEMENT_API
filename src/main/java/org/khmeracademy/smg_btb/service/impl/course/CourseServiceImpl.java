@@ -35,7 +35,7 @@ public class CourseServiceImpl implements CourseService{
 
 
 	@Override
-	public ArrayList<Course> getLastCourse() {
+	public Course getLastCourse() {
 		return courseRepository.getLastCourse();
 	}
 

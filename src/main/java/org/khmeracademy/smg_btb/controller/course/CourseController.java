@@ -66,11 +66,11 @@ public class CourseController {
 	}
 	
 	@RequestMapping(value="/get-last-course",method=RequestMethod.GET)
-	public ResponseList<Course> getLastCourse(){
-		ResponseList<Course> response=new ResponseList<>();
+	public ResponseRecord<Course> getLastCourse(){
+		ResponseRecord<Course> response=new ResponseRecord<>();
 	
-		ArrayList<Course> courseList=courseService.getLastCourse();
-		if(courseList.isEmpty()){
+		Course courseList=courseService.getLastCourse();
+		if(courseList==null){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}
 		else{
