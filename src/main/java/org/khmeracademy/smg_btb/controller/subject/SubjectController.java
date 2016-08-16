@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.controller.subject;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.add_mark.ParamForGetSubject;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.subject.Subject;
@@ -70,10 +71,10 @@ public class SubjectController {
 	
 	
 	@RequestMapping(value="/get-current-subject-in-course",method=RequestMethod.POST)
-	public ResponseList<Subject> getSubjectInCourse(@RequestBody Student.getGenerationCourse generationCourse){
+	public ResponseList<Subject> getSubjectInCourse(@RequestBody ParamForGetSubject subject){
 		ResponseList<Subject> response=new ResponseList<>();
 	
-		ArrayList<Subject> subjectList=subjectService.getSubjectInCourse(generationCourse);
+		ArrayList<Subject> subjectList=subjectService.getSubjectInCourse(subject);
 		if(subjectList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}

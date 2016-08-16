@@ -37,4 +37,9 @@ public class ClassServiceImpl implements ClassService{
 		return classRepository.getClassGenerationCourse(generationCourse);
 	}
 
+	@Override
+	public ArrayList<ClassRoom> getClassNotYetEnrollStudent() {
+		return classRepository.getClassNotYetEnrollStudent();
+	}
+
 }

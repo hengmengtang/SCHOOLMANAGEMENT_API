@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.khmeracademy.smg_btb.entity.form.add_mark.ParamForGetSubject;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.subject.Subject;
@@ -36,7 +37,10 @@ public interface SubjectRepository {
 				+ " LEFT JOIN smg_handlings h ON gen.gen_id=h.gen_id"
 				+ " LEFT JOIN smg_subject sub ON h.sub_id=sub.subject_id"
 				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
-				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name};";
+				+ " LEFT JOIN smg_staff stf ON h.staff_id=h.staff_id"
+				+ " LEFT JOIN smg_class cls ON h.class_id=cls.class_id"
+				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
+				+ " AND stf.eng_full_name=#{staff_name} AND cls.class_name=#{class_name};";
 	}
 	
 	@Select(SQL.R_SUBJECT)
@@ -70,5 +74,5 @@ public interface SubjectRepository {
 		@Result(property="description" ,column="description"),
 		@Result(property="active" ,column="active")
 	})
-	public ArrayList<Subject> getSubjectInCourse(Student.getGenerationCourse generationCourse);
+	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject);
 }

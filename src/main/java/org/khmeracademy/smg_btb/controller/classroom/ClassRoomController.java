@@ -81,4 +81,21 @@ public class ClassRoomController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/get-class-not-yet-enroll-student",method=RequestMethod.GET)
+	public ResponseList<ClassRoom> getClassNotYetEnrollStudent(){
+		ResponseList<ClassRoom> response=new ResponseList<>();
+	
+		ArrayList<ClassRoom> classRoomList=classService.getClassNotYetEnrollStudent();
+		
+		if(classRoomList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(classRoomList);
+		
+		return response;
+	}
 }

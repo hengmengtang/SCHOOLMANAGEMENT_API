@@ -12,4 +12,5 @@ public interface ClassService {
 	public boolean insert(ClassRoom classRoom);
 	public MaxId selectMax();
 	public ArrayList<ClassRoom> getClassGenerationCourse(Student.getGenerationCourse generationCourse);
+	public ArrayList<ClassRoom>	getClassNotYetEnrollStudent();
 }
