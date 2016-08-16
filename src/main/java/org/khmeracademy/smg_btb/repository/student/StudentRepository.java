@@ -180,10 +180,11 @@ public interface StudentRepository {
 				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
 				+ " WHERE cls.class_name=#{class_name};";
 		
-		final String R_DISPLAY_STUDENT_NOT_ENROLL="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
+		/*final String R_DISPLAY_STUDENT_NOT_ENROLL="SELECT stu.stu_id,stu.khmer_full_name,stu.eng_full_name,"
 					+ " stu.gender,stu.email,stu.university,stu.permanent_address"
 					+ " FROM smg_student stu"
-					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";
+					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";*/
+		final String R_DISPLAY_STUDENT_NOT_YET_ENROLL="SELECT * FROM student_not_yet_enroll";
 		
 		final String R_STUDENT_IN_LAST_GENERATION="SELECT stu.stu_id,stu.khmer_full_name,"
 				+ " stu.eng_full_name,stu.gender,stu.dob,"
@@ -328,5 +329,8 @@ public interface StudentRepository {
 	
 	@Select(SQL.R_STUDENT_IN_LAST_GENERATION)
 	public ArrayList<Student.subStudent> getStudentInLastGeneration();
+	
+	@Select(SQL.R_DISPLAY_STUDENT_NOT_YET_ENROLL)
+	public ArrayList<DisplayStudentToEnroll> displayStudentNotYetEnroll();
 	
 }

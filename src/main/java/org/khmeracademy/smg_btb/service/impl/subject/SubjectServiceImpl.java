@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.subject;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.entity.student.Student.getGenerationCourse;
 import org.khmeracademy.smg_btb.entity.subject.Subject;
 import org.khmeracademy.smg_btb.repository.subject.SubjectRepository;
 import org.khmeracademy.smg_btb.service.subject.SubjectService;
@@ -30,4 +31,8 @@ public class SubjectServiceImpl implements SubjectService {
 		return subjectRepository.selectMax();
 	}
 	
+	@Override
+	public ArrayList<Subject> getSubjectInCourse(getGenerationCourse generationCourse) {
+		return subjectRepository.getSubjectInCourse(generationCourse);
+	}
 }

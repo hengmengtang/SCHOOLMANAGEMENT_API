@@ -80,4 +80,9 @@ public class StudentServiceImpl implements StudentService{
 	public ArrayList<subStudent> getStudentInLastGeneration() {
 		return studentRepository.getStudentInLastGeneration();
 	}
+	
+	@Override
+	public ArrayList<DisplayStudentToEnroll> displayStudentNotYetEnroll() {
+		return studentRepository.displayStudentNotYetEnroll();
+	}
 }

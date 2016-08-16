@@ -240,4 +240,24 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/display-student-not-yet-enroll-to-class",method=RequestMethod.GET)
+	public ResponseList<DisplayStudentToEnroll> displayStudentNotYetEnroll(){
+		ResponseList<DisplayStudentToEnroll> response=new ResponseList<>();
+		try{
+			ArrayList<DisplayStudentToEnroll> subStudentList=studentService.displayStudentNotYetEnroll();
+			
+			if(subStudentList.isEmpty())
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
 }
