@@ -117,6 +117,7 @@ public class GenerationController {
 	public Response closeOrGeneration(@RequestBody CloseGeneration closeGen){
 		Response response=new Response();
 		generationService.closeGeneration(closeGen);
+		
 		if(closeGen.getSuccess()==1)
 			response.setCode(ResponseCode.UPDATE_SUCCESS);
 		else
