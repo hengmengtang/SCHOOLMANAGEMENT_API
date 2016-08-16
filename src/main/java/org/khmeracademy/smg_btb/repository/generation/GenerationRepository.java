@@ -2,11 +2,16 @@ package org.khmeracademy.smg_btb.repository.generation;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.OPTIONS;
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.mapping.StatementType;
+import org.khmeracademy.smg_btb.entity.form.close_generation.CloseGeneration;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.springframework.stereotype.Repository;
@@ -40,6 +45,8 @@ public interface GenerationRepository {
 		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='t' WHERE gen_id=#{gen_id}";
 		
 		final String R_GENERATION_STATUS_TRUE="SELECT status FROM smg_generation WHERE status='t'";
+		
+		final String R_CLOSE_GENERATION="{CALL change_status_generation(#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	
 	@Select(SQL.R_GENERATION)
@@ -68,4 +75,11 @@ public interface GenerationRepository {
 	
 	@Select(SQL.R_GENERATION_STATUS_TRUE)
 	public Generation getGenerationStatusTrue();
+	
+	@Select(SQL.R_CLOSE_GENERATION)
+	@Options(statementType=StatementType.CALLABLE)
+	@Results({
+		@Result(property="success",column="success")
+	})
+	public int closeGeneration(CloseGeneration closeGen);
 }

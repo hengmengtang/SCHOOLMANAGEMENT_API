@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.generation;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.close_generation.CloseGeneration;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.repository.generation.GenerationRepository;
@@ -43,6 +44,11 @@ public class GenerationImpl implements GenerationService{
 	@Override
 	public Generation getGenerationStatusTrue() {
 		return generationRepository.getGenerationStatusTrue();
+	}
+
+	@Override
+	public int closeGeneration(CloseGeneration closeGen) {
+		return generationRepository.closeGeneration(closeGen);
 	}
 
 }

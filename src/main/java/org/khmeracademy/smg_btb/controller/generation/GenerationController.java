@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.controller.generation;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.close_generation.CloseGeneration;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.entity.student.Student;
@@ -108,6 +109,18 @@ public class GenerationController {
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		
 		response.setData(gen);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/close-or-open-generation",method=RequestMethod.PUT)
+	public Response closeOrGeneration(@RequestBody CloseGeneration closeGen){
+		Response response=new Response();
+		generationService.closeGeneration(closeGen);
+		if(closeGen.getSuccess()==1)
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
+		else
+			response.setCode(ResponseCode.UPDATE_FAIL);
 		
 		return response;
 	}
