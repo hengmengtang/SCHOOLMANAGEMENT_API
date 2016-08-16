@@ -371,6 +371,9 @@ public class Student{
 		@JsonProperty("COURSE_NAME")
 		private String course_name;
 		
+		@JsonProperty("STAFF_NAME")
+		private String staff_name;
+		
 		public String getGeneration_name() {
 			return generation_name;
 		}
@@ -386,6 +389,15 @@ public class Student{
 		public void setCourse_name(String course_name) {
 			this.course_name = course_name;
 		}
+
+		public String getStaff_name() {
+			return staff_name;
+		}
+
+		public void setStaff_name(String staff_name) {
+			this.staff_name = staff_name;
+		}
+		
 		
 	}
 	
