@@ -1,5 +1,8 @@
 package org.khmeracademy.smg_btb.service.impl.mark;
 
+import java.util.ArrayList;
+
+import org.khmeracademy.smg_btb.entity.form.add_mark.DisplayAddMark;
 import org.khmeracademy.smg_btb.entity.mark.Mark;
 import org.khmeracademy.smg_btb.repository.mark.MarkRepository;
 import org.khmeracademy.smg_btb.service.mark.MarkService;
@@ -17,5 +20,9 @@ public class MarkServiceImpl implements MarkService{
 		return markRepository.addMark(mark);
 	}
 
-	
+	@Override
+	public ArrayList<DisplayAddMark> displayStudentToAddScore() {
+		return markRepository.displayStudentToAddScore();
+	}
+
 }
