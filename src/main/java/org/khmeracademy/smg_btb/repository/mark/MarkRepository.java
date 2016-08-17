@@ -18,7 +18,7 @@ public interface MarkRepository {
 				+ "#{paramMark.staff_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{paramMark.class_room_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{paramMark.subject_type_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{paramMark.student_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{paramMark.student_id,jdbcType=VARCHAR,mode=IN},"
 				+ "#{date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{mark,jdbcType=DOUBLE,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
