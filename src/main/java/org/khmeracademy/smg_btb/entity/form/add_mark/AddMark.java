@@ -1,6 +1,8 @@
 package org.khmeracademy.smg_btb.entity.form.add_mark;
 
 
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AddMark {
@@ -15,7 +17,7 @@ public class AddMark {
 	private String subject_type_name;
 	
 	@JsonProperty("STUDENT_NAME")
-	private String student_name;
+	private ArrayList<String> student_name;
 	
 	public String getStaff_name() {
 		return staff_name;
@@ -41,11 +43,11 @@ public class AddMark {
 		this.subject_type_name = subject_type_name;
 	}
 	
-	public String getStudent_name() {
+	public ArrayList<String> getStudent_name() {
 		return student_name;
 	}
 	
-	public void setStudent_name(String student_name) {
+	public void setStudent_name(ArrayList<String> student_name) {
 		this.student_name = student_name;
 	}
 	

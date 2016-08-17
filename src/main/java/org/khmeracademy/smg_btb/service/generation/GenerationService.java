@@ -14,5 +14,5 @@ public interface GenerationService {
 	public Generation getLastGeneration();
 	public boolean changeStatusTrue(String gen_id);
 	public Generation getGenerationStatusTrue();
-	public int closeGeneration(CloseGeneration closeGen);
+	public boolean closeGeneration();
 }

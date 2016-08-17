@@ -47,8 +47,8 @@ public class GenerationImpl implements GenerationService{
 	}
 
 	@Override
-	public int closeGeneration(CloseGeneration closeGen) {
-		return generationRepository.closeGeneration(closeGen);
+	public boolean closeGeneration() {
+		return generationRepository.closeGeneration();
 	}
 
 }

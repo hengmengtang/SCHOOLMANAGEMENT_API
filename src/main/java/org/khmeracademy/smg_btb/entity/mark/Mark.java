@@ -1,6 +1,8 @@
 package org.khmeracademy.smg_btb.entity.mark;
 
 
+import java.util.ArrayList;
+
 import org.khmeracademy.smg_btb.entity.form.add_mark.AddMark;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,7 +13,7 @@ public class Mark {
 	private String date;
 	
 	@JsonProperty("MARK")
-	private float mark;
+	private ArrayList<Float> mark;
 	
 	@JsonProperty("PARAMETER_FOR_ADD_MARK")
 	private AddMark paramMark=new AddMark();
@@ -21,7 +23,7 @@ public class Mark {
 	
 	public Mark(){};
 	
-	public Mark(String date,float mark){
+	public Mark(String date,ArrayList<Float> mark){
 		super();
 		this.date=date;
 		this.mark=mark;
@@ -35,11 +37,11 @@ public class Mark {
 		this.date = date;
 	}
 	
-	public float getMark() {
+	public ArrayList<Float> getMark() {
 		return mark;
 	}
 	
-	public void setMark(float mark) {
+	public void setMark(ArrayList<Float> mark) {
 		this.mark = mark;
 	}
 

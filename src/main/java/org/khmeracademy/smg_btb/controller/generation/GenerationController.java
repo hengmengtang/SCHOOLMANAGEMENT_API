@@ -113,12 +113,11 @@ public class GenerationController {
 		return response;
 	}
 	
-	@RequestMapping(value="/close-or-open-generation",method=RequestMethod.PUT)
-	public Response closeOrGeneration(@RequestBody CloseGeneration closeGen){
+	@RequestMapping(value="/close-or-open-last-generation",method=RequestMethod.GET)
+	public Response closeOrGeneration(){
 		Response response=new Response();
-		generationService.closeGeneration(closeGen);
 		
-		if(closeGen.getSuccess()==1)
+		if(generationService.closeGeneration())
 			response.setCode(ResponseCode.UPDATE_SUCCESS);
 		else
 			response.setCode(ResponseCode.UPDATE_FAIL);

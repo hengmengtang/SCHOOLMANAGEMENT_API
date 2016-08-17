@@ -1,6 +1,8 @@
 package org.khmeracademy.smg_btb.entity.enrollment;
 
 
+import java.util.ArrayList;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -35,7 +37,7 @@ public class Enrollment {
 		private String class_name;
 		
 		@JsonProperty("STUDENT_NAME")
-		private String student_name;
+		private ArrayList<String> student_name;
 		
 		@JsonProperty("SUCCESS")
 		private int success;
@@ -43,12 +45,15 @@ public class Enrollment {
 		public String getGeneration_name() {
 			return generation_name;
 		}
+		
 		public void setGeneration_name(String generation_name) {
 			this.generation_name = generation_name;
 		}
+		
 		public String getCourse_name() {
 			return course_name;
 		}
+		
 		public void setCourse_name(String course_name) {
 			this.course_name = course_name;
 		}
@@ -58,16 +63,19 @@ public class Enrollment {
 		public void setClass_name(String class_name) {
 			this.class_name = class_name;
 		}
-		public String getStudent_name() {
+		
+		public ArrayList<String> getStudent_name() {
 			return student_name;
 		}
-		public void setStudent_name(String student_name) {
+
+		public void setStudent_name(ArrayList<String> student_name) {
 			this.student_name = student_name;
 		}
-	
+
 		public int getSuccess() {
 			return success;
 		}
+		
 		public void setSuccess(int success) {
 			this.success = success;
 		}
