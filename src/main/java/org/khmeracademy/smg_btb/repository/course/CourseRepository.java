@@ -33,7 +33,7 @@ public interface CourseRepository {
 		final String R_SELECT_MAX="SELECT 'cou' || lpad(MAX(split_part(cou_id, 'cou', 2)::int + 1)::text,4,'0') "
 				+ "AS max_cou_id FROM smg_course";
 		
-		final String R_SELECT_LAST_COURSE="SELECT cou_id,cou_name FROM smg_course WHERE active='t'"
+		final String R_SELECT_LAST_COURSE="SELECT cou_id,cou_name,active FROM smg_course WHERE active='t'"
 				+ "AND end_date>=now()::DATE::TEXT;";
 		
 		final String R_SELECT_LIST_COURSE="SELECT cou.cou_id,gen.gen_name,cou.cou_name,cou.start_date,cou.end_date,cou.active"
