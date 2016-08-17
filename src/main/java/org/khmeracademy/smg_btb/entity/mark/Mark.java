@@ -9,9 +9,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Mark {
 	
-	@JsonProperty("DATE")
-	private String date;
-	
 	@JsonProperty("MARK")
 	private float mark;
 	
@@ -22,20 +19,6 @@ public class Mark {
 	private int success;
 	
 	public Mark(){};
-	
-	public Mark(String date,float mark){
-		super();
-		this.date=date;
-		this.mark=mark;
-	}
-	
-	public String getDate() {
-		return date;
-	}
-	
-	public void setDate(String date) {
-		this.date = date;
-	}
 	
 	public float getMark() {
 		return mark;
