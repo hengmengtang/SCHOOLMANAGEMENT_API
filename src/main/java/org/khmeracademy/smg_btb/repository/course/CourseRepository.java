@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.khmeracademy.smg_btb.entity.course.Course;
 import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
@@ -41,6 +42,9 @@ public interface CourseRepository {
 				+ " INNER JOIN smg_enrollment en ON cou.cou_id=en.course_id"
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
 				+ " ORDER BY gen.gen_name,cou.start_date";
+		
+		final String R_CHANGE_STATUS_COURSE="UPDATE smg_course SET active=CASE WHEN active='t' THEN active='f' ELSE"
+				+ " active='f' END WHERE cou_id=#{course_id};";
 	}
 	
 	@Select(SQL.R_COURSE)
@@ -74,4 +78,7 @@ public interface CourseRepository {
 	
 	@Select(SQL.R_SELECT_LIST_COURSE)
 	public ArrayList<ListCourse> listCourseTamGeneration();
+	
+	@Update(SQL.R_CHANGE_STATUS_COURSE)
+	public boolean changeStatusCourse(String course_id);
 }

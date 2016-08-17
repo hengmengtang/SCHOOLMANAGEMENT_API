@@ -46,4 +46,10 @@ public class CourseServiceImpl implements CourseService{
 		return courseRepository.listCourseTamGeneration();
 	}
 
+
+	@Override
+	public boolean changeStatusCourse(String course_id) {
+		return courseRepository.changeStatusCourse(course_id);
+	}
+
 }

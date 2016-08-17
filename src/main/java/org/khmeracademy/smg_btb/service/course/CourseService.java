@@ -13,4 +13,5 @@ public interface CourseService {
 	public MaxId selectMax();
 	public Course getLastCourse();
 	public ArrayList<ListCourse> listCourseTamGeneration();
+	public boolean changeStatusCourse(String course_id);
 }

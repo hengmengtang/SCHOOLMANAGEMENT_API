@@ -11,6 +11,7 @@ import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -94,6 +95,18 @@ public class CourseController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(courseList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/change-status-course/{course_id}",method=RequestMethod.POST)
+	public Response changeStatus(@PathVariable("course_id") String course_id){
+		Response response=new Response();
+		
+		if(courseService.changeStatusCourse(course_id))
+			response.setCode(ResponseCode.INSERT_SUCCESS);
+		else
+			response.setCode(ResponseCode.INSERT_FAIL);
 		
 		return response;
 	}
