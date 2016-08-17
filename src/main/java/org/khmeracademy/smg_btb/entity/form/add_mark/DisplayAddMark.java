@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DisplayAddMark {
 
+	@JsonProperty("STUDENT_ID")
+	private String stu_id;
+	
 	@JsonProperty("ENGLISH_FULL_NAME")
 	private String eng_full_name;
 	
@@ -36,5 +39,15 @@ public class DisplayAddMark {
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
+
+	public String getStu_id() {
+		return stu_id;
+	}
+
+	public void setStu_id(String stu_id) {
+		this.stu_id = stu_id;
+	}
+	
+	
 	
 }
