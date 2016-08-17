@@ -45,6 +45,8 @@ public interface ClassRoomRepository {
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"; 
 		
+		final String R_SELECT_LIST_CLASS="";
+		
 		final String R_CLASS_NOT_YET_ENROLL_STUDENT="SELECT * FROM get_class_not_yet_enroll_student";
 	}
 	

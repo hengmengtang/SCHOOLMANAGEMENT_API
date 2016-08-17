@@ -19,6 +19,9 @@ public class ListCourse {
 	@JsonProperty("END_DATE")
 	private String end_date;
 	
+	@JsonProperty("ACTIVE")
+	private boolean active;
+	
 	public String getCou_id() {
 		return cou_id;
 	}
@@ -58,6 +61,13 @@ public class ListCourse {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	
-	
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 }
