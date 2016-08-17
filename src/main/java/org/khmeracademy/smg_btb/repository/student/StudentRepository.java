@@ -256,7 +256,7 @@ public interface StudentRepository {
 	 * @return
 	 */
 	@Select(SQL.R_SELECT_STUDENT_BY_GENERATION_COURSE)
-	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse);
+	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getCourseByStaffGenerationCourse getGenerationCourse);
 	
 	@Select(SQL.R_STUDENT_BY_ID)
 	@Results({

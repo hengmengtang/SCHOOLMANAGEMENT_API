@@ -65,11 +65,11 @@ public class ClassRoomController {
 		return response;
 	}
 	
-	@RequestMapping(value="/get-class-by-generation-course",method=RequestMethod.POST)
-	public ResponseList<ClassRoom> getClassBygenerationCourse(@RequestBody Student.getGenerationCourse generationCourse){
+	@RequestMapping(value="/get-class-by-staff-generation-course",method=RequestMethod.POST)
+	public ResponseList<ClassRoom> getClassByStaffgenerationCourse(@RequestBody Student.getCourseByStaffGenerationCourse course){
 		ResponseList<ClassRoom> response=new ResponseList<>();
 		
-		ArrayList<ClassRoom> classRoomList=classService.getClassGenerationCourse(generationCourse);
+		ArrayList<ClassRoom> classRoomList=classService.getClassByStaffGenerationCourse(course);
 		
 		if(classRoomList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
@@ -87,6 +87,23 @@ public class ClassRoomController {
 		ResponseList<ClassRoom> response=new ResponseList<>();
 	
 		ArrayList<ClassRoom> classRoomList=classService.getClassNotYetEnrollStudent();
+		
+		if(classRoomList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(classRoomList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/get-class-by-generation-course",method=RequestMethod.POST)
+	public ResponseList<ClassRoom> getClassBygenerationCourse(@RequestBody Student.getCourseByGenerationCourse genCourse){
+		ResponseList<ClassRoom> response=new ResponseList<>();
+		
+		ArrayList<ClassRoom> classRoomList=classService.getClassByGenerationCourse(genCourse);
 		
 		if(classRoomList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);

@@ -363,7 +363,7 @@ public class Student{
 		this.student_status = student_status;
 	}
 	
-	public static class getGenerationCourse{
+	public static class getCourseByGenerationCourse{
 		
 		@JsonProperty("GENERATION_NAME")
 		private String generation_name;
@@ -371,8 +371,6 @@ public class Student{
 		@JsonProperty("COURSE_NAME")
 		private String course_name;
 		
-		@JsonProperty("STAFF_NAME")
-		private String staff_name;
 		
 		public String getGeneration_name() {
 			return generation_name;
@@ -389,7 +387,14 @@ public class Student{
 		public void setCourse_name(String course_name) {
 			this.course_name = course_name;
 		}
-
+			
+	}
+	
+	public static class getCourseByStaffGenerationCourse extends getCourseByGenerationCourse{
+		
+		@JsonProperty("STAFF_NAME")
+		private String staff_name;
+		
 		public String getStaff_name() {
 			return staff_name;
 		}
@@ -397,8 +402,6 @@ public class Student{
 		public void setStaff_name(String staff_name) {
 			this.staff_name = staff_name;
 		}
-		
-		
 	}
 	
 	public static class subStudent{

@@ -52,7 +52,7 @@ public class StudentServiceImpl implements StudentService{
 	}
 
 	@Override
-	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getGenerationCourse getGenerationCourse) {
+	public ArrayList<Student.subStudent> select_student_by_generation_course(Student.getCourseByStaffGenerationCourse getGenerationCourse) {
 		return studentRepository.select_student_by_generation_course(getGenerationCourse);
 	}
 

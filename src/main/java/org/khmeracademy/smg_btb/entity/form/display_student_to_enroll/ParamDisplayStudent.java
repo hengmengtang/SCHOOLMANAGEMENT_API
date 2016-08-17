@@ -1,10 +1,10 @@
 package org.khmeracademy.smg_btb.entity.form.display_student_to_enroll;
 
-import org.khmeracademy.smg_btb.entity.student.Student.getGenerationCourse;
+import org.khmeracademy.smg_btb.entity.student.Student.getCourseByStaffGenerationCourse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ParamDisplayStudent extends getGenerationCourse{
+public class ParamDisplayStudent extends getCourseByStaffGenerationCourse{
 
 	@JsonProperty("CLASS_NAME")
 	private String class_name;

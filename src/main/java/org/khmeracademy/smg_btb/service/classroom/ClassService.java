@@ -11,6 +11,7 @@ public interface ClassService {
 	public ArrayList<ClassRoom> findAll();
 	public boolean insert(ClassRoom classRoom);
 	public MaxId selectMax();
-	public ArrayList<ClassRoom> getClassGenerationCourse(Student.getGenerationCourse generationCourse);
+	public ArrayList<ClassRoom> getClassByStaffGenerationCourse(Student.getCourseByStaffGenerationCourse courseByStaffGenerationCourse);
 	public ArrayList<ClassRoom>	getClassNotYetEnrollStudent();
+	public ArrayList<ClassRoom> getClassByGenerationCourse(Student.getCourseByGenerationCourse courseByGenerationCourse);
 }

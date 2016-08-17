@@ -28,7 +28,7 @@ public interface ClassRoomRepository {
 		final String R_SELECT_MAX="SELECT 'cls' || lpad(MAX(split_part(class_id, 'cls', 2)::int + 1)::text,4,'0') "
 				+ "AS max_class_id FROM smg_class";
 		
-		final String R_SELECT_CLASS_IN_GENERATION_COURSE="SELECT DISTINCT cls.class_name"
+		final String R_SELECT_CLASS_BY_STAFF_GENERATION_COURSE="SELECT DISTINCT cls.class_name"
 				+ " FROM smg_generation gen"
 				+ " LEFT JOIN smg_handlings h ON h.gen_id=gen.gen_id"
 				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
@@ -36,6 +36,14 @@ public interface ClassRoomRepository {
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}" 
 				+ " AND stf.eng_full_name=#{staff_name}";
+		
+		final String R_SELECT_CLASS_BY_GENERATION_COURSE="SELECT DISTINCT cls.class_name"
+				+ " FROM smg_generation gen"
+				+ " LEFT JOIN smg_handlings h ON h.gen_id=gen.gen_id"
+				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
+				+ " LEFT JOIN smg_class cls ON cls.class_id=h.class_id"
+				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
+				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"; 
 		
 		final String R_CLASS_NOT_YET_ENROLL_STUDENT="SELECT * FROM get_class_not_yet_enroll_student";
 	}
@@ -60,9 +68,12 @@ public interface ClassRoomRepository {
 	})
 	public MaxId selectMax();
 	
-	@Select(SQL.R_SELECT_CLASS_IN_GENERATION_COURSE)
-	public ArrayList<ClassRoom> getClassGenerationCourse(Student.getGenerationCourse generationCourse);
+	@Select(SQL.R_SELECT_CLASS_BY_STAFF_GENERATION_COURSE)
+	public ArrayList<ClassRoom> getClassByStaffGenerationCourse(Student.getCourseByStaffGenerationCourse courseByGenerationCourse);
 		
 	@Select(SQL.R_CLASS_NOT_YET_ENROLL_STUDENT)
 	public ArrayList<ClassRoom>	getClassNotYetEnrollStudent();
+	
+	@Select(SQL.R_SELECT_CLASS_BY_GENERATION_COURSE)
+	public ArrayList<ClassRoom> getClassByGenerationCourse(Student.getCourseByGenerationCourse courseByGenerationCourse);
 }

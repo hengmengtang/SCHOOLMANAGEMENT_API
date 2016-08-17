@@ -1,10 +1,10 @@
 package org.khmeracademy.smg_btb.entity.form.add_mark;
 
-import org.khmeracademy.smg_btb.entity.student.Student.getGenerationCourse;
+import org.khmeracademy.smg_btb.entity.student.Student.getCourseByStaffGenerationCourse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ParamForGetSubject extends getGenerationCourse {
+public class ParamForGetSubject extends getCourseByStaffGenerationCourse {
 	
 	@JsonProperty("CLASS_NAME")
 	private String class_name;

@@ -130,7 +130,7 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="/select_student-by-generation-and-course",method=RequestMethod.POST)
-	public ResponseList<Student.subStudent> selectStudentByGenerationCourse(@RequestBody Student.getGenerationCourse getGenerationCourse){
+	public ResponseList<Student.subStudent> selectStudentByGenerationCourse(@RequestBody Student.getCourseByStaffGenerationCourse getGenerationCourse){
 		ResponseList<Student.subStudent> response=new ResponseList<>();
 		try{
 			ArrayList<Student.subStudent> subStudentList=studentService.select_student_by_generation_course(getGenerationCourse);
