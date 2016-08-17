@@ -37,7 +37,7 @@ public class Enrollment {
 		private String class_name;
 		
 		@JsonProperty("STUDENT_NAME")
-		private ArrayList<String> student_name;
+		private String student_name;
 		
 		@JsonProperty("SUCCESS")
 		private int success;
@@ -64,11 +64,11 @@ public class Enrollment {
 			this.class_name = class_name;
 		}
 		
-		public ArrayList<String> getStudent_name() {
+		public String getStudent_name() {
 			return student_name;
 		}
 
-		public void setStudent_name(ArrayList<String> student_name) {
+		public void setStudent_name(String student_name) {
 			this.student_name = student_name;
 		}
 

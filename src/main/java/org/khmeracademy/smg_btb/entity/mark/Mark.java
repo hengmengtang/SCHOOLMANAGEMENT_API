@@ -13,7 +13,7 @@ public class Mark {
 	private String date;
 	
 	@JsonProperty("MARK")
-	private ArrayList<Float> mark;
+	private float mark;
 	
 	@JsonProperty("PARAMETER_FOR_ADD_MARK")
 	private AddMark paramMark=new AddMark();
@@ -23,7 +23,7 @@ public class Mark {
 	
 	public Mark(){};
 	
-	public Mark(String date,ArrayList<Float> mark){
+	public Mark(String date,float mark){
 		super();
 		this.date=date;
 		this.mark=mark;
@@ -37,11 +37,11 @@ public class Mark {
 		this.date = date;
 	}
 	
-	public ArrayList<Float> getMark() {
+	public float getMark() {
 		return mark;
 	}
 	
-	public void setMark(ArrayList<Float> mark) {
+	public void setMark(float mark) {
 		this.mark = mark;
 	}
 
