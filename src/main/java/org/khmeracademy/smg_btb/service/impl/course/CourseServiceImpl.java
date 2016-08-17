@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.repository.course.CourseRepository;
 import org.khmeracademy.smg_btb.service.course.CourseService;
@@ -37,6 +38,12 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public Course getLastCourse() {
 		return courseRepository.getLastCourse();
+	}
+
+
+	@Override
+	public ArrayList<ListCourse> listCourseTamGeneration() {
+		return courseRepository.listCourseTamGeneration();
 	}
 
 }

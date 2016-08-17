@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.controller.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.service.course.CourseService;
 import org.khmeracademy.smg_btb.utils.Response;
@@ -71,6 +72,22 @@ public class CourseController {
 	
 		Course courseList=courseService.getLastCourse();
 		if(courseList==null){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(courseList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/list-course-tam-generation",method=RequestMethod.GET)
+	public ResponseList<ListCourse> listCourseTamGeneration(){
+		ResponseList<ListCourse> response=new ResponseList<>();
+	
+		ArrayList<ListCourse> courseList=courseService.listCourseTamGeneration();
+		if(courseList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}
 		else{

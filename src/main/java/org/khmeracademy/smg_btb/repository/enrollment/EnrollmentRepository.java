@@ -14,7 +14,7 @@ public interface EnrollmentRepository {
 		final String C_ENROLLMENT_STUDENT="{CALL enroll_student(#{generation_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{student_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{student_id,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	/*@Select(SQL.R_ENROLLMENT)

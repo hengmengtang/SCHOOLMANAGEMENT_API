@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 
 public interface CourseService {
@@ -11,4 +12,5 @@ public interface CourseService {
 	public boolean registerCourse(Course course);
 	public MaxId selectMax();
 	public Course getLastCourse();
+	public ArrayList<ListCourse> listCourseTamGeneration();
 }
