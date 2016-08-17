@@ -9,8 +9,11 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.list_class.ListClassInCourse;
+import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
+import org.khmeracademy.smg_btb.repository.course.CourseRepository.SQL;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -45,7 +48,12 @@ public interface ClassRoomRepository {
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"; 
 		
-		final String R_SELECT_LIST_CLASS="";
+		final String R_SELECT_LIST_CLASS="SELECT cls.class_id,cls.class_name,cou.cou_name,gen.gen_name,cls.active"
+				+ " FROM smg_course cou" 
+				+ " INNER JOIN smg_enrollment en ON cou.cou_id=en.course_id"
+				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
+				+ " INNER JOIN smg_class cls ON cls.class_id=en.class_id"
+				+ " ORDER BY cls.class_id";
 		
 		final String R_CLASS_NOT_YET_ENROLL_STUDENT="SELECT * FROM get_class_not_yet_enroll_student";
 	}
@@ -78,4 +86,7 @@ public interface ClassRoomRepository {
 	
 	@Select(SQL.R_SELECT_CLASS_BY_GENERATION_COURSE)
 	public ArrayList<ClassRoom> getClassByGenerationCourse(Student.getCourseByGenerationCourse courseByGenerationCourse);
+	
+	@Select(SQL.R_SELECT_LIST_CLASS)
+	public ArrayList<ListClassInCourse> listClass();
 }

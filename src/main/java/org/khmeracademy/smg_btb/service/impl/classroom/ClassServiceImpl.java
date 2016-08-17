@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.classroom;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.list_class.ListClassInCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.student.Student.getCourseByGenerationCourse;
@@ -48,6 +49,11 @@ public class ClassServiceImpl implements ClassService{
 	@Override
 	public ArrayList<ClassRoom> getClassByGenerationCourse(getCourseByGenerationCourse courseByGenerationCourse) {
 		return classRepository.getClassByGenerationCourse(courseByGenerationCourse);
+	}
+
+	@Override
+	public ArrayList<ListClassInCourse> listClass() {
+		return classRepository.listClass();
 	}
 
 }

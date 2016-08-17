@@ -3,6 +3,8 @@ package org.khmeracademy.smg_btb.controller.classroom;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.list_class.ListClassInCourse;
+import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.classroom.ClassService;
@@ -112,6 +114,22 @@ public class ClassRoomController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(classRoomList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/list-class-in-all-generation",method=RequestMethod.GET)
+	public ResponseList<ListClassInCourse> listClass(){
+		ResponseList<ListClassInCourse> response=new ResponseList<>();
+	
+		ArrayList<ListClassInCourse> classList=classService.listClass();
+		if(classList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(classList);
 		
 		return response;
 	}
