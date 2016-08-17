@@ -29,7 +29,7 @@ public interface SubjectRepository {
 					+ " #{description},"
 					+ " #{active})";
 		
-		final String R_SELECT_MAX="SELECT 'sub' || lpad(MAX(split_part(sub_id, 'sub', 2)::int + 1)::text,4,'0') "
+		final String R_SELECT_MAX="SELECT 'sub' || lpad(MAX(split_part(subject_id, 'sub', 2)::int + 1)::text,4,'0') "
 				+ "AS max_sub_id FROM smg_subject";
 		
 
