@@ -37,7 +37,7 @@ public class SubjectServiceImpl implements SubjectService {
 	}
 
 	@Override
-	public boolean changStatus() {
-		return subjectRepository.changStatus();
+	public boolean changStatus(String subject_id) {
+		return subjectRepository.changStatus(subject_id);
 	}
 }

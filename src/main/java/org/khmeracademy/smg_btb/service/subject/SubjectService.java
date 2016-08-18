@@ -12,5 +12,5 @@ public interface SubjectService {
 	public boolean insert(Subject subject);
 	public MaxId selectMax();
 	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject);
-	public boolean changStatus();
+	public boolean changStatus(String Subject_id);
 }

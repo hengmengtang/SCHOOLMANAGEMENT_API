@@ -44,7 +44,7 @@ public interface SubjectRepository {
 				+ " AND stf.eng_full_name=#{staff_name} AND cls.class_name=#{class_name};";
 		
 		final String U_CHANGE_STATUS="UPDATE smg_subject SET active=(CASE WHEN active='t'"
-				+ " THEN active='f' else 't' END) where subject_id='sub0004';";					
+				+ " THEN active='f' else 't' END) where subject_id=#{subject_id};";					
 	}
 	
 	@Select(SQL.R_SUBJECT)
@@ -81,5 +81,5 @@ public interface SubjectRepository {
 	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject);
 	
 	@Update(SQL.U_CHANGE_STATUS)
-	public boolean changStatus();
+	public boolean changStatus(String subject_id);
 }
