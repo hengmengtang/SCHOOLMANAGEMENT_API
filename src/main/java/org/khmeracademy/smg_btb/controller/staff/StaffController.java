@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.controller.staff;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.compareHandleSubjectToStaff;
 import org.khmeracademy.smg_btb.entity.form.display_staff_in_class.StaffInClass;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
@@ -71,6 +72,23 @@ public class StaffController {
 		ResponseList<StaffInClass> response=new ResponseList<>();
 	
 		ArrayList<StaffInClass> staffList=staffService.getStaffInClass();
+		
+		if(staffList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(staffList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/display-staff-subject-to-compare",method=RequestMethod.GET)
+	public ResponseList<compareHandleSubjectToStaff> getListStaffToCompare(){
+		ResponseList<compareHandleSubjectToStaff> response=new ResponseList<>();
+	
+		ArrayList<compareHandleSubjectToStaff> staffList=staffService.getListStaff();
 		
 		if(staffList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);

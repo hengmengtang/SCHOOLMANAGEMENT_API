@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.impl.staff;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.compareHandleSubjectToStaff;
 import org.khmeracademy.smg_btb.entity.form.display_staff_in_class.StaffInClass;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
@@ -34,6 +35,11 @@ public class StaffServiceImpl implements StaffService{
 	@Override
 	public ArrayList<StaffInClass> getStaffInClass() {
 		return staffRepository.getStaffInClass();
+	}
+
+	@Override
+	public ArrayList<compareHandleSubjectToStaff> getListStaff() {
+		return staffRepository.getListStaff();
 	}
 
 }
