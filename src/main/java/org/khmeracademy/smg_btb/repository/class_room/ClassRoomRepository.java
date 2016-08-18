@@ -33,12 +33,15 @@ public interface ClassRoomRepository {
 		
 		final String R_SELECT_CLASS_BY_STAFF_GENERATION_COURSE="SELECT DISTINCT cls.class_name"
 				+ " FROM smg_generation gen"
-				+ " LEFT JOIN smg_handlings h ON h.gen_id=gen.gen_id"
-				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
-				+ " LEFT JOIN smg_class cls ON cls.class_id=h.class_id"
+				+ " LEFT JOIN smg_enrollment en ON en.gen_id=gen.gen_id"
+				+ " LEFT JOIN smg_course cou ON en.course_id=cou.cou_id"
+				+ " LEFT JOIN smg_class cls ON cls.class_id=en.class_id"
+				+ " LEFT JOIN smg_handlings h ON h.class_id=cls.class_id"
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
-				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}" 
-				+ " AND stf.eng_full_name=#{staff_name}";
+				+ " WHERE cls.class_id NOT IN (SELECT mk.class_id FROM smg_mark mk) AND"
+ 				+ " gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
+ 				+ " AND stf.eng_full_name=#{staff_name} AND cls.active='t'"
+				+ " AND stf.status='t' AND gen.status='t' AND cou.active='t';";
 		
 		final String R_SELECT_CLASS_BY_GENERATION_COURSE="SELECT DISTINCT cls.class_name,cls.active"
 				+ " FROM smg_generation gen"
