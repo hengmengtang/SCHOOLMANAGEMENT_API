@@ -186,6 +186,8 @@ public interface StudentRepository {
 					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";*/
 		final String R_DISPLAY_STUDENT_NOT_YET_ENROLL="SELECT * FROM student_not_yet_enroll";
 		
+		final String R_DISPLAY_STUDENT_ENROLL_ALREADY="SELECT * FROM student_enroll_already";
+		
 		final String R_STUDENT_IN_LAST_GENERATION="SELECT stu.stu_id,stu.khmer_full_name,"
 				+ " stu.eng_full_name,stu.gender,stu.dob,"
 				+ " stu.permanent_address AS address,stu.email,stu.status,cls.class_name"
@@ -333,4 +335,6 @@ public interface StudentRepository {
 	@Select(SQL.R_DISPLAY_STUDENT_NOT_YET_ENROLL)
 	public ArrayList<DisplayStudentToEnroll> displayStudentNotYetEnroll();
 	
+	@Select(SQL.R_DISPLAY_STUDENT_ENROLL_ALREADY)
+	public ArrayList<DisplayStudentToEnroll> displayStudentEnrollAlready();
 }

@@ -85,4 +85,9 @@ public class StudentServiceImpl implements StudentService{
 	public ArrayList<DisplayStudentToEnroll> displayStudentNotYetEnroll() {
 		return studentRepository.displayStudentNotYetEnroll();
 	}
+
+	@Override
+	public ArrayList<DisplayStudentToEnroll> displayStudentEnrollAlready() {
+		return studentRepository.displayStudentEnrollAlready();
+	}
 }
