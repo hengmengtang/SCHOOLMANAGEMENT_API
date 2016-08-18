@@ -40,7 +40,7 @@ public interface ClassRoomRepository {
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}" 
 				+ " AND stf.eng_full_name=#{staff_name}";
 		
-		final String R_SELECT_CLASS_BY_GENERATION_COURSE="SELECT DISTINCT cls.class_name"
+		final String R_SELECT_CLASS_BY_GENERATION_COURSE="SELECT DISTINCT cls.class_name,cls.active"
 				+ " FROM smg_generation gen"
 				+ " LEFT JOIN smg_handlings h ON h.gen_id=gen.gen_id"
 				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
