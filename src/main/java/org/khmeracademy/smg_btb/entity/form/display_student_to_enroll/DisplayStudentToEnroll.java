@@ -25,6 +25,9 @@ public class DisplayStudentToEnroll {
 	@JsonProperty("ADDRESS")
 	private String address;
 	
+	@JsonProperty("CLASS_NAME")
+	private String class_name;
+	
 	public String getStu_id() {
 		return stu_id;
 	}
@@ -79,6 +82,14 @@ public class DisplayStudentToEnroll {
 	
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getClass_name() {
+		return class_name;
+	}
+
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
 	}
 	
 }
