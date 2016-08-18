@@ -260,4 +260,24 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/display-student-already-enroll-to-class",method=RequestMethod.GET)
+	public ResponseList<DisplayStudentToEnroll> displayStudentEnrollAlready(){
+		ResponseList<DisplayStudentToEnroll> response=new ResponseList<>();
+		try{
+			ArrayList<DisplayStudentToEnroll> subStudentList=studentService.displayStudentEnrollAlready();
+			
+			if(subStudentList.isEmpty())
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return response;
+	}
+	
 }
