@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.khmeracademy.smg_btb.entity.form.compareHandleSubjectToStaff;
 import org.khmeracademy.smg_btb.entity.form.display_staff_in_class.StaffInClass;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.staff.Staff;
@@ -84,6 +85,8 @@ public interface StaffRepository {
 					+ " FROM smg_staff st"
 					+ " INNER JOIN smg_handlings h ON h.staff_id=st.staff_id"
 					+ " INNER JOIN smg_class cls ON h.class_id=cls.class_id;";
+		
+		final String R_STAFF_SUBJECT_ALREADY_ENROLL_TO_CLASS="SELECT * FROM staff_subject_already_enroll_to_class";
 	}
 	
 	@Select(SQL.R_SELECT_STAFF)
@@ -136,4 +139,7 @@ public interface StaffRepository {
 		@Result(property="date" ,column="date")
 	})
 	public ArrayList<StaffInClass> getStaffInClass();
+	
+	@Select(SQL.R_STAFF_SUBJECT_ALREADY_ENROLL_TO_CLASS)
+	public ArrayList<compareHandleSubjectToStaff> getListStaff();
 }
