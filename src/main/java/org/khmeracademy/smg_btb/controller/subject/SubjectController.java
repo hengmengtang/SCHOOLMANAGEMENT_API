@@ -86,4 +86,19 @@ public class SubjectController {
 		return response;
 	}
 	
+	
+	@RequestMapping(value="/change-status",method=RequestMethod.POST)
+	public Response changeStatus(){
+		Response response=new Response();
+		try{
+			if(subjectService.changStatus())
+				response.setCode(ResponseCode.UPDATE_SUCCESS);
+			else
+				response.setCode(ResponseCode.UPDATE_FAIL);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return response;
+	}
+
 }

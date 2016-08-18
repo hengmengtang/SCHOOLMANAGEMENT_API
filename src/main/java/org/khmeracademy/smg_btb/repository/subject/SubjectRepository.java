@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.khmeracademy.smg_btb.entity.form.add_mark.ParamForGetSubject;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
@@ -41,6 +42,9 @@ public interface SubjectRepository {
 				+ " LEFT JOIN smg_class cls ON h.class_id=cls.class_id"
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
 				+ " AND stf.eng_full_name=#{staff_name} AND cls.class_name=#{class_name};";
+		
+		final String U_CHANGE_STATUS="UPDATE smg_subject SET active=(CASE WHEN active='t'"
+				+ " THEN active='f' else 't' END) where subject_id='sub0004';";					
 	}
 	
 	@Select(SQL.R_SUBJECT)
@@ -75,4 +79,7 @@ public interface SubjectRepository {
 		@Result(property="active" ,column="active")
 	})
 	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject);
+	
+	@Update(SQL.U_CHANGE_STATUS)
+	public boolean changStatus();
 }
