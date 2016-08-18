@@ -35,4 +35,9 @@ public class SubjectServiceImpl implements SubjectService {
 	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject) {
 		return subjectRepository.getSubjectInCourse(subject);
 	}
+
+	@Override
+	public boolean changStatus(String subject_id) {
+		return subjectRepository.changStatus(subject_id);
+	}
 }

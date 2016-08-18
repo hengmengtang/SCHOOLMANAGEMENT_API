@@ -12,6 +12,7 @@ import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -86,4 +87,19 @@ public class SubjectController {
 		return response;
 	}
 	
+	
+	@RequestMapping(value="/change-status/{subject_id}",method=RequestMethod.POST)
+	public Response changeStatus(@PathVariable("subject_id") String subject_id){
+		Response response=new Response();
+		try{
+			if(subjectService.changStatus(subject_id))
+				response.setCode(ResponseCode.UPDATE_SUCCESS);
+			else
+				response.setCode(ResponseCode.UPDATE_FAIL);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		return response;
+	}
+
 }
