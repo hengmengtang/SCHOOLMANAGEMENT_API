@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class SubjectBasic {
 
 	@JsonProperty("MONTHLY_RESULT")
-	private MonthlyResult monthlyResult;
+	private MonthlyResult monthlyResult=new MonthlyResult();
 	
 	@JsonProperty("JAVA")
 	private float java;
@@ -37,5 +37,6 @@ public class SubjectBasic {
 	public MonthlyResult getMonthlyResult() {
 		return monthlyResult;
 	}
+	
 	
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.ws.rs.OPTIONS;
 
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
@@ -28,5 +30,10 @@ public interface ResultRepository {
 	
 	@Select(SQL.R_MONTHLY_RESULT_ADVANCE)
 	@Options(statementType=StatementType.CALLABLE)
+	@Results({
+		@Result(property="monthlyResult.stu_id",column="stu_id"),
+		@Result(property="monthlyResult.stu_name",column="stu_name"),
+		@Result(property="monthlyResult.class_name",column="class_name")
+	})
 	public ArrayList<SubjectAdvance> resultAdvance(String generation_name);
 }
