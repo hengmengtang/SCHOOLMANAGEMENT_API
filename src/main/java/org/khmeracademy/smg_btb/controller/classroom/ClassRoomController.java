@@ -13,6 +13,7 @@ import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.khmeracademy.smg_btb.utils.ResponseRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -130,6 +131,16 @@ public class ClassRoomController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(classList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/change-status-class/{class_name}",method=RequestMethod.GET)
+	public Response channgeStatusClass(@PathVariable("class_name") String class_name){
+		Response response=new Response();
+	
+		if(classService.changeStatusClass(class_name)==false)
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
 		
 		return response;
 	}

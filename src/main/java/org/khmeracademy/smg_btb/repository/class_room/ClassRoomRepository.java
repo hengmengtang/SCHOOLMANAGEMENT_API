@@ -7,8 +7,10 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.class_room.ClassRoom;
+import org.khmeracademy.smg_btb.entity.form.close_class.CloseClass;
 import org.khmeracademy.smg_btb.entity.form.list_class.ListClassInCourse;
 import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
@@ -60,6 +62,8 @@ public interface ClassRoomRepository {
 				+ " ORDER BY cls.class_id";
 		
 		final String R_CLASS_NOT_YET_ENROLL_STUDENT="SELECT * FROM get_class_not_yet_enroll_student";
+		
+		final String U_CHANGE_STATUS_CLASS="{CALL change_status_class(#{class_name,jdbcType=VARCHAR,mode=IN})}";
 	}
 	
 	@Select(SQL.R_CLASS)
@@ -93,4 +97,8 @@ public interface ClassRoomRepository {
 	
 	@Select(SQL.R_SELECT_LIST_CLASS)
 	public ArrayList<ListClassInCourse> listClass();
+	
+	@Update(SQL.U_CHANGE_STATUS_CLASS)
+	@Options(statementType=StatementType.CALLABLE)
+	public boolean changeStatusClass(String class_name);
 }
