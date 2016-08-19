@@ -22,6 +22,17 @@ public class HandleSubjectToStaffToClassRoom {
 	@JsonProperty("SUCCESS")
 	private int success;
 	
+	@JsonProperty("GENERATION_NAME")
+	private String generation_name;
+	
+	public String getGeneration_name() {
+		return generation_name;
+	}
+
+	public void setGeneration_name(String generation_name) {
+		this.generation_name = generation_name;
+	}
+
 	public String getStaff_handle_name() {
 		return staff_handle_name;
 	}

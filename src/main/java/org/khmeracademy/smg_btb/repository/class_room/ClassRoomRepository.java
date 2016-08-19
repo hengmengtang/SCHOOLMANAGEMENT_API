@@ -52,7 +52,7 @@ public interface ClassRoomRepository {
 				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
 				+ " AND gen.status='t' AND cls.active='t' AND stf.status='t'"; 
 		
-		final String R_SELECT_LIST_CLASS="SELECT cls.class_id,cls.class_name,cou.cou_name,gen.gen_name,cls.active"
+		final String R_SELECT_LIST_CLASS="SELECT DISTINCT cls.class_id,cls.class_name,cou.cou_name,gen.gen_name,cls.active"
 				+ " FROM smg_course cou" 
 				+ " INNER JOIN smg_enrollment en ON cou.cou_id=en.course_id"
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"

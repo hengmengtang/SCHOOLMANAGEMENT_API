@@ -81,10 +81,11 @@ public interface StaffRepository {
 		final String R_SELECT_MAX="SELECT 'stf' || lpad(MAX(split_part(staff_id, 'stf', 2)::int + 1)::text,4,'0') "
 				+ " AS max_staff_id FROM smg_staff";
 		
-		final String R_STAFF_IN_CLASS="SELECT st.khmer_full_name ,st.eng_full_name,cls.class_name,h.date"
+		final String R_STAFF_IN_CLASS="SELECT st.khmer_full_name ,st.eng_full_name,cls.class_name,subj.subject_name,h.date"
 					+ " FROM smg_staff st"
 					+ " INNER JOIN smg_handlings h ON h.staff_id=st.staff_id"
-					+ " INNER JOIN smg_class cls ON h.class_id=cls.class_id;";
+					+ " INNER JOIN smg_class cls ON h.class_id=cls.class_id"
+					+ " INNER JOIN smg_subject subj ON h.sub_id=subj.subject_id;";
 		
 		final String R_STAFF_SUBJECT_ALREADY_ENROLL_TO_CLASS="SELECT * FROM staff_subject_already_enroll_to_class";
 	}
@@ -136,6 +137,7 @@ public interface StaffRepository {
 		@Result(property="khmer_full_name" ,column="khmer_full_name"),
 		@Result(property="eng_full_name" ,column="eng_full_name"),
 		@Result(property="class_name" ,column="class_name"),
+		@Result(property="subject_name" ,column="subject_name"),
 		@Result(property="date" ,column="date")
 	})
 	public ArrayList<StaffInClass> getStaffInClass();

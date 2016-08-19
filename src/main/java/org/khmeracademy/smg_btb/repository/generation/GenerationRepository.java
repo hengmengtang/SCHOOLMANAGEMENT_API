@@ -42,7 +42,7 @@ public interface GenerationRepository {
 		final String R_LAST_GENERATION="SELECT gen_id,gen_name FROM smg_generation WHERE status='t'"
 				+ " AND gen_end_date>=now()::DATE::TEXT;";
 		
-		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='t' WHERE gen_id=#{gen_id}";
+		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='f' WHERE gen_id=#{gen_id}";
 		
 		final String R_GENERATION_STATUS_TRUE="SELECT status FROM smg_generation WHERE status='t'";
 		

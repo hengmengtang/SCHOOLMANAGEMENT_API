@@ -13,6 +13,17 @@ public class StaffInClass {
 	@JsonProperty("CLASS_NAME")
 	private String class_name;
 	
+	@JsonProperty("SUBJECT_NAME")
+	private String subject_name;
+	
+	public String getSubject_name() {
+		return subject_name;
+	}
+
+	public void setSubject_name(String subject_name) {
+		this.subject_name = subject_name;
+	}
+
 	@JsonProperty("DATE")
 	private String date;
 	

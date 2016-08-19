@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Staff {
 
 	@JsonProperty("STAFF_ID")
-	private int staff_id;
+	private String staff_id;
 	
 	@JsonProperty("KHMER_FULL_NAME")
 	private String khmer_full_name;
@@ -94,7 +94,7 @@ public class Staff {
 
 	public Staff(){}
 
-	public Staff(int staff_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
+	public Staff(String staff_id, String khmer_full_name, String eng_full_name, char gender, String dob, String pob,
 			String email, String permanent_address, String phone, String education_level, String english_level,
 			String korean_level, String student_status, String graduate, String university, String khmer_id,
 			String photo, String father_eng_name, String father_khmer_name, String father_occupation,
@@ -132,12 +132,12 @@ public class Staff {
 		this.date = date;
 	}
 
-	public int getStaff_id() {
+	public String getStaff_id() {
 		return staff_id;
 	}
 
 
-	public void setStaff_id(int staff_id) {
+	public void setStaff_id(String staff_id) {
 		this.staff_id = staff_id;
 	}
 
