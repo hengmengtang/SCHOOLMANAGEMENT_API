@@ -28,9 +28,6 @@ public class CloseCourse {
 		@JsonProperty("COURSE_NAME")
 		private String course_name;
 		
-		@JsonProperty("CLASS_NAME")
-		private String class_name;
-		
 		@JsonProperty("SUCCESS")
 		private int success;
 		
@@ -50,13 +47,6 @@ public class CloseCourse {
 			this.course_name = course_name;
 		}
 		
-		public String getClass_name() {
-			return class_name;
-		}
-		
-		public void setClass_name(String class_name) {
-			this.class_name = class_name;
-		}
 
 		public int getSuccess() {
 			return success;

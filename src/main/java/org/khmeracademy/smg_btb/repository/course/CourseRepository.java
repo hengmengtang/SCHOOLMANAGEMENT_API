@@ -54,7 +54,6 @@ public interface CourseRepository {
 		final String U_STATUS_COURSE="{CALL change_status_course("
 				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	
