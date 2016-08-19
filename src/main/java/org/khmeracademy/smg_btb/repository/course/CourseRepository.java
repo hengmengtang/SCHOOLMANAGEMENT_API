@@ -2,12 +2,17 @@ package org.khmeracademy.smg_btb.repository.course;
 
 import java.util.ArrayList;
 
+import javax.ws.rs.OPTIONS;
+
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.springframework.stereotype.Repository;
@@ -45,6 +50,12 @@ public interface CourseRepository {
 		
 		final String R_CHANGE_STATUS_COURSE="UPDATE smg_course SET active=CASE WHEN active='t' THEN active='f' ELSE"
 				+ " active='f' END WHERE cou_id=#{course_id};";
+		
+		final String U_STATUS_COURSE="{CALL change_status_course("
+				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
 	
 	@Select(SQL.R_COURSE)
@@ -81,4 +92,8 @@ public interface CourseRepository {
 	
 	@Update(SQL.R_CHANGE_STATUS_COURSE)
 	public boolean changeStatusCourse(String course_id);
+	
+	@Update(SQL.U_STATUS_COURSE)
+	@Options(statementType=StatementType.CALLABLE)
+	public int changeStatusCourseWithClass(CloseCourse.paramCloseCorse closeCourse);
 }

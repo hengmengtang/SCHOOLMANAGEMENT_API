@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.controller.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.service.course.CourseService;
@@ -107,6 +108,18 @@ public class CourseController {
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/change-status-course-class",method=RequestMethod.POST)
+	public Response changeStatusCourseWithClass(@RequestBody CloseCourse.paramCloseCorse closeCourse){
+		Response response=new Response();
+		courseService.changeStatusCourseWithClass(closeCourse);
+		if(closeCourse.getSuccess()==1)
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
+		else
+			response.setCode(ResponseCode.UPDATE_FAIL);
 		
 		return response;
 	}

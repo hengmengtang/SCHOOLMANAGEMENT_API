@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.course;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.course.Course;
+import org.khmeracademy.smg_btb.entity.form.close_course.CloseCourse;
 import org.khmeracademy.smg_btb.entity.form.list_course.ListCourse;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.repository.course.CourseRepository;
@@ -50,6 +51,12 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	public boolean changeStatusCourse(String course_id) {
 		return courseRepository.changeStatusCourse(course_id);
+	}
+
+
+	@Override
+	public int changeStatusCourseWithClass(CloseCourse.paramCloseCorse closeCourse) {
+		return courseRepository.changeStatusCourseWithClass(closeCourse);
 	}
 
 }
