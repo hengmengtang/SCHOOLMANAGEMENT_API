@@ -37,7 +37,7 @@ public interface CourseRepository {
 		final String R_SELECT_LAST_COURSE="SELECT cou_id,cou_name,active FROM smg_course WHERE active='t'"
 				+ "AND end_date>=now()::DATE::TEXT;";
 		
-		final String R_SELECT_LIST_COURSE="SELECT cou.cou_id,gen.gen_name,cou.cou_name,cou.start_date,cou.end_date,cou.active"
+		final String R_SELECT_LIST_COURSE="SELECT DISTINCT cou.cou_id,gen.gen_name,cou.cou_name,cou.start_date,cou.end_date,cou.active"
 				+ " FROM smg_course cou"
 				+ " INNER JOIN smg_enrollment en ON cou.cou_id=en.course_id"
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
