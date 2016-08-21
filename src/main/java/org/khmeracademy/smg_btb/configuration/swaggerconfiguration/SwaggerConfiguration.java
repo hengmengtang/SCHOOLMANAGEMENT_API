@@ -27,7 +27,7 @@ public class SwaggerConfiguration {
 	private ApiInfo apiInfo() {
 	    @SuppressWarnings("deprecation")
 		ApiInfo apiInfo = new ApiInfo(
-	      "ASVA REST SMG",
+	      "SMT REST SMG",
 	      "Provide api for news.",
 	      "API School Management",
 	      "Terms of service",
