@@ -24,7 +24,9 @@ public interface ResultRepository {
 				+ "#{subject_name,jdbcType=VARCHAR,mode=IN})}";
 		
 		final String R_MONTHLY_RESULT_ADVANCE="{CALL monthly_result_advance("
-				+ "#{generation_name,jdbcType=VARCHAR,mode=IN})}";
+				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{staff_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{subject_name,jdbcType=VARCHAR,mode=IN})}";
 	}
 	
 	@Select(SQL.R_MONTHLY_RESULT_BASIC)
@@ -43,5 +45,5 @@ public interface ResultRepository {
 		@Result(property="monthlyResult.stu_name",column="stu_name"),
 		@Result(property="monthlyResult.class_name",column="class_name")
 	})
-	public ArrayList<SubjectAdvance> resultAdvance(String generation_name);
+	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore);
 }

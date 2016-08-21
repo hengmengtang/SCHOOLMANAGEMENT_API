@@ -39,11 +39,11 @@ public class MonthlyResultController {
 		return response;
 	}
 	
-	@RequestMapping(value="/monthly-result-advance-course/{generation_name}",method=RequestMethod.POST)
-	public ResponseList<SubjectAdvance> resultAdvance(@PathVariable("generation_name") String generation_name){
+	@RequestMapping(value="/monthly-result-advance-course",method=RequestMethod.POST)
+	public ResponseList<SubjectAdvance> resultAdvance(@RequestBody ParamViewScore viewScore){
 		ResponseList<SubjectAdvance> response=new ResponseList<>();
 	
-		ArrayList<SubjectAdvance> resultList=resultService.resultAdvance(generation_name);
+		ArrayList<SubjectAdvance> resultList=resultService.resultAdvance(viewScore);
 		if(resultList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}

@@ -9,5 +9,5 @@ import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 public interface MonthlyResultService {
 
 	public ArrayList<SubjectBasic> resultBasic(ParamViewScore viewScore);
-	public ArrayList<SubjectAdvance> resultAdvance(String generation_name);
+	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore);
 }

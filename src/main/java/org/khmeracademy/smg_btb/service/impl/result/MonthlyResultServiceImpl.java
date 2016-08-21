@@ -22,8 +22,8 @@ public class MonthlyResultServiceImpl implements MonthlyResultService {
 	}
 
 	@Override
-	public ArrayList<SubjectAdvance> resultAdvance(String generation_name) {
-		return resultRepository.resultAdvance(generation_name);
+	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore) {
+		return resultRepository.resultAdvance(viewScore);
 	}
 
 }
