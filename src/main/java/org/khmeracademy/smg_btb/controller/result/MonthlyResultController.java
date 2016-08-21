@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
+import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.result.MonthlyResultService;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
@@ -22,11 +23,11 @@ public class MonthlyResultController {
 	@Autowired
 	MonthlyResultService resultService;
 	
-	@RequestMapping(value="/monthly-result-basic-course/{generation_name}",method=RequestMethod.POST)
-	public ResponseList<SubjectBasic> resultBasic(@PathVariable("generation_name") String generation_name){
+	@RequestMapping(value="/monthly-result-basic-course",method=RequestMethod.POST)
+	public ResponseList<SubjectBasic> resultBasic(@RequestBody ParamViewScore viewScore){
 		ResponseList<SubjectBasic> response=new ResponseList<>();
 	
-		ArrayList<SubjectBasic> resultList=resultService.resultBasic(generation_name);
+		ArrayList<SubjectBasic> resultList=resultService.resultBasic(viewScore);
 		if(resultList.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}
