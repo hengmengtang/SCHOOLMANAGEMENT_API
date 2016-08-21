@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ParamViewScore {
 
+	@JsonProperty("COURSE_NAME")
+	private String course_name;
+	
 	@JsonProperty("STAFF_NAME")
 	private String staff_name;
 	
@@ -35,6 +38,14 @@ public class ParamViewScore {
 	
 	public void setSubject_name(String subject_name) {
 		this.subject_name = subject_name;
+	}
+
+	public String getCourse_name() {
+		return course_name;
+	}
+
+	public void setCourse_name(String course_name) {
+		this.course_name = course_name;
 	}
 	
 	
