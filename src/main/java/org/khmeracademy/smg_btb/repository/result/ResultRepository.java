@@ -25,7 +25,7 @@ public interface ResultRepository {
 		
 		final String R_MONTHLY_RESULT_BASIC="SELECT"
 					+ " stu.stu_id,"
-					+ " stu.eng_full_name,"
+					+ " stu.eng_full_name AS stu_name,"
 					+ " cls.class_name,"
 					+ " MAX ("
 					+ "	CASE"
@@ -34,7 +34,7 @@ public interface ResultRepository {
 					+ "	ELSE"
 					+ "		0"
 					+ "	END"
-					+ " ) AS [#{subject_name}]"
+					+ " ) AS score"
 					+ " FROM"
 					+ " smg_mark mk"
 				+ " INNER JOIN smg_subject sub ON sub.subject_id = mk.sub_id"

@@ -7,7 +7,10 @@ public class SubjectBasic {
 	@JsonProperty("MONTHLY_RESULT")
 	private MonthlyResult monthlyResult=new MonthlyResult();
 	
-	@JsonProperty("JAVA")
+	@JsonProperty("SCORE")
+	private float score;
+	
+	/*@JsonProperty("JAVA")
 	private float java;
 	
 	@JsonProperty("WEB")
@@ -33,9 +36,18 @@ public class SubjectBasic {
 	}
 	public void setKorean(float korean) {
 		this.korean = korean;
-	}
+	}*/
+	
 	public MonthlyResult getMonthlyResult() {
 		return monthlyResult;
+	}
+
+	public float getScore() {
+		return score;
+	}
+
+	public void setScore(float score) {
+		this.score = score;
 	}
 	
 	
