@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
 	@Autowired
@@ -90,11 +90,11 @@ public class UserController {
 		return response;
 	}
 	
-	@RequestMapping(value="/user-login",method=RequestMethod.POST)
-	public ResponseRecord<UserLogin> confirmUserLogin(@RequestBody UserLogin userLogin){
-		ResponseRecord<UserLogin> response=new ResponseRecord<>();
+	@RequestMapping(value="/get-user-by-email",method=RequestMethod.POST)
+	public ResponseRecord<User> confirmUserLogin(@RequestBody UserLogin login){
+		ResponseRecord<User> response=new ResponseRecord<>();
 		
-		UserLogin user=userService.confirmUserLogin(userLogin);
+		User user=userService.findUserByEmail(login.getEmail());
 		if(user==null){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}

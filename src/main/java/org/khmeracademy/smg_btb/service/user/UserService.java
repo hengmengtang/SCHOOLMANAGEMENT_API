@@ -12,5 +12,5 @@ public interface UserService {
 	public boolean save(User user);
 	public boolean changePassword(UserLogin.changePassword changePassword);
 	public boolean changeStatus(int user_id,String username);
-	public UserLogin confirmUserLogin(UserLogin userLogin);
+	public User findUserByEmail(String email);
 }

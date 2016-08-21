@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -31,7 +32,7 @@ public interface UserRepository {
 				+ "#{new_password,jdbcType=VARCHAR,mode=IN})}";
 		final String U_CHANGE_USER_STATUAS="UPDATE smg_user SET status='f' "
 				+ "WHERE user_id=#{user_id} AND username=#{username}";
-		final String R_USER_LOGIN="SELECT username,password,email FROM smg_user WHERE email=#{email} AND password=#{password}";
+		final String R_FIND_USER_BY_EMAIL="SELECT * FROM user_detail WHERE email=#{email}";
 	}
 	@Select(SQL.R_USER)
 	@Results({
@@ -62,11 +63,6 @@ public interface UserRepository {
 	@Update(SQL.U_CHANGE_USER_STATUAS)
 	public boolean changeStatus(int user_id,String username);
 	
-	@Select(SQL.R_USER_LOGIN)
-	@Results({
-		@Result(property="username",column="username"),
-		@Result(property="password",column="password"),
-		@Result(property="email",column="email")
-	})
-	public UserLogin confirmUserLogin(UserLogin userLogin);
+	@Select(SQL.R_FIND_USER_BY_EMAIL)
+	public User findUserByEmail(@Param("email") String email);
 }

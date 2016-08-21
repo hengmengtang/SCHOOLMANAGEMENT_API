@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserLogin confirmUserLogin(UserLogin userLogin) {
-		return userRepository.confirmUserLogin(userLogin);
+	public User findUserByEmail(String email) {
+		return userRepository.findUserByEmail(email);
 	}
 }
