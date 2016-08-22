@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.mark;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.add_mark.DisplayAddMark;
+import org.khmeracademy.smg_btb.entity.form.mark.ParamUpdateScore;
 import org.khmeracademy.smg_btb.entity.mark.Mark;
 import org.khmeracademy.smg_btb.repository.mark.MarkRepository;
 import org.khmeracademy.smg_btb.service.mark.MarkService;
@@ -23,6 +24,11 @@ public class MarkServiceImpl implements MarkService{
 	@Override
 	public ArrayList<DisplayAddMark> displayStudentToAddScore() {
 		return markRepository.displayStudentToAddScore();
+	}
+
+	@Override
+	public boolean update(ParamUpdateScore updateScore) {
+		return markRepository.update(updateScore);
 	}
 
 }

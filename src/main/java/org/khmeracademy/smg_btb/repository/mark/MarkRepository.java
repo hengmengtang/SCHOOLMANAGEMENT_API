@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.form.add_mark.DisplayAddMark;
+import org.khmeracademy.smg_btb.entity.form.mark.ParamUpdateScore;
 import org.khmeracademy.smg_btb.entity.mark.Mark;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +26,8 @@ public interface MarkRepository {
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 		
 		final String R_STUDENT_CLASS_TO_ADD_SCORE="SELECT * FROM get_student_to_add_score";
+		
+		final String U_MARK="UPDATE smg_mark SET mark=#{mark} WHERE mark_id=#{mark_id}";
 	}
 	
 	@Insert(SQL.ADD_MARK)
@@ -31,4 +36,7 @@ public interface MarkRepository {
 	
 	@Select(SQL.R_STUDENT_CLASS_TO_ADD_SCORE)
 	public ArrayList<DisplayAddMark> displayStudentToAddScore();
+	
+	@Update(SQL.U_MARK)
+	public boolean update(ParamUpdateScore updateScore);
 }

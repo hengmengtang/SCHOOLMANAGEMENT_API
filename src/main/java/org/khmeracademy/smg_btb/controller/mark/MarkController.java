@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.controller.mark;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.add_mark.DisplayAddMark;
+import org.khmeracademy.smg_btb.entity.form.mark.ParamUpdateScore;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.entity.mark.Mark;
 import org.khmeracademy.smg_btb.service.mark.MarkService;
@@ -10,6 +11,7 @@ import org.khmeracademy.smg_btb.utils.Response;
 import org.khmeracademy.smg_btb.utils.ResponseCode;
 import org.khmeracademy.smg_btb.utils.ResponseList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,6 +49,18 @@ public class MarkController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(studentList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/update-mark",method=RequestMethod.PUT)
+	public Response update(@RequestBody ParamUpdateScore updateScore){
+		Response response=new Response();
+		
+		if(markService.update(updateScore))
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
+		else
+			response.setCode(ResponseCode.UPDATE_FAIL);
 		
 		return response;
 	}
