@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.repository.subject;
 import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -12,6 +13,8 @@ import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.entity.subject.Subject;
 import org.springframework.stereotype.Repository;
+
+import scala.annotation.meta.param;
 
 @Repository
 public interface SubjectRepository {
@@ -44,7 +47,10 @@ public interface SubjectRepository {
 				+ " AND stf.eng_full_name=#{staff_name} AND cls.class_name=#{class_name};";
 		
 		final String U_CHANGE_STATUS="UPDATE smg_subject SET active=(CASE WHEN active='t'"
-				+ " THEN active='f' else 't' END) where subject_id=#{subject_id};";					
+				+ " THEN active='f' else 't' END) where subject_id=#{subject_id}"
+				+ " AND now()::text<(select end_date from smg_course WHERE active='t');";		
+		
+		final String R_SELECT_SUBJECT="SELECT * FROM smg_subject WHERE subject_name=#{subject_name};";
 	}
 	
 	@Select(SQL.R_SUBJECT)
@@ -82,4 +88,7 @@ public interface SubjectRepository {
 	
 	@Update(SQL.U_CHANGE_STATUS)
 	public boolean changStatus(String subject_id);
+	
+	@Select(SQL.R_SELECT_SUBJECT)
+	public Subject findSubjectBySubjectname(@Param("subject_name") String subject_name);
 }

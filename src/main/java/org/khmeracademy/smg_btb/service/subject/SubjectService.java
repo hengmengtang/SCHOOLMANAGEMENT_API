@@ -2,6 +2,7 @@ package org.khmeracademy.smg_btb.service.subject;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
 import org.khmeracademy.smg_btb.entity.form.add_mark.ParamForGetSubject;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
 import org.khmeracademy.smg_btb.entity.subject.Subject;
@@ -13,4 +14,5 @@ public interface SubjectService {
 	public MaxId selectMax();
 	public ArrayList<Subject> getSubjectInCourse(ParamForGetSubject subject);
 	public boolean changStatus(String Subject_id);
+	public Subject findSubjectBySubjectname(@Param("subject_name") String subject_name);
 }

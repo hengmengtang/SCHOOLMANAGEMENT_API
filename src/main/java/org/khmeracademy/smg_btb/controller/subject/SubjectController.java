@@ -101,5 +101,21 @@ public class SubjectController {
 		}
 		return response;
 	}
+	
+
+	@RequestMapping(value="/find-subject-by-subjectname/{subject_name}",method=RequestMethod.GET)
+	public ResponseRecord<Subject> findSubjectBySubjectname(@PathVariable("subject_name") String subject_name){
+		ResponseRecord<Subject> response=new ResponseRecord<>();
+		
+		Subject subject=subjectService.findSubjectBySubjectname(subject_name);
+		if(subject==null)
+			response.setCode(ResponseCode.FAIL);
+		else
+			response.setCode(ResponseCode.SUCCESS);
+		
+		response.setData(subject);
+		
+		return response;
+	}
 
 }

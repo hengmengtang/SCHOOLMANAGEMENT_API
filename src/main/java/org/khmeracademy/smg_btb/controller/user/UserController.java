@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.controller.user;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
+import org.khmeracademy.smg_btb.entity.form.user.ParamRegisterUser;
 import org.khmeracademy.smg_btb.entity.user.User;
 import org.khmeracademy.smg_btb.service.user.UserService;
 import org.khmeracademy.smg_btb.utils.Response;
@@ -47,10 +48,11 @@ public class UserController {
 	 * @param student
 	 * @return
 	 */
-	@RequestMapping(value="/save-user",method=RequestMethod.POST)
-	public Response save(@RequestBody User user){
+	@RequestMapping(value="/register-user",method=RequestMethod.POST)
+	public Response save(@RequestBody ParamRegisterUser user){
 		Response response=new Response();
-		if(userService.save(user)==false)
+		userService.save(user);
+		if(user.getSuccess()==1)
 			response.setCode(ResponseCode.INSERT_SUCCESS);
 		else
 			response.setCode(ResponseCode.INSERT_FAIL);

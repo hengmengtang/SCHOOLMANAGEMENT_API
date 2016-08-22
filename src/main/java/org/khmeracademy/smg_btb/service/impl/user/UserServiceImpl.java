@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.service.impl.user;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
+import org.khmeracademy.smg_btb.entity.form.user.ParamRegisterUser;
 import org.khmeracademy.smg_btb.entity.user.User;
 import org.khmeracademy.smg_btb.repository.user.UserRepository;
 import org.khmeracademy.smg_btb.service.user.UserService;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean save(User user) {
+	public int save(ParamRegisterUser user) {
 		return userRepository.save(user);
 	}
 

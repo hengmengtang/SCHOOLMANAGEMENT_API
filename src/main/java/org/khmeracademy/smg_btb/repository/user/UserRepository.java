@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
+import org.khmeracademy.smg_btb.entity.form.user.ParamRegisterUser;
 import org.khmeracademy.smg_btb.entity.user.User;
 import org.springframework.stereotype.Repository;
 
@@ -20,13 +21,11 @@ public interface UserRepository {
 	interface SQL{
 		final String R_USER="SELECT user_id, username,password,possition,date,status FROM smg_user";
 		
-		final String C_USER="{CALL insert_user(#{user_id,jdbcType=NUMERIC,mode=IN},"
+		final String C_USER="{CALL insert_user("
 				+ "#{username,jdbcType=VARCHAR,mode=IN},"
 				+ "#{password,jdbcType=VARCHAR,mode=IN},"
-				+ "#{possition,jdbcType=VARCHAR,mode=IN},"
-				+ "#{phone,jdbcType=VARCHAR,mode=IN},"
-				+ "#{date,jdbcType=VARCHAR,mode=IN},"
-				+ "#{status,jdbcType=BOOLEAN,mode=IN})}";
+				+ "#{email,jdbcType=VARCHAR,mode=IN},"
+				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 		
 		final String U_CHANGE_PASSWORD="{CALL change_password(#{username,jdbcType=VARCHAR,mode=IN},#{old_password,jdbcType=VARCHAR,mode=IN},"
 				+ "#{new_password,jdbcType=VARCHAR,mode=IN})}";
@@ -54,7 +53,7 @@ public interface UserRepository {
 	 */
 	@Insert(SQL.C_USER)
 	@Options(statementType=StatementType.CALLABLE)
-	public boolean save(User user);
+	public int save(ParamRegisterUser user);
 	
 	@Update(SQL.U_CHANGE_PASSWORD)
 	@Options(statementType=StatementType.CALLABLE)
