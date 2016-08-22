@@ -27,6 +27,7 @@ public interface ResultRepository {
 					+ " stu.stu_id,"
 					+ " stu.eng_full_name AS stu_name,"
 					+ " cls.class_name,"
+					+ " mk.mark_id,"
 					+ " MAX ("
 					+ "	CASE"
 					+ "	WHEN sub.subject_name = #{subject_name} THEN"
@@ -67,7 +68,8 @@ public interface ResultRepository {
 				+ " GROUP BY "
 				+ " 	stu.stu_id,"
 				+ " 	stu.eng_full_name,"
-				+ " 	cls.class_name "
+				+ " 	cls.class_name,"
+				+ "		mk.mark_id "
 				+ " ORDER BY stu.stu_id;";
 					
 		final String R_MONTHLY_RESULT_ADVANCE="{CALL monthly_result_advance("
@@ -81,7 +83,8 @@ public interface ResultRepository {
 	@Results({
 		@Result(property="monthlyResult.stu_id",column="stu_id"),
 		@Result(property="monthlyResult.stu_name",column="stu_name"),
-		@Result(property="monthlyResult.class_name",column="class_name")
+		@Result(property="monthlyResult.class_name",column="class_name"),
+		@Result(property="monthlyResult.mark_id",column="mark_id")
 	})
 	public ArrayList<SubjectBasic> resultBasic(ParamViewScore viewScore);
 	

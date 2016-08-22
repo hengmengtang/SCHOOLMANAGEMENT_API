@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MonthlyResult {
 
+	@JsonProperty("MARK_ID")
+	private String mark_id;
+	
 	@JsonProperty("STUDENT_ID")
 	private String stu_id;
 	
 	@JsonProperty("STUDENT_NMAE")
 	private String stu_name;
-	
+	 
 	@JsonProperty("CLASS_NAME")
 	private String class_name;
 	
@@ -36,5 +39,15 @@ public class MonthlyResult {
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
+
+	public String getMark_id() {
+		return mark_id;
+	}
+
+	public void setMark_id(String mark_id) {
+		this.mark_id = mark_id;
+	}
+	
+	
 	
 }
