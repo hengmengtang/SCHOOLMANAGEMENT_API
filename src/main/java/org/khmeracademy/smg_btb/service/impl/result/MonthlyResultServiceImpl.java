@@ -2,6 +2,8 @@ package org.khmeracademy.smg_btb.service.impl.result;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject.basic;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
@@ -24,6 +26,11 @@ public class MonthlyResultServiceImpl implements MonthlyResultService {
 	@Override
 	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore) {
 		return resultRepository.resultAdvance(viewScore);
+	}
+
+	@Override
+	public ArrayList<basic> resultBasicOnMonth(ParamViewResult result) {
+		return resultRepository.resultBasicOnMonth(result);
 	}
 
 }

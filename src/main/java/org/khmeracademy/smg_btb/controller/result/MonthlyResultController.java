@@ -2,6 +2,8 @@ package org.khmeracademy.smg_btb.controller.result;
 
 import java.util.ArrayList;
 
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
@@ -51,6 +53,22 @@ public class MonthlyResultController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(resultList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/monthly-result-on-month",method=RequestMethod.POST)
+	public ResponseList<Subject.basic> monthlyResultOnMonth(@RequestBody ParamViewResult result){
+		ResponseList<Subject.basic> response=new ResponseList<>();
+		
+		ArrayList<Subject.basic> monthlyResult=resultService.resultBasicOnMonth(result);
+		if(monthlyResult.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(monthlyResult);
 		
 		return response;
 	}
