@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.add_mark.DisplayAddMark;
 import org.khmeracademy.smg_btb.entity.form.mark.ParamUpdateScore;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.entity.mark.Mark;
 import org.khmeracademy.smg_btb.service.mark.MarkService;
@@ -64,4 +66,5 @@ public class MarkController {
 		
 		return response;
 	}
+
 }

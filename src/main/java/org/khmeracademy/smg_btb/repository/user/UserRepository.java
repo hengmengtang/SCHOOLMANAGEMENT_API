@@ -32,6 +32,8 @@ public interface UserRepository {
 		final String U_CHANGE_USER_STATUAS="UPDATE smg_user SET status='f' "
 				+ "WHERE user_id=#{user_id} AND username=#{username}";
 		final String R_FIND_USER_BY_EMAIL="SELECT * FROM user_detail WHERE email=#{email}";
+		
+		final String C_UPLOAD_PHOTO_USER="INSERT INTO smg_user VALUES(photo=#{path}) WHERE email=#{email}";
 	}
 	@Select(SQL.R_USER)
 	@Results({
@@ -64,4 +66,7 @@ public interface UserRepository {
 	
 	@Select(SQL.R_FIND_USER_BY_EMAIL)
 	public User findUserByEmail(@Param("email") String email);
+	
+	@Insert(SQL.C_UPLOAD_PHOTO_USER)
+	public boolean insert(@Param("path") String path,@Param("email") String email);
 }

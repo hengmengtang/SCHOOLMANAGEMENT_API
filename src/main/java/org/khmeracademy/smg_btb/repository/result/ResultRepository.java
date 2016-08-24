@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
@@ -18,10 +20,10 @@ import org.springframework.stereotype.Repository;
 public interface ResultRepository {
 
 	interface SQL{
-		/*final String R_MONTHLY_RESULT_BASIC="{CALL monthly_result_basic("
-				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{staff_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{subject_name,jdbcType=VARCHAR,mode=IN})}";*/
+		final String R_MONTHLY_RESULT_BASIC_ON_MONTH="{CALL monthly_result_basic("
+				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{date,jdbcType=VARCHAR,mode=IN})}";
 		
 		final String R_MONTHLY_RESULT_BASIC="SELECT"
 					+ " stu.stu_id,"
@@ -96,4 +98,14 @@ public interface ResultRepository {
 		@Result(property="monthlyResult.class_name",column="class_name")
 	})
 	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore);
+	
+	@Select(SQL.R_MONTHLY_RESULT_BASIC_ON_MONTH)
+	@Options(statementType=StatementType.CALLABLE)
+	@Results({
+		@Result(property="info.rank",column="rank"),
+		@Result(property="info.student_name",column="student_name"),
+		@Result(property="info.class_name",column="class_name"),
+		@Result(property="info.gender",column="gender")
+	})
+	public ArrayList<Subject.basic> resultBasicOnMonth(ParamViewResult result);
 }
