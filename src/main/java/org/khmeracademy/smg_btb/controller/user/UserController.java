@@ -1,7 +1,9 @@
 package org.khmeracademy.smg_btb.controller.user;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.fileupload.FileUploadException;
 import org.khmeracademy.smg_btb.entity.form.studentlogin.UserLogin;
 import org.khmeracademy.smg_btb.entity.form.user.ParamRegisterUser;
 import org.khmeracademy.smg_btb.entity.user.User;
@@ -15,7 +17,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/user")
@@ -104,6 +110,17 @@ public class UserController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(user);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/upload-profile",method=RequestMethod.POST)
+	public Response uploadProfile(@RequestPart("file") List<MultipartFile> file,@RequestPart("email") String email) throws FileUploadException{
+		Response response=new Response();
+		if(userService.upload(file, email)!=null)
+			response.setCode(ResponseCode.INSERT_SUCCESS);
+		else
+			response.setCode(ResponseCode.INSERT_FAIL);
 		
 		return response;
 	}
