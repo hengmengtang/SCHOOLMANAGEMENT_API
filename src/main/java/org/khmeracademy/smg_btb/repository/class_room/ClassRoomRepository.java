@@ -26,8 +26,6 @@ public interface ClassRoomRepository {
 		
 		final String C_CLASS="{CALL insert_class(#{class_id,jdbcType=INTEGER,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{start_date,jdbcType=VARCHAR,mode=IN},"
-				+ "#{end_date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{active,jdbcType=BOOLEAN,mode=IN})}";
 		
 		final String R_SELECT_MAX="SELECT 'cls' || lpad(MAX(split_part(class_id, 'cls', 2)::int + 1)::text,4,'0') "
