@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.close_generation.CloseGeneration;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.entity.generation.CountStudentByGeneration;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.generation.GenerationService;
@@ -125,4 +126,52 @@ public class GenerationController {
 		return response;
 	}
 	
+	
+	@RequestMapping(value="/count-student-in-generation",method=RequestMethod.GET)
+	public ResponseList<CountStudentByGeneration> countStudent(){
+		ResponseList<CountStudentByGeneration> response=new ResponseList<>();
+	
+		ArrayList<CountStudentByGeneration> generationList=generationService.countStudent();
+		if(generationList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(generationList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/generation-year",method=RequestMethod.GET)
+	public ResponseList<Generation> generationYear(){
+		ResponseList<Generation> response=new ResponseList<>();
+	
+		ArrayList<Generation> generationList=generationService.generationYear();
+		if(generationList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(generationList);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/count-student-in-each-generation",method=RequestMethod.GET)
+	public ResponseList<CountStudentByGeneration> countStudentInEachGeneration(){
+		ResponseList<CountStudentByGeneration> response=new ResponseList<>();
+	
+		ArrayList<CountStudentByGeneration> generationList=generationService.countStudentInEachGeneration();
+		if(generationList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(generationList);
+		
+		return response;
+	}
 }

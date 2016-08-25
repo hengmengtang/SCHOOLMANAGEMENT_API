@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.close_generation.CloseGeneration;
 import org.khmeracademy.smg_btb.entity.form.max_id.MaxId;
+import org.khmeracademy.smg_btb.entity.generation.CountStudentByGeneration;
 import org.khmeracademy.smg_btb.entity.generation.Generation;
 import org.khmeracademy.smg_btb.repository.generation.GenerationRepository;
 import org.khmeracademy.smg_btb.service.generation.GenerationService;
@@ -49,6 +50,21 @@ public class GenerationImpl implements GenerationService{
 	@Override
 	public boolean closeGeneration() {
 		return generationRepository.closeGeneration();
+	}
+
+	@Override
+	public ArrayList<CountStudentByGeneration> countStudent() {
+		return generationRepository.countStudent();
+	}
+
+	@Override
+	public ArrayList<Generation> generationYear() {
+		return generationRepository.generationYear();
+	}
+
+	@Override
+	public ArrayList<CountStudentByGeneration> countStudentInEachGeneration() {
+		return generationRepository.countStudentInEachCourse();
 	}
 
 }

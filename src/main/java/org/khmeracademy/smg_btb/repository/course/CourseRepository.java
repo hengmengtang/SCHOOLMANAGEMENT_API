@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 public interface CourseRepository {
 
 	interface SQL{
-		final String R_COURSE="SELECT * FROM smg_course;";
+		final String R_COURSE="SELECT * FROM smg_course order by cou_id;";
 		
 		final String C_COURSE="INSERT INTO smg_course("
 					+ " cou_id,"
