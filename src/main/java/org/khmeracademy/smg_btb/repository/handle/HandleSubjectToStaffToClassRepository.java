@@ -11,11 +11,11 @@ public interface HandleSubjectToStaffToClassRepository {
 
 	interface SQL{
 		final String HANDLE_SUBJECT_TO_STAFF_TO_CLASS="{CALL handle_subject_to_staff_to_class("
+				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{staff_handle_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{class_room_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{subject_type_name,jdbcType=VARCHAR,mode=IN},"
-				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
+				+ "#{subject_type_name,jdbcType=VARCHAR,mode=IN},"			
 				+ "#{date,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
 	}
