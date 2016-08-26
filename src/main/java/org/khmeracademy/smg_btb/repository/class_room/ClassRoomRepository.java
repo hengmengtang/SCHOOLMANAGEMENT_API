@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
 public interface ClassRoomRepository {
 
 	interface SQL{
-		final String R_CLASS="SELECT * FROM smg_class";
+		final String R_CLASS="SELECT * FROM smg_class where active='t';";
 		
 		final String C_CLASS="{CALL insert_class(#{class_id,jdbcType=INTEGER,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
