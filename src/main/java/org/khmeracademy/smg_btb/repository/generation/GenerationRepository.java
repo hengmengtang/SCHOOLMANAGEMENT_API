@@ -33,15 +33,15 @@ public interface GenerationRepository {
 				+ " VALUES("
 				+ " #{gen_id},"
 				+ " #{gen_name},"
-				+ " to_timestamp(#{gen_start_date}, 'MM-DD-YYYY')::DATE::TEXT," 
-				+ " to_timestamp(#{gen_end_date}, 'MM-DD-YYYY')::DATE::TEXT," 
+				+ " to_timestamp(#{gen_start_date}, 'YYYY-MM-DD')::DATE::TEXT," 
+				+ " to_timestamp(#{gen_end_date}, 'YYYY-MM-DD')::DATE::TEXT," 
 				+ " #{status})";
 		
 		final String R_SELECT_MAX="SELECT 'gen' || lpad(MAX(split_part(gen_id, 'gen', 2)::int + 1)::text,3,'0') "
 				+ "AS max_gen_id FROM smg_generation";
 		
-		final String R_LAST_GENERATION="SELECT gen_id,gen_name,status FROM smg_generation WHERE status='t'"
-				+ " AND gen_end_date>=now()::DATE::TEXT;";
+		final String R_LAST_GENERATION="SELECT gen_id,gen_name,status FROM smg_generation WHERE status='t'";
+				/*+ " AND gen_end_date>=now()::DATE::TEXT;";*/
 		
 		final String U_STATUS_GENERATION_TRUE="UPDATE smg_generation SET status='f' WHERE gen_id=#{gen_id}";
 		
