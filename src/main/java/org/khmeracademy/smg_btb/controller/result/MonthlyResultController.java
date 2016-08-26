@@ -3,6 +3,7 @@ package org.khmeracademy.smg_btb.controller.result;
 import java.util.ArrayList;
 
 import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMonth;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
@@ -62,6 +63,22 @@ public class MonthlyResultController {
 		ResponseList<Subject.basic> response=new ResponseList<>();
 		
 		ArrayList<Subject.basic> monthlyResult=resultService.resultBasicOnMonth(result);
+		if(monthlyResult.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(monthlyResult);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/student-result-each-month/{student_name}",method=RequestMethod.POST)
+	public ResponseList<ResultStudentEachMonth> studentResultEachMonth(@PathVariable("student_name") String student_name){
+		ResponseList<ResultStudentEachMonth> response=new ResponseList<>();
+		
+		ArrayList<ResultStudentEachMonth> monthlyResult=resultService.studentResultEachMonth(student_name);
 		if(monthlyResult.isEmpty()){
 			response.setCode(ResponseCode.RECORD_NOT_FOUND);
 		}

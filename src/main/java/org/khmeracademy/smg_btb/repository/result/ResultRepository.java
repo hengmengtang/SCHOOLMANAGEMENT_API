@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import javax.ws.rs.OPTIONS;
 
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.mapping.StatementType;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.ParamViewResult;
+import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMonth;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
@@ -78,6 +80,9 @@ public interface ResultRepository {
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{staff_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{subject_name,jdbcType=VARCHAR,mode=IN})}";
+		
+		final String R_RESULT_STUDENT_IN_EACH_MONTH="{CALL result_each_month("
+				+ "#{student_name,jdbcType=VARCHAR,mode=IN})}";
 	}
 	
 	@Select(SQL.R_MONTHLY_RESULT_BASIC)
@@ -108,4 +113,8 @@ public interface ResultRepository {
 		@Result(property="info.gender",column="gender")
 	})
 	public ArrayList<Subject.basic> resultBasicOnMonth(ParamViewResult result);
+	
+	@Select(SQL.R_RESULT_STUDENT_IN_EACH_MONTH)
+	@Options(statementType=StatementType.CALLABLE)
+	public ArrayList<ResultStudentEachMonth> studentResultEachMonth(String student_name);
 }
