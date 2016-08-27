@@ -195,7 +195,7 @@ public interface StudentRepository {
 				+ " INNER JOIN smg_enrollment en ON stu.stu_id=en.stu_id"
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
 				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
-				+ " WHERE gen.status='t';";
+				+ " WHERE gen.status='t' and cls.active='t'";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({

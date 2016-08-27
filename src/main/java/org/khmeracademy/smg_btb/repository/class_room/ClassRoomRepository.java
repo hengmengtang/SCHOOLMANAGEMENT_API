@@ -49,8 +49,8 @@ public interface ClassRoomRepository {
 				+ " LEFT JOIN smg_course cou ON h.cou_id=cou.cou_id"
 				+ " LEFT JOIN smg_class cls ON cls.class_id=h.class_id"
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
-				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
-				+ " AND gen.status='t' AND cls.active='t' AND stf.status='t'"; 
+				+ " WHERE gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}";
+				//+ " AND gen.status='t' AND cls.active='t' AND stf.status='t'"; 
 		
 		final String R_SELECT_LIST_CLASS="SELECT DISTINCT cls.class_id,cls.class_name,cou.cou_name,gen.gen_name,cls.active"
 				+ " FROM smg_course cou" 
