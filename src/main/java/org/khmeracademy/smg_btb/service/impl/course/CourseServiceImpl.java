@@ -59,4 +59,10 @@ public class CourseServiceImpl implements CourseService{
 		return courseRepository.changeStatusCourseWithClass(closeCourse);
 	}
 
+
+	@Override
+	public Course getCurrentCourse() {
+		return courseRepository.getCurrentCourse();
+	}
+
 }

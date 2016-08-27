@@ -39,7 +39,7 @@ public interface CourseRepository {
 		final String R_SELECT_MAX="SELECT 'cou' || lpad(MAX(split_part(cou_id, 'cou', 2)::int + 1)::text,4,'0') "
 				+ "AS max_cou_id FROM smg_course";
 		
-		final String R_SELECT_LAST_COURSE="SELECT cou_id,cou_name,active FROM smg_course WHERE active='t'";
+		final String R_SELECT_LAST_COURSE="SELECT cou_id,cou_name,active FROM smg_course order by cou_id desc limit 1";
 				/*+ "AND end_date>=now()::DATE::TEXT;";*/
 		
 		final String R_SELECT_LIST_COURSE="SELECT DISTINCT cou.cou_id,gen.gen_name,cou.cou_name,cou.start_date,cou.end_date,cou.active"
@@ -55,6 +55,8 @@ public interface CourseRepository {
 				+ "#{generation_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{course_name,jdbcType=VARCHAR,mode=IN},"
 				+ "#{success,jdbcType=INTEGER,mode=OUT})}";
+		
+		final String R_CURRENT_COURSE="SELECT cou_id,cou_name,active FROM smg_course where active='t'";
 	}
 	
 	@Select(SQL.R_COURSE)
@@ -95,4 +97,14 @@ public interface CourseRepository {
 	@Update(SQL.U_STATUS_COURSE)
 	@Options(statementType=StatementType.CALLABLE)
 	public int changeStatusCourseWithClass(CloseCourse.paramCloseCorse closeCourse);
+	
+	@Select(SQL.R_CURRENT_COURSE)
+	@Results({
+		@Result(property="course_id" ,column="cou_id"),
+		@Result(property="course_name" ,column="cou_name"),
+		@Result(property="cou_start_date" ,column="start_date"),
+		@Result(property="cou_end_date" ,column="end_date"),
+		@Result(property="status" ,column="active")
+	})
+	public Course getCurrentCourse();
 }

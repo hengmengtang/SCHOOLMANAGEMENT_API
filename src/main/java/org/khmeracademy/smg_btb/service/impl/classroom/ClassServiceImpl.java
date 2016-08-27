@@ -62,4 +62,14 @@ public class ClassServiceImpl implements ClassService{
 		return classRepository.changeStatusClass(class_name);
 	}
 
+	@Override
+	public boolean openClass(String class_id) {
+		return classRepository.openClass(class_id);
+	}
+
+	@Override
+	public ArrayList<ClassRoom> getClassStatusTrue() {
+		return classRepository.getClassStatusTrue();
+	}
+
 }

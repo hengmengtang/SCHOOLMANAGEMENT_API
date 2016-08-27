@@ -144,4 +144,32 @@ public class ClassRoomController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/open-class/{class_id}",method=RequestMethod.GET)
+	public Response openClass(@PathVariable("class_id") String class_id){
+		Response response=new Response();
+	
+		if(classService.openClass(class_id))
+			response.setCode(ResponseCode.UPDATE_SUCCESS);
+		else
+			response.setCode(ResponseCode.UPDATE_FAIL);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/get-class-status-true",method=RequestMethod.GET)
+	public ResponseList<ClassRoom> getClassStatusTrue(){
+		ResponseList<ClassRoom> response=new ResponseList<>();
+	
+		ArrayList<ClassRoom> classRoomList=classService.getClassStatusTrue();
+		if(classRoomList.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(classRoomList);
+		
+		return response;
+	}
 }

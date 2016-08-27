@@ -123,4 +123,21 @@ public class CourseController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/get-current-course",method=RequestMethod.GET)
+	public ResponseRecord<Course> getCurrentCourse(){
+		ResponseRecord<Course> response=new ResponseRecord<>();
+	
+		Course courseList=courseService.getCurrentCourse();
+		if(courseList==null){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(courseList);
+		
+		return response;
+	}
+	
 }

@@ -18,4 +18,6 @@ public interface ClassService {
 	public ArrayList<ClassRoom> getClassByGenerationCourse(Student.getCourseByGenerationCourse courseByGenerationCourse);
 	public ArrayList<ListClassInCourse> listClass();
 	public boolean changeStatusClass(String class_name);
+	public boolean openClass(String class_id);
+	public ArrayList<ClassRoom> getClassStatusTrue();
 }

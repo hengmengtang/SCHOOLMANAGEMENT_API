@@ -186,7 +186,7 @@ public interface StudentRepository {
 					+ " WHERE stu.stu_id  NOT IN (SELECT en.stu_id FROM smg_enrollment en)";*/
 		final String R_DISPLAY_STUDENT_NOT_YET_ENROLL="SELECT DISTINCT * FROM student_not_yet_enroll";
 		
-		final String R_DISPLAY_STUDENT_ENROLL_ALREADY="SELECT * FROM student_already_enroll";
+		final String R_DISPLAY_STUDENT_ENROLL_ALREADY="SELECT * FROM student_already_enroll;";
 		
 		final String R_STUDENT_IN_LAST_GENERATION="SELECT stu.stu_id,stu.khmer_full_name,"
 				+ " stu.eng_full_name,stu.gender,stu.dob,"

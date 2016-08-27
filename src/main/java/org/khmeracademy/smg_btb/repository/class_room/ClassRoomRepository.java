@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
 public interface ClassRoomRepository {
 
 	interface SQL{
-		final String R_CLASS="SELECT * FROM smg_class where active='t';";
+		final String R_CLASS="SELECT * FROM smg_class";
 		
 		final String C_CLASS="{CALL insert_class(#{class_id,jdbcType=INTEGER,mode=IN},"
 				+ "#{class_name,jdbcType=VARCHAR,mode=IN},"
@@ -38,7 +38,7 @@ public interface ClassRoomRepository {
 				+ " LEFT JOIN smg_class cls ON cls.class_id=en.class_id"
 				+ " LEFT JOIN smg_handlings h ON h.class_id=cls.class_id"
 				+ " LEFT JOIN smg_staff stf ON h.staff_id=stf.staff_id"
-				+ " WHERE cls.class_id IN (SELECT mk.class_id FROM smg_mark mk) AND"
+				+ " WHERE "
  				+ " gen.gen_name=#{generation_name} AND cou.cou_name=#{course_name}"
  				+ " AND stf.eng_full_name=#{staff_name} AND cls.active='t'"
 				+ " AND stf.status='t' AND gen.status='t' AND cou.active='t';";
@@ -62,6 +62,11 @@ public interface ClassRoomRepository {
 		final String R_CLASS_NOT_YET_ENROLL_STUDENT="SELECT * FROM get_class_not_yet_enroll_student";
 		
 		final String U_CHANGE_STATUS_CLASS="{CALL change_status_class(#{class_name,jdbcType=VARCHAR,mode=IN})}";
+		
+		final String U_OPEN_CLASS="update smg_class set active=(case when active='t' then active='f' else 't' end)"
+				+ " where class_id=#{class_id}";
+		
+		final String R_CLASS_STATUS_TRUE="select * from smg_class where active='t';";
 	}
 	
 	@Select(SQL.R_CLASS)
@@ -99,4 +104,17 @@ public interface ClassRoomRepository {
 	@Update(SQL.U_CHANGE_STATUS_CLASS)
 	@Options(statementType=StatementType.CALLABLE)
 	public boolean changeStatusClass(String class_name);
+	
+	@Update(SQL.U_OPEN_CLASS)
+	public boolean openClass(String class_id);
+	
+	@Select(SQL.R_CLASS_STATUS_TRUE)
+	@Results({
+		@Result(property="class_id",column="class_id"),
+		@Result(property="class_name",column="class_name"),
+		@Result(property="start_date",column="start_date"),
+		@Result(property="end_date",column="end_date"),
+		@Result(property="active",column="active")
+	})
+	public ArrayList<ClassRoom> getClassStatusTrue();
 }

@@ -16,4 +16,5 @@ public interface CourseService {
 	public ArrayList<ListCourse> listCourseTamGeneration();
 	public boolean changeStatusCourse(String course_id);
 	public int changeStatusCourseWithClass(CloseCourse.paramCloseCorse closeCourse);
+	public Course getCurrentCourse();
 }
