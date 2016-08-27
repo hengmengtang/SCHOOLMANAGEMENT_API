@@ -85,7 +85,7 @@ public interface StaffRepository {
 					+ " FROM smg_staff st"
 					+ " INNER JOIN smg_handlings h ON h.staff_id=st.staff_id"
 					+ " INNER JOIN smg_class cls ON h.class_id=cls.class_id"
-					+ " INNER JOIN smg_subject subj ON h.sub_id=subj.subject_id;";
+					+ " INNER JOIN smg_subject subj ON h.sub_id=subj.subject_id order by h.date desc;";
 		
 		final String R_STAFF_SUBJECT_ALREADY_ENROLL_TO_CLASS="SELECT * FROM staff_subject_already_enroll_to_class";
 	}
