@@ -25,4 +25,5 @@ public interface StudentService {
 	public ArrayList<Student.subStudent> getStudentInLastGeneration();
 	public ArrayList<DisplayStudentToEnroll> displayStudentNotYetEnroll();
 	public ArrayList<DisplayStudentToEnroll> displayStudentEnrollAlready();
+	public ArrayList<DisplayStudentToEnroll> studentInBasic(String generation_name);
 }

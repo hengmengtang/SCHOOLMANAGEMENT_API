@@ -196,6 +196,17 @@ public interface StudentRepository {
 				+ " INNER JOIN smg_generation gen ON en.gen_id=gen.gen_id"
 				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
 				+ " WHERE gen.status='t' and cls.active='t'";
+		
+		final String R_STUDENT_IN_BASIC="select DISTINCT  stu.stu_id,stu.khmer_full_name,"
+				+ " stu.eng_full_name,stu.gender,stu.dob,"
+				+ " stu.permanent_address AS address,stu.email,stu.status,cls.class_name"
+				+ " FROM smg_enrollment en"
+				+ " INNER JOIN smg_student stu ON en.stu_id=stu.stu_id"
+				+ " INNER JOIN smg_class cls ON en.class_id=cls.class_id"
+				+ " INNER JOIN smg_generation gen ON en.gen_id=(SELECT gen.gen_id"
+				+ " FROM smg_generation gen WHERE gen.gen_name=#{generation_name})"
+				+ " INNER JOIN smg_course cou ON en.course_id=(SELECT cou.cou_id"
+				+ " FROM smg_course cou WHERE cou.cou_name='Basic Course')";
 	};
 	@Select(SQL.R_SELECT_STUDENT)
 	@Results({
@@ -337,4 +348,7 @@ public interface StudentRepository {
 	
 	@Select(SQL.R_DISPLAY_STUDENT_ENROLL_ALREADY)
 	public ArrayList<DisplayStudentToEnroll> displayStudentEnrollAlready();
+	
+	@Select(SQL.R_STUDENT_IN_BASIC)
+	public ArrayList<DisplayStudentToEnroll> studentInBasic(String generation_name);
 }

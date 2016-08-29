@@ -90,4 +90,9 @@ public class StudentServiceImpl implements StudentService{
 	public ArrayList<DisplayStudentToEnroll> displayStudentEnrollAlready() {
 		return studentRepository.displayStudentEnrollAlready();
 	}
+
+	@Override
+	public ArrayList<DisplayStudentToEnroll> studentInBasic(String generation_name) {
+		return studentRepository.studentInBasic(generation_name);
+	}
 }

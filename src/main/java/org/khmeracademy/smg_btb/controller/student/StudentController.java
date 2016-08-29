@@ -280,4 +280,23 @@ public class StudentController {
 		return response;
 	}
 	
+	@RequestMapping(value="/student-in-basic/{generation_name}",method=RequestMethod.GET)
+	public ResponseList<DisplayStudentToEnroll> getStudentInBasic(@PathVariable("generation_name") String generation_name){
+		ResponseList<DisplayStudentToEnroll> response=new ResponseList<>();
+		try{
+			ArrayList<DisplayStudentToEnroll> subStudentList=studentService.studentInBasic(generation_name);
+			
+			if(subStudentList.isEmpty())
+				response.setCode(ResponseCode.RECORD_NOT_FOUND);
+			else
+				response.setCode(ResponseCode.RECORD_FOUND);
+			
+			response.setData(subStudentList);
+		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
 }
