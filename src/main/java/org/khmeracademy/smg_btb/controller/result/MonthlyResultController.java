@@ -89,4 +89,20 @@ public class MonthlyResultController {
 		
 		return response;
 	}
+	
+	@RequestMapping(value="/get-month/{student_name}",method=RequestMethod.POST)
+	public ResponseList<ResultStudentEachMonth> getMonth(@PathVariable("student_name") String student_name){
+		ResponseList<ResultStudentEachMonth> response=new ResponseList<>();
+		
+		ArrayList<ResultStudentEachMonth> month=resultService.getMonth(student_name);
+		if(month.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(month);
+		
+		return response;
+	}
 }

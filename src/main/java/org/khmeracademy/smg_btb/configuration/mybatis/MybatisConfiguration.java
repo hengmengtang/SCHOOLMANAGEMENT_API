@@ -13,13 +13,23 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @MapperScan("org.khmeracademy.smg_btb.repository")
 public class MybatisConfiguration {
 
-	@Bean 
+	/*@Bean 
 	public DataSource getDataSource(){
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
 		dataSource.setUrl("jdbc:postgresql://120.136.24.174:5432/SCHOOL_MGT_BTB");
 		dataSource.setUsername("SCHOOL_MGT_BTB");
 		dataSource.setPassword("SCHOOL_MGT_BTB");
+		return dataSource;
+	}*/
+	
+	@Bean 
+	public DataSource getDataSource(){
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/SCHOOL_MGT_BTB");
+		dataSource.setUsername("postgres");
+		dataSource.setPassword("1234");
 		return dataSource;
 	}
 	

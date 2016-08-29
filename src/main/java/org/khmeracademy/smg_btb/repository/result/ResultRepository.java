@@ -83,6 +83,13 @@ public interface ResultRepository {
 		
 		final String R_RESULT_STUDENT_IN_EACH_MONTH="{CALL result_each_month("
 				+ "#{student_name,jdbcType=VARCHAR,mode=IN})}";
+		
+		final String R_MONTH="SELECT DISTINCT extract('Month' from mk.date::date),to_char(mk.date::date, 'Month') "
+				+ "as month FROM smg_mark mk"
+				+ " INNER JOIN smg_subject sub ON mk.sub_id=sub.subject_id"
+				+ " INNER JOIN smg_student stu ON mk.stu_id=stu.stu_id"
+				+ " WHERE stu.eng_full_name=#{student_name}"
+				+ " ORDER BY extract('Month' from mk.date::date);";
 	}
 	
 	@Select(SQL.R_MONTHLY_RESULT_BASIC)
@@ -110,11 +117,15 @@ public interface ResultRepository {
 		@Result(property="info.rank",column="rank"),
 		@Result(property="info.student_name",column="student_name"),
 		@Result(property="info.class_name",column="class_name"),
-		@Result(property="info.gender",column="gender")
+		@Result(property="info.gender",column="gender"),
+		@Result(property="attendance",column="attendance")
 	})
 	public ArrayList<Subject.basic> resultBasicOnMonth(ParamViewResult result);
 	
 	@Select(SQL.R_RESULT_STUDENT_IN_EACH_MONTH)
 	@Options(statementType=StatementType.CALLABLE)
 	public ArrayList<ResultStudentEachMonth> studentResultEachMonth(String student_name);
+	
+	@Select(SQL.R_MONTH)
+	public ArrayList<ResultStudentEachMonth> getMonth(String student_name);
 }

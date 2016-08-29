@@ -77,7 +77,7 @@ public class Subject {
 		private float korean;
 		
 		@JsonProperty("ATTENDANCE")
-		private int attendace;
+		private int attendance;
 		
 		@JsonProperty("TOTAL")
 		private float total;
@@ -114,12 +114,12 @@ public class Subject {
 			this.korean = korean;
 		}
 
-		public int getAttendace() {
-			return attendace;
+		public int getAttendance() {
+			return attendance;
 		}
 
-		public void setAttendace(int attendace) {
-			this.attendace = attendace;
+		public void setAttendace(int attendance) {
+			this.attendance = attendance;
 		}
 
 		public float getTotal() {

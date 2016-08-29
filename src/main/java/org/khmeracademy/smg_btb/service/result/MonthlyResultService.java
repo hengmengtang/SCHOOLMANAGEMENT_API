@@ -15,4 +15,5 @@ public interface MonthlyResultService {
 	public ArrayList<SubjectAdvance> resultAdvance(ParamViewScore viewScore);
 	public ArrayList<Subject.basic> resultBasicOnMonth(ParamViewResult result);
 	public ArrayList<ResultStudentEachMonth> studentResultEachMonth(String student_name);
+	public ArrayList<ResultStudentEachMonth> getMonth(String student_name);
 }

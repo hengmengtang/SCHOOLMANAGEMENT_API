@@ -39,4 +39,9 @@ public class MonthlyResultServiceImpl implements MonthlyResultService {
 		return resultRepository.studentResultEachMonth(student_name);
 	}
 
+	@Override
+	public ArrayList<ResultStudentEachMonth> getMonth(String student_name) {
+		return resultRepository.getMonth(student_name);
+	}
+
 }
