@@ -7,6 +7,7 @@ import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMont
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
+import org.khmeracademy.smg_btb.entity.form.statistic.ClassName;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 
 public interface MonthlyResultService {
@@ -16,4 +17,5 @@ public interface MonthlyResultService {
 	public ArrayList<Subject.basic> resultBasicOnMonth(ParamViewResult result);
 	public ArrayList<ResultStudentEachMonth> studentResultEachMonth(String student_name);
 	public ArrayList<ResultStudentEachMonth> getMonth(String student_name);
+	public ArrayList<ClassName> summeryResult(String generation_name);
 }

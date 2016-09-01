@@ -7,6 +7,7 @@ import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMont
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject.basic;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
+import org.khmeracademy.smg_btb.entity.form.statistic.ClassName;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 import org.khmeracademy.smg_btb.repository.result.ResultRepository;
 import org.khmeracademy.smg_btb.service.result.MonthlyResultService;
@@ -42,6 +43,11 @@ public class MonthlyResultServiceImpl implements MonthlyResultService {
 	@Override
 	public ArrayList<ResultStudentEachMonth> getMonth(String student_name) {
 		return resultRepository.getMonth(student_name);
+	}
+
+	@Override
+	public ArrayList<ClassName> summeryResult(String generation_name) {
+		return resultRepository.summeryResult(generation_name);
 	}
 
 }

@@ -7,6 +7,7 @@ import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMont
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
+import org.khmeracademy.smg_btb.entity.form.statistic.ClassName;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 import org.khmeracademy.smg_btb.entity.student.Student;
 import org.khmeracademy.smg_btb.service.result.MonthlyResultService;
@@ -102,6 +103,22 @@ public class MonthlyResultController {
 			response.setCode(ResponseCode.RECORD_FOUND);
 		}
 		response.setData(month);
+		
+		return response;
+	}
+	
+	@RequestMapping(value="/get-summery-result/{generation_name}",method=RequestMethod.GET)
+	public ResponseList<ClassName> summeryResult(@PathVariable("generation_name") String generation_name){
+		ResponseList<ClassName> response=new ResponseList<>();
+		
+		ArrayList<ClassName> summeryResult=resultService.summeryResult(generation_name);
+		if(summeryResult.isEmpty()){
+			response.setCode(ResponseCode.RECORD_NOT_FOUND);
+		}
+		else{
+			response.setCode(ResponseCode.RECORD_FOUND);
+		}
+		response.setData(summeryResult);
 		
 		return response;
 	}

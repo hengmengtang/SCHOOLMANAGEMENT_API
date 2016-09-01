@@ -15,6 +15,7 @@ import org.khmeracademy.smg_btb.entity.form.monthly_result.ResultStudentEachMont
 import org.khmeracademy.smg_btb.entity.form.monthly_result.Subject;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectAdvance;
 import org.khmeracademy.smg_btb.entity.form.monthly_result.SubjectBasic;
+import org.khmeracademy.smg_btb.entity.form.statistic.ClassName;
 import org.khmeracademy.smg_btb.entity.form.view_score.ParamViewScore;
 import org.springframework.stereotype.Repository;
 
@@ -90,6 +91,8 @@ public interface ResultRepository {
 				+ " INNER JOIN smg_student stu ON mk.stu_id=stu.stu_id"
 				+ " WHERE stu.eng_full_name=#{student_name}"
 				+ " ORDER BY extract('Month' from mk.date::date);";
+		
+		final String R_SUMMERY_RESULT="{CALL summery_student_result(#{generation_name,jdbcType=VARCHAR,mode=IN})}";
 	}
 	
 	@Select(SQL.R_MONTHLY_RESULT_BASIC)
@@ -128,4 +131,8 @@ public interface ResultRepository {
 	
 	@Select(SQL.R_MONTH)
 	public ArrayList<ResultStudentEachMonth> getMonth(String student_name);
+	
+	@Select(SQL.R_SUMMERY_RESULT)
+	@Options(statementType=StatementType.CALLABLE)
+	public ArrayList<ClassName> summeryResult(String generation_name);
 }

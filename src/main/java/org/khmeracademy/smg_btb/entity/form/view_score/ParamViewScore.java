@@ -4,7 +4,40 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ParamViewScore {
 
+	@JsonProperty("GENERATION_NAME")
+	private String generation_name;
+	
 	@JsonProperty("COURSE_NAME")
+	private String course_name;
+	
+	@JsonProperty("MONTHLY")
+	private String monthly;
+
+	public String getGeneration_name() {
+		return generation_name;
+	}
+
+	public void setGeneration_name(String generation_name) {
+		this.generation_name = generation_name;
+	}
+
+	public String getCourse_name() {
+		return course_name;
+	}
+
+	public void setCourse_name(String course_name) {
+		this.course_name = course_name;
+	}
+
+	public String getMonthly() {
+		return monthly;
+	}
+
+	public void setMonthly(String monthly) {
+		this.monthly = monthly;
+	}
+	
+	/*@JsonProperty("COURSE_NAME")
 	private String course_name;
 	
 	@JsonProperty("STAFF_NAME")
@@ -48,5 +81,5 @@ public class ParamViewScore {
 		this.course_name = course_name;
 	}
 	
-	
+	*/
 }
